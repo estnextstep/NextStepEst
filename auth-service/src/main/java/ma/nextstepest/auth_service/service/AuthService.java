@@ -1,5 +1,6 @@
 package ma.nextstepest.auth_service.service;
 
+
 import ma.nextstepest.auth_service.dto.*;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.exception.EmailExisteException;
@@ -10,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.UUID;
+import java.util.Optional;
 
 @Service
 public class AuthService {
@@ -18,13 +19,16 @@ public class AuthService {
     private final UserRepository userRepository;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
+    private final OtpService service;
 
     public AuthService(UserRepository userRepository,
                        JwtService jwtService,
-                       PasswordEncoder passwordEncoder) {
+                       PasswordEncoder passwordEncoder,
+                       OtpService service) {
         this.userRepository = userRepository;
         this.jwtService = jwtService;
         this.passwordEncoder = passwordEncoder;
+        this.service = service;
     }
 
     public MessageResponse register(@RequestBody User user) {
@@ -58,7 +62,36 @@ public class AuthService {
         return authresponse;
     }
 
-    public void changePassword(){
+    public MessageResponse resetPassword(@RequestBody ResetRequest resetRequest){
+        Optional<User> optionalUser = userRepository.findByEmail((Object) resetRequest.getEmail());
 
+        if (optionalUser.isEmpty()) {
+            throw new UserNotFoundException("you don't have an account, please register");
+        }
+
+        User dbUser = optionalUser.get();
+
+
+        MessageResponse message = new MessageResponse();
+        if(resetRequest.getOTP() != null){
+            boolean valid = service.validateOTP(dbUser,resetRequest.getOTP());
+            if (valid){
+                message.message = "your otp is right";
+                service.invalidateOTP(dbUser);
+                return message;
+            }else{
+                message.message = "your otp is expired or wrong";
+                return message;
+            }
+        } else {
+            String email = resetRequest.getEmail();
+            Integer otp = service.generateOTP(dbUser);
+            message.message = "an otp have been send to you , " + String.valueOf(otp);
+            return message;
+        }
+    }
+
+    public MessageResponse changePassword(@RequestBody ChangeRequest changeRequest){
+        return null;
     }
 }
