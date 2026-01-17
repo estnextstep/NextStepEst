@@ -44,7 +44,7 @@ public class AuthService {
         AuthResponse authresponse = new AuthResponse();
         User dbUser = userRepository.findByEmail(requestUser.getEmail());
         if(!userRepository.findByEmail((Object) requestUser.getEmail()).isPresent()){
-            throw new UserNotFoundException("you don't have an account,please register");
+            throw new UserNotFoundException("you don't have an account,Try create new");
         }
 
         if (dbUser != null && passwordEncoder.matches(requestUser.getPassword(), dbUser.getPassword())) {
