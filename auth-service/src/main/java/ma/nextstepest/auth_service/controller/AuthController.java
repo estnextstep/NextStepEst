@@ -32,11 +32,11 @@ public class AuthController {
     }
 
     @PostMapping("/reset-password")
-    public MessageResponse resetPassword(@RequestBody ResetRequest resetRequest) {
+    public Object resetPassword(@RequestBody ResetRequest resetRequest) {
         return authservice.resetPassword(resetRequest);
     }
 
-    @PostMapping("/change-password ")
+    @PostMapping("/change-password")
     public MessageResponse changePassword(@RequestBody ChangeRequest changeRequest){
         return authservice.changePassword(changeRequest);
     }

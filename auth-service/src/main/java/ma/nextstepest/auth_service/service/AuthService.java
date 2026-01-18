@@ -1,10 +1,10 @@
 package ma.nextstepest.auth_service.service;
 
 
+import ma.nextstepest.auth_service.config.TokenUtil;
 import ma.nextstepest.auth_service.dto.*;
 import ma.nextstepest.auth_service.entity.User;
-import ma.nextstepest.auth_service.exception.EmailExisteException;
-import ma.nextstepest.auth_service.exception.UserNotFoundException;
+import ma.nextstepest.auth_service.exception.*;
 import ma.nextstepest.auth_service.repository.UserRepository;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,6 +35,8 @@ public class AuthService {
         if(userRepository.findByEmail((Object) user.getEmail()).isPresent()){
             throw new EmailExisteException("Email Already exist !");
         }
+        String token_validation = TokenUtil.generateToken(36);
+        user.setResetToken(token_validation);
         user.setActive(false);
         user.setCreatedAt(java.time.LocalDateTime.now());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -50,41 +52,42 @@ public class AuthService {
         if(!userRepository.findByEmail((Object) requestUser.getEmail()).isPresent()){
             throw new UserNotFoundException("you don't have an account,please register");
         }
-
+        if (!dbUser.isActive()){
+            throw new AccountNotActiveException("please active your account before login");
+        }
         if (dbUser != null && passwordEncoder.matches(requestUser.getPassword(), dbUser.getPassword())) {
             String token = jwtService.generateToken(dbUser);
             authresponse.setToken(token);
             authresponse.setRole(dbUser.getRole());
             authresponse.setExperation(jwtService.getExpiration(token));
             return authresponse;
+        }else {
+            throw new DataInvalidException("Donneés invalid");
         }
-        authresponse.setToken("Donneés invalid");
-        return authresponse;
     }
 
-    public MessageResponse resetPassword(@RequestBody ResetRequest resetRequest){
+    public Object resetPassword(@RequestBody ResetRequest resetRequest){
         Optional<User> optionalUser = userRepository.findByEmail((Object) resetRequest.getEmail());
-
         if (optionalUser.isEmpty()) {
             throw new UserNotFoundException("you don't have an account, please register");
         }
 
         User dbUser = optionalUser.get();
 
-
         MessageResponse message = new MessageResponse();
         if(resetRequest.getOTP() != null){
             boolean valid = service.validateOTP(dbUser,resetRequest.getOTP());
             if (valid){
-                message.message = "your otp is right";
                 service.invalidateOTP(dbUser);
-                return message;
+                ResetResponse success = new ResetResponse();
+                success.setReset_token(dbUser.getResetToken());
+                success.setUser_id(dbUser.getId());
+                return success;
             }else{
                 message.message = "your otp is expired or wrong";
                 return message;
             }
         } else {
-            String email = resetRequest.getEmail();
             Integer otp = service.generateOTP(dbUser);
             message.message = "an otp have been send to you , " + String.valueOf(otp);
             return message;
@@ -92,6 +95,25 @@ public class AuthService {
     }
 
     public MessageResponse changePassword(@RequestBody ChangeRequest changeRequest){
-        return null;
+        MessageResponse messageResponse = new MessageResponse();
+        Optional<User> OptionalUser = userRepository.findById(changeRequest.getUser_id());
+        if (OptionalUser.isEmpty()) {
+            throw new UserNotFoundException("you don't have an account, please register");
+        }else {
+            User dbUser = OptionalUser.get();
+            if (dbUser.getResetToken().equals(changeRequest.getReset_token())){
+                if (changeRequest.getNew_password().equals(changeRequest.getConfirm_password())){
+                    dbUser.setPassword(passwordEncoder.encode(changeRequest.getNew_password()));
+                    dbUser.setResetToken(null);
+                    userRepository.save(dbUser);
+                    messageResponse.message = "Password have been changed";
+                    return messageResponse;
+                }else {
+                    throw new PasswordNotMuchException("Password Not Mush To password confirmation");
+                }
+            }else {
+                throw new TokenInvalidException("Token Invalid Exception");
+            }
+        }
     }
 }
