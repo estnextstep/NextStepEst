@@ -1,9 +1,6 @@
 package ma.nextstepest.auth_service.controller;
 
-import ma.nextstepest.auth_service.dto.AuthResponse;
-import ma.nextstepest.auth_service.dto.ChangeRequest;
-import ma.nextstepest.auth_service.dto.MessageResponse;
-import ma.nextstepest.auth_service.dto.ResetRequest;
+import ma.nextstepest.auth_service.dto.*;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.service.AuthService;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +41,10 @@ public class AuthController {
     public MessageResponse activate(@PathVariable String token,@PathVariable Integer id){
         return authservice.active(token,id);
     }
-
+    @GetMapping("/me")
+    public UserInfoResponse GetUserInfo(@RequestHeader("Authorization") String token){
+        return authservice.Getuserinfo(token);
+    }
     @GetMapping("/protected")
     public String protectedEndpoint() {
         return "TOKEN VALID ";
