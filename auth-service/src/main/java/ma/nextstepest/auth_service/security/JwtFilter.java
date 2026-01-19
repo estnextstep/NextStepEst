@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
@@ -35,7 +36,7 @@ public class JwtFilter extends OncePerRequestFilter {
         String path = request.getServletPath();
 
 
-        if (path.equals("/auth/login") || path.equals("/auth/register") || path.equals("/auth/reset-password") || path.equals("/auth/change-password")) {
+        if (path.equals("/auth/login") || path.equals("/auth/register") || path.equals("/auth/reset-password") || path.equals("/auth/change-password") || path.startsWith("/auth/activate/**")) {
             filterChain.doFilter(request, response);
             return;
         }

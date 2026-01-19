@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -42,20 +43,20 @@ public class AuthService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         MessageResponse message = new MessageResponse();
-        message.message = "Registered";
+        message.setMessage("Registered");
         return message;
     }
 
     public AuthResponse login(@RequestBody User requestUser) {
         AuthResponse authresponse = new AuthResponse();
         User dbUser = userRepository.findByEmail(requestUser.getEmail());
-        if(!userRepository.findByEmail((Object) requestUser.getEmail()).isPresent()){
+        if(userRepository.findByEmail((Object) requestUser.getEmail()).isEmpty()){
             throw new UserNotFoundException("you don't have an account,please register");
         }
         if (!dbUser.isActive()){
             throw new AccountNotActiveException("please active your account before login");
         }
-        if (dbUser != null && passwordEncoder.matches(requestUser.getPassword(), dbUser.getPassword())) {
+        if (passwordEncoder.matches(requestUser.getPassword(), dbUser.getPassword())) {
             String token = jwtService.generateToken(dbUser);
             authresponse.setToken(token);
             authresponse.setRole(dbUser.getRole());
@@ -84,12 +85,13 @@ public class AuthService {
                 success.setUser_id(dbUser.getId());
                 return success;
             }else{
-                message.message = "your otp is expired or wrong";
+                message.setSuccess(false);
+                message.setMessage("your otp is expired or wrong");
                 return message;
             }
         } else {
             Integer otp = service.generateOTP(dbUser);
-            message.message = "an otp have been send to you , " + String.valueOf(otp);
+            message.setMessage("an otp have been send to you , " + otp);
             return message;
         }
     }
@@ -106,7 +108,7 @@ public class AuthService {
                     dbUser.setPassword(passwordEncoder.encode(changeRequest.getNew_password()));
                     dbUser.setResetToken(null);
                     userRepository.save(dbUser);
-                    messageResponse.message = "Password have been changed";
+                    messageResponse.setMessage("Password have been changed");
                     return messageResponse;
                 }else {
                     throw new PasswordNotMuchException("Password Not Mush To password confirmation");
@@ -114,6 +116,24 @@ public class AuthService {
             }else {
                 throw new TokenInvalidException("Token Invalid Exception");
             }
+        }
+    }
+
+    public MessageResponse active(String token,Integer id){
+        MessageResponse messageResponse = new MessageResponse();
+        Optional<User> OptionalUser = userRepository.findById(id);
+        if (OptionalUser.isEmpty()) {
+            throw new UserNotFoundException("User Not Found");
+        }
+        User user = OptionalUser.get();
+        if (Objects.equals(user.getId(), id) && user.getResetToken().equals(token)){
+            user.setActive(true);
+            user.setResetToken(null);
+            userRepository.save(user);
+            messageResponse.setMessage("your account have been activated");
+            return messageResponse;
+        }else {
+            throw new ValidationException("an error during the activation");
         }
     }
 }

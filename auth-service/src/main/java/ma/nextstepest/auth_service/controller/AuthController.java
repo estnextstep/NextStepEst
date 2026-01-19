@@ -6,7 +6,6 @@ import ma.nextstepest.auth_service.dto.MessageResponse;
 import ma.nextstepest.auth_service.dto.ResetRequest;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.service.AuthService;
-import ma.nextstepest.auth_service.service.OtpService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -39,6 +38,11 @@ public class AuthController {
     @PostMapping("/change-password")
     public MessageResponse changePassword(@RequestBody ChangeRequest changeRequest){
         return authservice.changePassword(changeRequest);
+    }
+
+    @GetMapping("/activate/{token}/{id}")
+    public MessageResponse activate(@PathVariable String token,@PathVariable Integer id){
+        return authservice.active(token,id);
     }
 
     @GetMapping("/protected")

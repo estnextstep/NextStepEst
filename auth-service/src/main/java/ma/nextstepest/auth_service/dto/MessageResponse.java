@@ -1,7 +1,9 @@
 package ma.nextstepest.auth_service.dto;
 
+import lombok.Data;
 
+@Data
 public class MessageResponse {
-
-    public String message;
+    private boolean success = true;
+    private String message;
 }
