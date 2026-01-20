@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c34bdbf-ce99-4728-95d1-604c6b228361" name="Changes" comment="">
+    <list default="true" id="5c34bdbf-ce99-4728-95d1-604c6b228361" name="Changes" comment="add register exceptions and edit profil">
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/ChangePasswordReq.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/UserInfoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/UserInfoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AuthService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,12 +33,12 @@
     &quot;assignee&quot;: &quot;hamzatchiche&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/AdamSgh25/NextStepEst.git",
-    "accountId": "c68d574c-fc32-46ba-894c-4dcc6b6c974a"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst&quot;,
+    &quot;accountId&quot;: &quot;bcbf85af-b209-48d6-a3e6-be057a6b7298&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -87,6 +90,7 @@
     <attachedChunks>
       <set>
         <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.240" />
       </set>
     </attachedChunks>
   </component>
@@ -98,10 +102,24 @@
       <option name="presentableId" value="Default" />
       <updated>1768847066097</updated>
       <workItem from="1768847070002" duration="6882000" />
+      <workItem from="1768937401727" duration="4845000" />
     </task>
+    <task id="LOCAL-00001" summary="add register exceptions and edit profil">
+      <option name="closed" value="true" />
+      <created>1768931417154</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1768931417155</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add register exceptions and edit profil" />
+    <option name="LAST_COMMIT_MESSAGE" value="add register exceptions and edit profil" />
   </component>
 </project>

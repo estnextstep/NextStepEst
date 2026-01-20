@@ -139,7 +139,21 @@ public class AuthService {
             }
         }
     }
-
+    public MessageResponse updatepassword(@RequestBody ChangePasswordReq changePasswordReq){
+        String email=SecurityContextHolder.getContext().getAuthentication().getName();
+        MessageResponse message=new MessageResponse();
+        User user=userRepository.findByEmail(email);
+        if(!passwordEncoder.matches(changePasswordReq.getPassword(),user.getPassword())){
+            throw new BadRequestException("wrong current password");
+        }
+        if(!changePasswordReq.getNewpassword().equals(changePasswordReq.getConfirmnewpassword())){
+            throw new BadRequestException("password mismatches");
+        }
+        user.setPassword(passwordEncoder.encode(changePasswordReq.getNewpassword()));
+        userRepository.save(user);
+        message.setMessage("password changed successfully");
+        return message;
+    }
     public MessageResponse active(String token,Integer id){
         MessageResponse messageResponse = new MessageResponse();
         Optional<User> OptionalUser = userRepository.findById(id);
@@ -176,12 +190,13 @@ public class AuthService {
         resp.setFirstName(user.getFirstname());
         resp.setLastName(user.getLastname());
         resp.setRole(user.getRole());
-
+        resp.setMajor(user.getMajor());
+        resp.setCreatedAt(user.getCreatedAt());
         return resp;
     }
-    public MessageResponse UpdateUserInfor(String firstname, String lastname,
+    public MessageResponse UpdateUserInfo(String firstname, String lastname,
                                            String role,
-                                           MultipartFile image) throws IOException {
+                                           MultipartFile image, String major) throws IOException {
         String email=SecurityContextHolder.getContext().getAuthentication().getName();
         User user=userRepository.findByEmail(email);
         MessageResponse message=new MessageResponse();
@@ -191,9 +206,10 @@ public class AuthService {
         if(lastname!=null){
             user.setLastname(lastname);
         }
+        user.setMajor(major);
         user.setRole(role);
         if(image!=null&& !image.isEmpty()){
-            String uploadDir="uploads/profile_pictures";
+            String uploadDir="auth-service/src/main/java/ma/nextstepest/auth_service/uploads/profile_pictures";
             Path dirPath=Paths.get(uploadDir);
             if (!Files.exists(dirPath)) {
                 Files.createDirectories(dirPath);

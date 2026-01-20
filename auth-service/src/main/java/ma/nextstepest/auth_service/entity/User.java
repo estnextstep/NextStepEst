@@ -31,6 +31,7 @@ public class User {
     @Column(nullable = false, length = 36)
     private String tokenId;
 
+    private String major ;
     private Integer otp;
 
     private Date otpExpiration;
