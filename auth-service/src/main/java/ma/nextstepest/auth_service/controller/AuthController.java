@@ -3,7 +3,11 @@ package ma.nextstepest.auth_service.controller;
 import ma.nextstepest.auth_service.dto.*;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.service.AuthService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/auth")
@@ -49,6 +53,15 @@ public class AuthController {
     @GetMapping("/me")
     public UserInfoResponse GetUserInfo(@RequestHeader("Authorization") String token){
         return authservice.Getuserinfo(token);
+    }
+    @PutMapping(value="/me/edit", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public MessageResponse updateuUserinfo(
+            @RequestParam String firstname,
+            @RequestParam String lastname,
+            @RequestParam String role,
+            @RequestParam(required = false) MultipartFile image
+    )throws IOException {
+    return authservice.UpdateUserInfor(firstname,lastname,role,image);
     }
     @GetMapping("/protected")
     public String protectedEndpoint() {

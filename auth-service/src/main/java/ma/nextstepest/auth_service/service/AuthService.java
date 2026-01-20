@@ -11,7 +11,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
@@ -38,12 +43,25 @@ public class AuthService {
         if(userRepository.findByEmail((Object) user.getEmail()).isPresent()){
             throw new EmailExisteException("Email Already exist !");
         }
+        if(user.getFirstname() == null || user.getFirstname().isEmpty()){
+            throw new BadRequestException("First name can't be null");
+        }
+        if(user.getLastname()==null || user.getLastname().isEmpty()){
+            throw new BadRequestException("lastName can't be null");
+        }
+        if(user.getEmail()==null|| user.getEmail().isEmpty()){
+            throw new BadRequestException("email must be valid");
+        }
+        if(user.getPassword()==null || user.getPassword().length()<8){
+            throw new BadRequestException("password must be more than 8 character");
+        }
         String token_validation = TokenUtil.generateToken(36);
         user.setResetToken(token_validation);
         user.setActive(false);
         user.setCreatedAt(java.time.LocalDateTime.now());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setTokenId(UUID.randomUUID().toString());
+        user.setUrlImage("/profile_pictures/default_profil.png");
         userRepository.save(user);
         MessageResponse message = new MessageResponse();
         message.setMessage("Registered");
@@ -158,6 +176,36 @@ public class AuthService {
         resp.setFirstName(user.getFirstname());
         resp.setLastName(user.getLastname());
         resp.setRole(user.getRole());
+
         return resp;
+    }
+    public MessageResponse UpdateUserInfor(String firstname, String lastname,
+                                           String role,
+                                           MultipartFile image) throws IOException {
+        String email=SecurityContextHolder.getContext().getAuthentication().getName();
+        User user=userRepository.findByEmail(email);
+        MessageResponse message=new MessageResponse();
+        if(firstname!=null){
+            user.setFirstname(firstname);
+        }
+        if(lastname!=null){
+            user.setLastname(lastname);
+        }
+        user.setRole(role);
+        if(image!=null&& !image.isEmpty()){
+            String uploadDir="uploads/profile_pictures";
+            Path dirPath=Paths.get(uploadDir);
+            if (!Files.exists(dirPath)) {
+                Files.createDirectories(dirPath);
+            }
+
+            String filename=System.currentTimeMillis()+"_"+image.getOriginalFilename();
+            Path filepath= Paths.get(uploadDir,filename);
+            Files.write(filepath,image.getBytes());
+            user.setUrlImage("/profile_pictures/" + filename);
+        }
+    userRepository.save(user);
+    message.setMessage("profile updated with success ");
+    return message;
     }
 }
