@@ -43,5 +43,10 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(
                 new Errorsdto(false,em.getMessage()));
     }
-
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<Errorsdto> HandleRequest(BadRequestException br){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body((
+                new Errorsdto(false,br.getMessage())
+                ));
+    }
 }
