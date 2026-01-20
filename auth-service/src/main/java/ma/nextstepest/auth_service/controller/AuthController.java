@@ -45,7 +45,10 @@ public class AuthController {
     public MessageResponse changePassword(@RequestBody ChangeRequest changeRequest){
         return authservice.changePassword(changeRequest);
     }
-
+    @PutMapping("/me/edit/change-password")
+    public MessageResponse ChangeUserPassword(@RequestBody ChangePasswordReq changePasswordReq){
+        return authservice.updatepassword(changePasswordReq);
+    }
     @GetMapping("/activate/{token}/{id}")
     public MessageResponse activate(@PathVariable String token,@PathVariable Integer id){
         return authservice.active(token,id);
@@ -59,9 +62,10 @@ public class AuthController {
             @RequestParam String firstname,
             @RequestParam String lastname,
             @RequestParam String role,
+            @RequestParam String major,
             @RequestParam(required = false) MultipartFile image
     )throws IOException {
-    return authservice.UpdateUserInfor(firstname,lastname,role,image);
+    return authservice.UpdateUserInfo(firstname,lastname,role,image,major);
     }
     @GetMapping("/protected")
     public String protectedEndpoint() {
