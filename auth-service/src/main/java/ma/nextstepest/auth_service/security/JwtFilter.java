@@ -36,7 +36,7 @@ public class JwtFilter extends OncePerRequestFilter {
         String path = request.getServletPath();
 
 
-        if (path.equals("/auth/login") || path.equals("/auth/register") || path.equals("/auth/reset-password") || path.equals("/auth/change-password") || path.startsWith("/auth/activate/**")) {
+        if (path.equals("/auth/login") || path.equals("/auth/register") || path.equals("/auth/reset-password") || path.equals("/auth/change-password") || path.startsWith("/auth/activate")) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -48,7 +48,7 @@ public class JwtFilter extends OncePerRequestFilter {
             return;
         }
 
-        String token = header.substring(7);
+        String token = header.substring(7).trim();
 
         if (!jwtService.validateToken(token)) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

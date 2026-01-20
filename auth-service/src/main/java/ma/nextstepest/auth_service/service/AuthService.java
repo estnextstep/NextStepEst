@@ -7,6 +7,7 @@ import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.exception.*;
 import ma.nextstepest.auth_service.repository.UserRepository;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -135,5 +136,15 @@ public class AuthService {
         }else {
             throw new ValidationException("an error during the activation");
         }
+    }
+    public UserInfoResponse Getuserinfo(String token){
+        String email= SecurityContextHolder.getContext().getAuthentication().getName();
+        User user=userRepository.findByEmail(email);
+        UserInfoResponse resp=new UserInfoResponse();
+        resp.setEmail(user.getEmail());
+        resp.setFirstName(user.getFirstname());
+        resp.setLastName(user.getLastname());
+        resp.setRole(user.getRole());
+        return resp;
     }
 }
