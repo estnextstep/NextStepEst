@@ -27,6 +27,11 @@ public class AuthController {
         return authservice.login(requestUser);
     }
 
+    @PostMapping("/logout")
+    public MessageResponse logout(@RequestHeader("Authorization") String token){
+        return  authservice.logout(token);
+    }
+
     @PostMapping("/reset-password")
     public Object resetPassword(@RequestBody ResetRequest resetRequest) {
         return authservice.resetPassword(resetRequest);

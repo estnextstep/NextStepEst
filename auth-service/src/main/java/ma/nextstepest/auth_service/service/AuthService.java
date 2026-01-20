@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class AuthService {
@@ -42,6 +43,7 @@ public class AuthService {
         user.setActive(false);
         user.setCreatedAt(java.time.LocalDateTime.now());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setTokenId(UUID.randomUUID().toString());
         userRepository.save(user);
         MessageResponse message = new MessageResponse();
         message.setMessage("Registered");
@@ -137,6 +139,17 @@ public class AuthService {
             throw new ValidationException("an error during the activation");
         }
     }
+
+    public MessageResponse logout(String token){
+        MessageResponse message = new MessageResponse();
+        String email= SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByEmail(email);
+        user.setTokenId(UUID.randomUUID().toString());
+        userRepository.save(user);
+        message.setMessage("logout with success");
+        return message;
+    }
+
     public UserInfoResponse Getuserinfo(String token){
         String email= SecurityContextHolder.getContext().getAuthentication().getName();
         User user=userRepository.findByEmail(email);

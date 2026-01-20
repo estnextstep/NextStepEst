@@ -1,5 +1,7 @@
 package ma.nextstepest.auth_service.security;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import ma.nextstepest.auth_service.service.JwtService;
 import ma.nextstepest.auth_service.repository.UserRepository;
 import ma.nextstepest.auth_service.entity.User;
@@ -62,6 +64,20 @@ public class JwtFilter extends OncePerRequestFilter {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
+
+        Claims claims = Jwts.parser()
+                .verifyWith(jwtService.getKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+
+        String tokenId = claims.getId();
+
+        if (!tokenId.equals(user.getTokenId())) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+
 
 
         UsernamePasswordAuthenticationToken auth =

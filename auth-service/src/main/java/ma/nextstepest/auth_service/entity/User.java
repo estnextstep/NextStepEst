@@ -26,6 +26,9 @@ public class User {
 
     private boolean active;
 
+    @Column(nullable = false, length = 36)
+    private String tokenId;
+
     private Integer otp;
 
     private Date otpExpiration;
