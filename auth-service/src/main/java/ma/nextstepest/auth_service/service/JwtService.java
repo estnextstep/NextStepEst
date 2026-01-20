@@ -14,7 +14,7 @@ public class JwtService {
 
     private static final String SECRET = "SECRET_KEY_123_SECRET_KEY_123_SECRET_KEY_123";
 
-    private SecretKey getKey() {
+    public SecretKey getKey() {
         return Keys.hmacShaKeyFor(SECRET.getBytes());
     }
 
@@ -22,6 +22,7 @@ public class JwtService {
     public String generateToken(User user) {
         return Jwts.builder()
                 .setSubject(user.getEmail())
+                .setId(user.getTokenId())
                 .claim("role", user.getRole())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 86400000))
@@ -49,4 +50,5 @@ public class JwtService {
         Claims claims = Jwts.parser().verifyWith(getKey()).build().parseSignedClaims(token).getPayload();
         return claims.getExpiration();
     }
+
 }
