@@ -14,4 +14,8 @@ public class UserInfoResponse {
     private String major;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime createdAt;
+
+    private String bio;
+    private String username;
+    private String ImageURL;
 }

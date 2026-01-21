@@ -191,6 +191,8 @@ public class AuthService {
         resp.setLastName(user.getLastname());
         resp.setRole(user.getRole());
         resp.setMajor(user.getMajor());
+        resp.setBio(user.getBio());
+        resp.setUsername(user.getUsername());
         resp.setCreatedAt(user.getCreatedAt());
         return resp;
     }
@@ -223,5 +225,23 @@ public class AuthService {
     userRepository.save(user);
     message.setMessage("profile updated with success ");
     return message;
+    }
+
+    public UserInfoResponse get_profile(String username){
+        User user = userRepository.findByUsername(username);
+
+        if (user == null){
+            throw new UserNotFoundException("This username doesn't exist");
+        }
+
+        UserInfoResponse response = new UserInfoResponse();
+        response.setUsername(user.getUsername());
+        response.setBio(user.getBio());
+        response.setCreatedAt(user.getCreatedAt());
+        response.setLastName(user.getLastname());
+        response.setRole(user.getRole());
+        response.setMajor(user.getMajor());
+        response.setImageURL(user.getUrlImage());
+        return response;
     }
 }

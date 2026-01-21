@@ -24,14 +24,20 @@ public class User {
 
     private String password;
 
+    @Column(unique = true,nullable = false)
+    private  String username;
+
     private String role;
+
+    private String major ;
+
+    private String bio;
 
     private boolean active;
 
     @Column(nullable = false, length = 36)
     private String tokenId;
 
-    private String major ;
     private Integer otp;
 
     private Date otpExpiration;
