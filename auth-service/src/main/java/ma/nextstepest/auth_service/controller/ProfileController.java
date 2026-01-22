@@ -33,9 +33,10 @@ public class ProfileController {
             @RequestParam String lastname,
             @RequestParam String role,
             @RequestParam String major,
+            @RequestParam String bio,
             @RequestParam(required = false) MultipartFile image
     )throws IOException {
-        return authservice.UpdateUserInfo(firstname,lastname,role,image,major);
+        return authservice.UpdateUserInfo(firstname,lastname,role,image,major,bio);
     }
 
     @GetMapping("/profile/{username}")

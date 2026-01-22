@@ -44,7 +44,7 @@ public class AuthService {
             throw new EmailExisteException("Email Already exist !");
         }
         if(user.getFirstname() == null || user.getFirstname().isEmpty()){
-            throw new BadRequestException("First name can't be null");
+            throw new BadRequestException("FirstName can't be null");
         }
         if(user.getLastname()==null || user.getLastname().isEmpty()){
             throw new BadRequestException("lastName can't be null");
@@ -52,8 +52,14 @@ public class AuthService {
         if(user.getEmail()==null|| user.getEmail().isEmpty()){
             throw new BadRequestException("email must be valid");
         }
+        if(userRepository.existsByEmail(user.getEmail())){
+            throw new EmailExisteException("email already exist");
+        }
         if(user.getPassword()==null || user.getPassword().length()<8){
             throw new BadRequestException("password must be more than 8 character");
+        }
+        if(userRepository.existsByUsername(user.getUsername())){
+            throw new BadRequestException("Username already taken, choose another one");
         }
         String token_validation = TokenUtil.generateToken(36);
         user.setResetToken(token_validation);
@@ -194,11 +200,12 @@ public class AuthService {
         resp.setBio(user.getBio());
         resp.setUsername(user.getUsername());
         resp.setCreatedAt(user.getCreatedAt());
+        resp.setImageURL(user.getUrlImage());
         return resp;
     }
     public MessageResponse UpdateUserInfo(String firstname, String lastname,
                                            String role,
-                                           MultipartFile image, String major) throws IOException {
+                                           MultipartFile image, String major,String bio) throws IOException {
         String email=SecurityContextHolder.getContext().getAuthentication().getName();
         User user=userRepository.findByEmail(email);
         MessageResponse message=new MessageResponse();
@@ -210,6 +217,7 @@ public class AuthService {
         }
         user.setMajor(major);
         user.setRole(role);
+        user.setBio(bio);
         if(image!=null&& !image.isEmpty()){
             String uploadDir="auth-service/src/main/java/ma/nextstepest/auth_service/uploads/profile_pictures";
             Path dirPath=Paths.get(uploadDir);
@@ -239,6 +247,7 @@ public class AuthService {
         response.setBio(user.getBio());
         response.setCreatedAt(user.getCreatedAt());
         response.setLastName(user.getLastname());
+        response.setFirstName(user.getFirstname());
         response.setRole(user.getRole());
         response.setMajor(user.getMajor());
         response.setImageURL(user.getUrlImage());
