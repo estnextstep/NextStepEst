@@ -28,15 +28,18 @@ public class AuthService {
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final OtpService service;
+    private final MessageProducer producer;
 
     public AuthService(UserRepository userRepository,
                        JwtService jwtService,
                        PasswordEncoder passwordEncoder,
-                       OtpService service) {
+                       OtpService service,
+                       MessageProducer producer) {
         this.userRepository = userRepository;
         this.jwtService = jwtService;
         this.passwordEncoder = passwordEncoder;
         this.service = service;
+        this.producer = producer;
     }
 
     public MessageResponse register(@RequestBody User user) {
@@ -70,6 +73,13 @@ public class AuthService {
         user.setUrlImage("/profile_pictures/default_profil.png");
         userRepository.save(user);
         MessageResponse message = new MessageResponse();
+
+        // send activation mail
+        EmailDtoAuth emailDtoAuth = new EmailDtoAuth();
+        emailDtoAuth.setSubject("email to activate your account");
+        emailDtoAuth.setTo(user.getEmail());
+        emailDtoAuth.setContent("http://localhost:8080/auth/activate/"+user.getResetToken()+"/"+user.getId());
+        producer.sendEmail(emailDtoAuth);
         message.setMessage("Registered");
         return message;
     }
@@ -117,8 +127,14 @@ public class AuthService {
                 return message;
             }
         } else {
+            // send otp mail
+            EmailDtoAuth emailDtoAuth = new EmailDtoAuth();
             Integer otp = service.generateOTP(dbUser);
-            message.setMessage("an otp have been send to you , " + otp);
+            message.setMessage("an otp have been send to you , ");
+            emailDtoAuth.setTo(dbUser.getEmail());
+            emailDtoAuth.setContent(String.valueOf(otp));
+            emailDtoAuth.setSubject("Your One-Time Password (OTP)");
+            producer.sendEmail(emailDtoAuth);
             return message;
         }
     }
@@ -158,6 +174,8 @@ public class AuthService {
         user.setPassword(passwordEncoder.encode(changePasswordReq.getNewpassword()));
         userRepository.save(user);
         message.setMessage("password changed successfully");
+        // email de succes
+
         return message;
     }
     public MessageResponse active(String token,Integer id){
@@ -171,6 +189,8 @@ public class AuthService {
             user.setActive(true);
             user.setResetToken(null);
             userRepository.save(user);
+            // welcoming mail
+
             messageResponse.setMessage("your account have been activated");
             return messageResponse;
         }else {
