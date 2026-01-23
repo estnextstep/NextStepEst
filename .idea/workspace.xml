@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c34bdbf-ce99-4728-95d1-604c6b228361" name="Changes" comment="add username to register, add corsConfig for front connection,add edit role to update profil">
+      <change afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/dto/EmailType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/EmailNotificationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/EmailNotificationServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailNotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailNotificationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailSenderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailSenderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Record" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -42,22 +49,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.AuthServiceApplication.executor": "Run",
+    "Spring Boot.EmailNotificationServiceApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.editor",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ASUS\Desktop\NextStepEst\auth-service\src\main\java\ma\nextstepest\auth_service\uploads" />
@@ -65,7 +74,7 @@
       <recent name="C:\Users\ASUS\Desktop\NextStepEst\auth-service\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.AuthServiceApplication">
+  <component name="RunManager" selected="Spring Boot.EmailNotificationServiceApplication">
     <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="auth-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ma.nextstepest.auth_service.AuthServiceApplication" />
@@ -98,6 +107,8 @@
       <updated>1768847066097</updated>
       <workItem from="1768847070002" duration="6882000" />
       <workItem from="1768937401727" duration="4845000" />
+      <workItem from="1769202023045" duration="496000" />
+      <workItem from="1769202603126" duration="6725000" />
     </task>
     <task id="LOCAL-00001" summary="add register exceptions and edit profil">
       <option name="closed" value="true" />
@@ -115,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769117495663</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add username to register, add corsConfig for front connection,add edit role to update profil">
+      <option name="closed" value="true" />
+      <created>1769202301718</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1769202301718</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
