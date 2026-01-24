@@ -30,7 +30,7 @@ public class EmailSenderService {
 
             String confirmationLink = emailDtoAuth.getContent();
             String htmlContent;
-            if (emailDtoAuth.getSubject().equals("email to activate your account")) {
+            if (emailDtoAuth.getIndex()==1) {
                 htmlContent = "<h1>Welcome!</h1>"
                         //  + "<p>Click the link below to confirm your account:</p>"
                         + "<p>" + db_mail.getSubject() + "</p>"

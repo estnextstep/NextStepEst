@@ -4,13 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c34bdbf-ce99-4728-95d1-604c6b228361" name="Changes" comment="add username to register, add corsConfig for front connection,add edit role to update profil">
-      <change afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/dto/EmailType.java" afterDir="false" />
+    <list default="true" id="4294a10b-5d87-43fd-bbe0-428a4d67ac15" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ExperienceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/ExperienceRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/ExperienceResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/config/RabbitConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/controller/ExperienceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/ExperienceRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/ExperienceResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/entity/Experience.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/repository/ExperienceRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/service/ExperienceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/EmailNotificationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/EmailNotificationServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailNotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailNotificationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/RabbitConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/RabbitConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/EmailDtoAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/EmailDtoAuth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/MessageProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/MessageProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/dto/EmailDtoAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/dto/EmailDtoAuth.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailSenderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailSenderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,129 +34,71 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
-        <option value="Record" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;hamzatchiche&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "AdamSgh25"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst&quot;,
-    &quot;accountId&quot;: &quot;bcbf85af-b209-48d6-a3e6-be057a6b7298&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/AdamSgh25/NextStepEst.git",
+    "accountId": "c68d574c-fc32-46ba-894c-4dcc6b6c974a"
   }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="38UH7djCojHqkErKxkhDyoULAfh" />
+}]]></component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="38gQS0PhJgM0hVqE4dRrPN6kNkq" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.AuthServiceApplication.executor": "Run",
-    "Spring Boot.EmailNotificationServiceApplication.executor": "Run",
     "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.editor",
-    "vue.rearranger.settings.migration": "true"
+    "kotlin-language-version-configured": "true"
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ASUS\Desktop\NextStepEst\auth-service\src\main\java\ma\nextstepest\auth_service\uploads" />
-      <recent name="C:\Users\ASUS\Desktop\NextStepEst\auth-service\src\main\resources\Static" />
-      <recent name="C:\Users\ASUS\Desktop\NextStepEst\auth-service\src\main\resources" />
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ma.nextstepest.auth_service.dto" />
     </key>
-  </component>
-  <component name="RunManager" selected="Spring Boot.EmailNotificationServiceApplication">
-    <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="auth-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="ma.nextstepest.auth_service.AuthServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EmailNotificationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="email-notification-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="ma.nextstepest.email_notification_service.EmailNotificationServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
         <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.240" />
       </set>
     </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5c34bdbf-ce99-4728-95d1-604c6b228361" name="Changes" comment="" />
-      <created>1768847066097</created>
+      <changelist id="4294a10b-5d87-43fd-bbe0-428a4d67ac15" name="Changes" comment="" />
+      <created>1769218735628</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1768847066097</updated>
-      <workItem from="1768847070002" duration="6882000" />
-      <workItem from="1768937401727" duration="4845000" />
-      <workItem from="1769202023045" duration="496000" />
-      <workItem from="1769202603126" duration="6725000" />
+      <updated>1769218735628</updated>
     </task>
-    <task id="LOCAL-00001" summary="add register exceptions and edit profil">
-      <option name="closed" value="true" />
-      <created>1768931417154</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1768931417155</updated>
-    </task>
-    <task id="LOCAL-00002" summary="add username to register, add corsConfig for front connection,add edit role to update profil">
-      <option name="closed" value="true" />
-      <created>1769117495663</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1769117495663</updated>
-    </task>
-    <task id="LOCAL-00003" summary="add username to register, add corsConfig for front connection,add edit role to update profil">
-      <option name="closed" value="true" />
-      <created>1769202301718</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1769202301718</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="add register exceptions and edit profil" />
-    <MESSAGE value="add username to register, add corsConfig for front connection,add edit role to update profil" />
-    <option name="LAST_COMMIT_MESSAGE" value="add username to register, add corsConfig for front connection,add edit role to update profil" />
   </component>
 </project>

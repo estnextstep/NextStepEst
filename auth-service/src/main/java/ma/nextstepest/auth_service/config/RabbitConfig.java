@@ -6,9 +6,14 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitConfig {
+
     @Bean
     public TopicExchange emailExchange() {
         return new TopicExchange("email.exchange");
+    }
+
+    @Bean TopicExchange experienceExchange(){
+        return new TopicExchange("experience.exchange");
     }
 
 }

@@ -7,6 +7,7 @@ import java.io.Serializable;
 @Data
 public class EmailDtoAuth{
 
+    private Integer index;
 
     private String to;
     private String subject;
