@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c34bdbf-ce99-4728-95d1-604c6b228361" name="Changes" comment="add username to register, add corsConfig for front connection,add edit role to update profil">
-      <change afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/dto/EmailType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/EmailNotificationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/EmailNotificationServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailNotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailNotificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailSenderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailSenderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="5c34bdbf-ce99-4728-95d1-604c6b228361" name="Changes" comment="add email service and connect confirmation link using email and reset password" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +101,7 @@
       <workItem from="1768847070002" duration="6882000" />
       <workItem from="1768937401727" duration="4845000" />
       <workItem from="1769202023045" duration="496000" />
-      <workItem from="1769202603126" duration="6725000" />
+      <workItem from="1769202603126" duration="6842000" />
     </task>
     <task id="LOCAL-00001" summary="add register exceptions and edit profil">
       <option name="closed" value="true" />
@@ -134,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769202301718</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add email service and connect confirmation link using email and reset password">
+      <option name="closed" value="true" />
+      <created>1769209904469</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1769209904470</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +144,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add register exceptions and edit profil" />
     <MESSAGE value="add username to register, add corsConfig for front connection,add edit role to update profil" />
-    <option name="LAST_COMMIT_MESSAGE" value="add username to register, add corsConfig for front connection,add edit role to update profil" />
+    <MESSAGE value="add email service and connect confirmation link using email and reset password" />
+    <option name="LAST_COMMIT_MESSAGE" value="add email service and connect confirmation link using email and reset password" />
   </component>
 </project>
