@@ -79,6 +79,7 @@ public class AuthService {
         emailDtoAuth.setSubject("email to activate your account");
         emailDtoAuth.setTo(user.getEmail());
         emailDtoAuth.setContent("http://localhost:8080/auth/activate/"+user.getResetToken()+"/"+user.getId());
+        emailDtoAuth.setIndex(1);
         producer.sendEmail(emailDtoAuth);
         message.setMessage("Registered");
         return message;
@@ -134,6 +135,7 @@ public class AuthService {
             emailDtoAuth.setTo(dbUser.getEmail());
             emailDtoAuth.setContent(String.valueOf(otp));
             emailDtoAuth.setSubject("Your One-Time Password (OTP)");
+            emailDtoAuth.setIndex(2);
             producer.sendEmail(emailDtoAuth);
             return message;
         }

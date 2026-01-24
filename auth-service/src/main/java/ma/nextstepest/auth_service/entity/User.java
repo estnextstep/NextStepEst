@@ -33,6 +33,10 @@ public class User {
 
     private String bio;
 
+    private String linkedIn;
+
+    private boolean expr=false;
+
     private boolean active;
 
     @Column(nullable = false, length = 36)

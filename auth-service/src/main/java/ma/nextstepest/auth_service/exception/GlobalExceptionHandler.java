@@ -49,4 +49,10 @@ public class GlobalExceptionHandler {
                 new Errorsdto(false,br.getMessage())
                 ));
     }
+    @ExceptionHandler(UserNotAllowed.class)
+    public ResponseEntity<Errorsdto> HandleRequest(UserNotAllowed br){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body((
+                new Errorsdto(false,br.getMessage())
+        ));
+    }
 }
