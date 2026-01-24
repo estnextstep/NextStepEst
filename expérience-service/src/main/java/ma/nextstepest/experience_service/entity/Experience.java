@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Data
@@ -16,13 +17,13 @@ public class Experience {
     private Integer id;
 
     @Column(unique = true,nullable = false)
-    private Integer alumniId;
+    private String alumniId;
 
     private String title;
     private String description;
     private String domain;
-    private ArrayList<String> keywords;
+    private String keywords;
 
-    private LocalDate created_at;
+    private LocalDateTime created_at;
 
 }

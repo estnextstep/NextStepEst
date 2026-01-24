@@ -14,7 +14,7 @@ public class RabbitConfig {
 
     // delete experience
 
-    public static final String QUEUE_V2 = "delete.queue";
+    public static final String QUEUE_V2 = "dellete.queue";
 
     // update experience
 

@@ -6,8 +6,10 @@ import java.util.ArrayList;
 
 @Data
 public class ExperienceRequest {
+
+    private Integer alumniId;
     private String title;
     private String description;
     private String domain;
-    private ArrayList<String> keywords;
+    private String keywords;
 }
