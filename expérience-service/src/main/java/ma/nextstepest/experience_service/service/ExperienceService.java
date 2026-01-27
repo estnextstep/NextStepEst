@@ -32,16 +32,20 @@ public class ExperienceService {
         db_experience.setKeywords(experienceRequest.getKeywords());
         experienceRepository.save(db_experience);
     }
-    @RabbitListener(queues = "dellete.queue")
+    @RabbitListener(queues = "delete.queue")
     public void deleteExperience(String message){
         Experience experience =experienceRepository.findByAlumniId(message);
         experienceRepository.delete(experience);
     }
 
-    @RabbitListener(queues = "update.queue")
+    @RabbitListener(queues = "updaate.queue")
     public void updateExperience(String message){
-        ExperienceRequest emailDtoAuth = new ObjectMapper().readValue(message, ExperienceRequest.class);
-
+            ExperienceRequest experienceRequest=new ObjectMapper().readValue(message, ExperienceRequest.class);
+            Experience experience=experienceRepository.findByAlumniId(String.valueOf(experienceRequest.getAlumniId()));
+            experience.setTitle(experienceRequest.getTitle());
+            experience.setDescription(experienceRequest.getDescription());
+            experience.setKeywords(experienceRequest.getKeywords());
+            experienceRepository.save(experience);
     }
 
     public Experience getUserExperience(){

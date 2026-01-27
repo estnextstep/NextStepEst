@@ -4,17 +4,25 @@ import ma.nextstepest.auth_service.dto.ExperienceRequest;
 import ma.nextstepest.auth_service.dto.MessageResponse;
 import ma.nextstepest.auth_service.exception.UserNotAllowed;
 import ma.nextstepest.auth_service.service.ExperienceService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 @RestController
 public class ExperienceController {
 
     private  final ExperienceService experienceService;
 
-    public ExperienceController(ExperienceService experienceService){
+    public ExperienceController(ExperienceService experienceService ){
         this.experienceService = experienceService;
     }
-
+    @GetMapping("/getexperience")
+    public Mono<ExperienceRequest> myexperience(){
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return experienceService.getexperience(email);
+    }
     @PostMapping("/experience/add")
     public MessageResponse addExperience(@RequestBody ExperienceRequest experienceRequest){
         MessageResponse message = new MessageResponse();
@@ -37,8 +45,8 @@ public class ExperienceController {
         return message;
     }
 
-    @PostMapping("/experience/update")
-    public MessageResponse updateExperience(@RequestBody ExperienceRequest experienceRequest){
+    @PutMapping("/experience/update")
+    public MessageResponse updateExperience(@RequestBody ExperienceRequest experienceRequest,String userId){
         MessageResponse message = new MessageResponse();
         boolean works = experienceService.updateExperience(experienceRequest);
         if (!works){

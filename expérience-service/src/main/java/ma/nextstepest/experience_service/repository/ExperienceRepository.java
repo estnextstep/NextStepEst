@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface ExperienceRepository extends JpaRepository<Experience, Integer> {
 
     Experience findByAlumniId(String alumniId);
+
 }
