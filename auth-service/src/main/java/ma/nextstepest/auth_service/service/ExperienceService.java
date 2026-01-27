@@ -6,6 +6,7 @@ import ma.nextstepest.auth_service.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 import java.util.Objects;
 
@@ -22,13 +23,19 @@ public class ExperienceService {
 
         this.experienceClient = experienceClient;
     }
-    public Mono<ExperienceRequest> getexperience(String email){
-        return Mono.fromCallable(()->userRepository.findByEmail(email))
-                .flatMap(user->{
-                    if(user==null) return Mono.error(new RuntimeException("user not found "));
-                    return experienceClient.getExperience(user.getId());
-                });
+
+    public ExperienceRequest getExperience(String email) {
+
+        User user = userRepository.findByEmail(email);
+
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+
+        return experienceClient.getExperience(user.getId());
     }
+
+
     public boolean addExperience(ExperienceRequest experienceRequest) {
         String email= SecurityContextHolder.getContext().getAuthentication().getName();
         User db_user = userRepository.findByEmail(email);
@@ -67,5 +74,6 @@ public class ExperienceService {
         }
         messageProducer.updateExperience(experienceRequest);
         return true;
-                }
-                }
+    }
+
+}

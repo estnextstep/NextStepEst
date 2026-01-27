@@ -9,16 +9,14 @@ import reactor.core.publisher.Mono;
 public class ExperienceClient {
     private final WebClient webClient;
 
-    public ExperienceClient(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl("http://localhost:8080").build();
+    public ExperienceClient(WebClient webClientBuilder) {
+        this.webClient = webClientBuilder;
     }
-    public Mono<ExperienceRequest> getExperience(Integer userId){
+    public ExperienceRequest getExperience(Integer userId){
 
         return webClient.get()
                 .uri("getexperience/{id}",userId)
                 .retrieve()
-                .bodyToMono(ExperienceRequest.class)
-                .onErrorResume(e->Mono.empty())
-                ;
+                .bodyToMono(ExperienceRequest.class).block();
     }
 }
