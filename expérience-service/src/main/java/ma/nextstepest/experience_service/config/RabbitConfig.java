@@ -14,11 +14,11 @@ public class RabbitConfig {
 
     // delete experience
 
-    public static final String QUEUE_V2 = "dellete.queue";
+    public static final String QUEUE_V2 = "delete.queue";
 
     // update experience
 
-    public static final String QUEUE_V3 = "update.queue";
+    public static final String QUEUE_V3 = "updaate.queue";
 
     @Bean
     public TopicExchange exchange() {

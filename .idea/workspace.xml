@@ -4,8 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4294a10b-5d87-43fd-bbe0-428a4d67ac15" name="Changes" comment="improving the experience service">
+    <list default="true" id="5c34bdbf-ce99-4728-95d1-604c6b228361" name="Changes" comment="add email service and connect confirmation link using email and reset password">
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/WebClientConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ExperienceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ExperienceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/MessageProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/MessageProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/config/RabbitConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/config/RabbitConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/controller/ExperienceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/controller/ExperienceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/repository/ExperienceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/repository/ExperienceRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/service/ExperienceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/service/ExperienceService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
+        <option value="Record" />
+        <option value="Enum" />
         <option value="Class" />
-        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -27,84 +36,159 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;AdamSgh25&quot;
+    &quot;assignee&quot;: &quot;hamzatchiche&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst.git&quot;,
-    &quot;accountId&quot;: &quot;c68d574c-fc32-46ba-894c-4dcc6b6c974a&quot;
+    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst&quot;,
+    &quot;accountId&quot;: &quot;bcbf85af-b209-48d6-a3e6-be057a6b7298&quot;
   }
 }</component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
 }</component>
-  <component name="ProjectId" id="38gQS0PhJgM0hVqE4dRrPN6kNkq" />
+  <component name="ProjectId" id="38UH7djCojHqkErKxkhDyoULAfh" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EmailNotificationServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.ExperienceServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ma.nextstepest.auth_service.dto" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\Desktop\NextStepEst\auth-service\src\main\java\ma\nextstepest\auth_service\uploads" />
+      <recent name="C:\Users\ASUS\Desktop\NextStepEst\auth-service\src\main\resources\Static" />
+      <recent name="C:\Users\ASUS\Desktop\NextStepEst\auth-service\src\main\resources" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="AuthServiceApplication" value="STOPPED" />
+              <entry key="ExperienceServiceApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="auth-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ma.nextstepest.auth_service.AuthServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
         <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.240" />
       </set>
     </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4294a10b-5d87-43fd-bbe0-428a4d67ac15" name="Changes" comment="" />
-      <created>1769218735628</created>
+      <changelist id="5c34bdbf-ce99-4728-95d1-604c6b228361" name="Changes" comment="" />
+      <created>1768847066097</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1769218735628</updated>
+      <updated>1768847066097</updated>
+      <workItem from="1768847070002" duration="6882000" />
+      <workItem from="1768937401727" duration="4845000" />
+      <workItem from="1769202023045" duration="496000" />
+      <workItem from="1769202603126" duration="6842000" />
+      <workItem from="1769292311387" duration="4275000" />
+      <workItem from="1769434322545" duration="11008000" />
+      <workItem from="1769460686770" duration="1858000" />
+      <workItem from="1769462853856" duration="9672000" />
     </task>
-    <task id="LOCAL-00001" summary="i added experience service and his configuration">
+    <task id="LOCAL-00001" summary="add register exceptions and edit profil">
       <option name="closed" value="true" />
-      <created>1769223054617</created>
+      <created>1768931417154</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1769223054617</updated>
+      <updated>1768931417155</updated>
     </task>
-    <task id="LOCAL-00002" summary="improving the experience service">
+    <task id="LOCAL-00002" summary="add username to register, add corsConfig for front connection,add edit role to update profil">
       <option name="closed" value="true" />
-      <created>1769284717500</created>
+      <created>1769117495663</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1769284717501</updated>
+      <updated>1769117495663</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add username to register, add corsConfig for front connection,add edit role to update profil">
+      <option name="closed" value="true" />
+      <created>1769202301718</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1769202301718</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add email service and connect confirmation link using email and reset password">
+      <option name="closed" value="true" />
+      <created>1769209904469</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1769209904470</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add email service and connect confirmation link using email and reset password">
+      <option name="closed" value="true" />
+      <created>1769292415545</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1769292415545</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="i added experience service and his configuration" />
-    <MESSAGE value="improving the experience service" />
-    <option name="LAST_COMMIT_MESSAGE" value="improving the experience service" />
+    <MESSAGE value="add register exceptions and edit profil" />
+    <MESSAGE value="add username to register, add corsConfig for front connection,add edit role to update profil" />
+    <MESSAGE value="add email service and connect confirmation link using email and reset password" />
+    <option name="LAST_COMMIT_MESSAGE" value="add email service and connect confirmation link using email and reset password" />
   </component>
 </project>

@@ -1,0 +1,24 @@
+package ma.nextstepest.auth_service.service;
+
+import ma.nextstepest.auth_service.dto.ExperienceRequest;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
+
+@Service
+public class ExperienceClient {
+    private final WebClient webClient;
+
+    public ExperienceClient(WebClient.Builder webClientBuilder) {
+        this.webClient = webClientBuilder.baseUrl("http://localhost:8080").build();
+    }
+    public Mono<ExperienceRequest> getExperience(Integer userId){
+
+        return webClient.get()
+                .uri("getexperience/{id}",userId)
+                .retrieve()
+                .bodyToMono(ExperienceRequest.class)
+                .onErrorResume(e->Mono.empty())
+                ;
+    }
+}

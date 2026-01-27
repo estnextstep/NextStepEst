@@ -1,6 +1,5 @@
 package ma.nextstepest.auth_service.service;
 
-import ma.nextstepest.auth_service.config.RabbitConfig;
 import ma.nextstepest.auth_service.dto.EmailDtoAuth;
 import ma.nextstepest.auth_service.dto.ExperienceRequest;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
