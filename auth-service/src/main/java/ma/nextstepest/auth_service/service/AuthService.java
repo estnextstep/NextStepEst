@@ -276,6 +276,7 @@ public class AuthService {
         response.setRole(user.getRole());
         response.setMajor(user.getMajor());
         response.setImageURL(user.getUrlImage());
+        response.setExperienceRequest(experienceService.getExperience(user.getEmail()));
         return response;
     }
 }
