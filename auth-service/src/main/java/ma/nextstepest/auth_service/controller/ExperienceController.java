@@ -18,11 +18,7 @@ public class ExperienceController {
     public ExperienceController(ExperienceService experienceService ){
         this.experienceService = experienceService;
     }
-    @GetMapping("/getexperience")
-    public Mono<ExperienceRequest> myexperience(){
-        String email = SecurityContextHolder.getContext().getAuthentication().getName();
-        return experienceService.getexperience(email);
-    }
+
     @PostMapping("/experience/add")
     public MessageResponse addExperience(@RequestBody ExperienceRequest experienceRequest){
         MessageResponse message = new MessageResponse();

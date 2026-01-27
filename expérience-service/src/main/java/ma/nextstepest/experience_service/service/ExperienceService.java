@@ -5,6 +5,7 @@ import ma.nextstepest.experience_service.entity.Experience;
 import ma.nextstepest.experience_service.repository.ExperienceRepository;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
 
@@ -32,7 +33,7 @@ public class ExperienceService {
         db_experience.setKeywords(experienceRequest.getKeywords());
         experienceRepository.save(db_experience);
     }
-    @RabbitListener(queues = "delete.queue")
+    @RabbitListener(queues = "dellete.queue")
     public void deleteExperience(String message){
         Experience experience =experienceRepository.findByAlumniId(message);
         experienceRepository.delete(experience);
@@ -48,8 +49,17 @@ public class ExperienceService {
             experienceRepository.save(experience);
     }
 
-    public Experience getUserExperience(){
-        return null;
+    public ResponseEntity<ExperienceRequest> getUserExperience(Integer userId){
+        Experience experience= experienceRepository.findByAlumniId(String.valueOf(userId));
+        if(experience==null){
+            return ResponseEntity.notFound().build();
+        }
+        ExperienceRequest exp=new ExperienceRequest();
+        exp.setAlumniId(Integer.valueOf(experience.getAlumniId()));
+        exp.setTitle(experience.getTitle());
+        exp.setDescription(experience.getDescription());
+        exp.setKeywords(experience.getKeywords());
+        return ResponseEntity.ok(exp);
     }
 
     public TreeSet<Experience> getAllExperience(){

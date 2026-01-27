@@ -29,17 +29,19 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final OtpService service;
     private final MessageProducer producer;
+    private  final ExperienceService experienceService;
 
     public AuthService(UserRepository userRepository,
                        JwtService jwtService,
                        PasswordEncoder passwordEncoder,
                        OtpService service,
-                       MessageProducer producer) {
+                       MessageProducer producer,ExperienceService experienceService) {
         this.userRepository = userRepository;
         this.jwtService = jwtService;
         this.passwordEncoder = passwordEncoder;
         this.service = service;
         this.producer = producer;
+        this.experienceService = experienceService;
     }
 
     public MessageResponse register(@RequestBody User user) {
@@ -223,6 +225,7 @@ public class AuthService {
         resp.setUsername(user.getUsername());
         resp.setCreatedAt(user.getCreatedAt());
         resp.setImageURL(user.getUrlImage());
+        resp.setExperienceRequest(experienceService.getExperience(user.getEmail()));
         return resp;
     }
     public MessageResponse UpdateUserInfo(String firstname, String lastname,

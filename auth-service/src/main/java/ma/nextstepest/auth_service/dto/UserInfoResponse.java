@@ -18,4 +18,5 @@ public class UserInfoResponse {
     private String bio;
     private String username;
     private String ImageURL;
+    private ExperienceRequest experienceRequest;
 }
