@@ -1,10 +1,13 @@
 package ma.nextstepest.auth_service.service;
 
+import ma.nextstepest.auth_service.dto.AllExperiencesResponse;
 import ma.nextstepest.auth_service.dto.ExperienceRequest;
+import ma.nextstepest.auth_service.dto.ExperienceUserInfo;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
@@ -24,16 +27,8 @@ public class ExperienceService {
         this.experienceClient = experienceClient;
     }
 
-    public ExperienceRequest getExperience(String email) {
 
-        User user = userRepository.findByEmail(email);
 
-        if (user == null) {
-            throw new RuntimeException("User not found");
-        }
-
-        return experienceClient.getExperience(user.getId());
-    }
 
 
     public boolean addExperience(ExperienceRequest experienceRequest) {
@@ -75,5 +70,48 @@ public class ExperienceService {
         messageProducer.updateExperience(experienceRequest);
         return true;
     }
+    public ExperienceRequest getExperience(String email) {
 
+        User user = userRepository.findByEmail(email);
+
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+
+        return experienceClient.getExperience(user.getId());
+    }
+    public Mono<AllExperiencesResponse> getAll(int page, int size) {
+
+        return experienceClient.getAll(page, size)
+                .flatMap(res ->
+                        Flux.fromIterable(res.getContent())
+                                .flatMap(exp ->
+                                        Mono.fromCallable(() ->
+                                                        userRepository.findById(exp.getAlumniId())
+                                                )
+                                                .subscribeOn(Schedulers.boundedElastic())
+                                                .map(userOpt -> {
+
+                                                    User u = userOpt.orElseThrow();
+
+                                                    return new ExperienceUserInfo(
+                                                            exp.getTitle(),
+                                                            exp.getDescription(),
+                                                            exp.getDomain(),
+                                                            u.getFirstname(),
+                                                            u.getLastname(),
+                                                            u.getUsername()
+                                                    );
+                                                })
+                                )
+                                .collectList()
+                                .map(list ->
+                                        new AllExperiencesResponse(
+                                                list,
+                                                res.getTotalPages(),
+                                                res.getTotalElements()
+                                        )
+                                )
+                );
+    }
 }
