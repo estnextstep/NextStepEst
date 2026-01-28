@@ -5,6 +5,8 @@ import ma.nextstepest.experience_service.entity.Experience;
 import ma.nextstepest.experience_service.repository.ExperienceRepository;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
@@ -62,7 +64,7 @@ public class ExperienceService {
         return ResponseEntity.ok(exp);
     }
 
-    public TreeSet<Experience> getAllExperience(){
-        return new TreeSet<Experience>();
+    public Page<Experience> getAll(int page,int size){
+        return experienceRepository.findAll(PageRequest.of(page,size));
     }
 }

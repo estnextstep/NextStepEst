@@ -4,11 +4,7 @@ import ma.nextstepest.auth_service.dto.ExperienceRequest;
 import ma.nextstepest.auth_service.dto.MessageResponse;
 import ma.nextstepest.auth_service.exception.UserNotAllowed;
 import ma.nextstepest.auth_service.service.ExperienceService;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 @RestController
 public class ExperienceController {
@@ -18,6 +14,8 @@ public class ExperienceController {
     public ExperienceController(ExperienceService experienceService ){
         this.experienceService = experienceService;
     }
+
+
 
     @PostMapping("/experience/add")
     public MessageResponse addExperience(@RequestBody ExperienceRequest experienceRequest){
