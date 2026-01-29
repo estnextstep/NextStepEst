@@ -7,11 +7,11 @@ import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class ExperienceService {
@@ -70,6 +70,7 @@ public class ExperienceService {
         messageProducer.updateExperience(experienceRequest);
         return true;
     }
+
     public ExperienceRequest getExperience(String email) {
 
         User user = userRepository.findByEmail(email);
@@ -80,38 +81,32 @@ public class ExperienceService {
 
         return experienceClient.getExperience(user.getId());
     }
-    public Mono<AllExperiencesResponse> getAll(int page, int size) {
 
-        return experienceClient.getAll(page, size)
-                .flatMap(res ->
-                        Flux.fromIterable(res.getContent())
-                                .flatMap(exp ->
-                                        Mono.fromCallable(() ->
-                                                        userRepository.findById(exp.getAlumniId())
-                                                )
-                                                .subscribeOn(Schedulers.boundedElastic())
-                                                .map(userOpt -> {
+    public AllExperiencesResponse getAll(int page, int size) {
 
-                                                    User u = userOpt.orElseThrow();
+        AllExperiencesResponse response = experienceClient.getAll(page, size);
+        List<ExperienceUserInfo> experiences = response.getContent();
 
-                                                    return new ExperienceUserInfo(
-                                                            exp.getTitle(),
-                                                            exp.getDescription(),
-                                                            exp.getDomain(),
-                                                            u.getFirstname(),
-                                                            u.getLastname(),
-                                                            u.getUsername()
-                                                    );
-                                                })
-                                )
-                                .collectList()
-                                .map(list ->
-                                        new AllExperiencesResponse(
-                                                list,
-                                                res.getTotalPages(),
-                                                res.getTotalElements()
-                                        )
-                                )
-                );
+        List<Integer> alumniIds = experiences.stream()
+                .map(ExperienceUserInfo::getAlumniId)
+                .distinct()
+                .toList();
+
+        Map<Integer, User> usersMap = userRepository.findAllById(alumniIds)
+                .stream()
+                .collect(Collectors.toMap(User::getId, u -> u));
+
+        experiences.forEach(exp -> {
+            User user = usersMap.get(exp.getAlumniId());
+            if (user != null) {
+                exp.setUsername(user.getUsername());
+                exp.setImgUrl(user.getUrlImage());
+                exp.setFirstName(user.getFirstname());
+                exp.setLastName(user.getLastname());
+            }
+        });
+
+        return response;
     }
+
 }

@@ -44,7 +44,7 @@ public class AuthService {
         this.experienceService = experienceService;
     }
 
-    public MessageResponse register(@RequestBody User user) {
+    public MessageResponse register(User user) {
         if(userRepository.findByEmail((Object) user.getEmail()).isPresent()){
             throw new EmailExisteException("Email Already exist !");
         }
@@ -87,7 +87,7 @@ public class AuthService {
         return message;
     }
 
-    public AuthResponse login(@RequestBody User requestUser) {
+    public AuthResponse login(LoginRequest requestUser) {
         AuthResponse authresponse = new AuthResponse();
         User dbUser = userRepository.findByEmail(requestUser.getEmail());
         if(userRepository.findByEmail((Object) requestUser.getEmail()).isEmpty()){
@@ -110,7 +110,7 @@ public class AuthService {
     public Object resetPassword(@RequestBody ResetRequest resetRequest){
         Optional<User> optionalUser = userRepository.findByEmail((Object) resetRequest.getEmail());
         if (optionalUser.isEmpty()) {
-            throw new UserNotFoundException("you don't have an account, please register");
+            throw new UserNotFoundException("Email invalid");
         }
 
         User dbUser = optionalUser.get();
@@ -133,7 +133,7 @@ public class AuthService {
             // send otp mail
             EmailDtoAuth emailDtoAuth = new EmailDtoAuth();
             Integer otp = service.generateOTP(dbUser);
-            message.setMessage("an otp have been send to you , ");
+            message.setMessage("an otp have been send to you");
             emailDtoAuth.setTo(dbUser.getEmail());
             emailDtoAuth.setContent(String.valueOf(otp));
             emailDtoAuth.setSubject("Your One-Time Password (OTP)");
@@ -147,7 +147,7 @@ public class AuthService {
         MessageResponse messageResponse = new MessageResponse();
         Optional<User> OptionalUser = userRepository.findById(changeRequest.getUser_id());
         if (OptionalUser.isEmpty()) {
-            throw new UserNotFoundException("you don't have an account, please register");
+            throw new UserNotFoundException("Email invalid");
         }else {
             User dbUser = OptionalUser.get();
             if (dbUser.getResetToken().equals(changeRequest.getReset_token())){
@@ -158,7 +158,7 @@ public class AuthService {
                     messageResponse.setMessage("Password have been changed");
                     return messageResponse;
                 }else {
-                    throw new PasswordNotMuchException("Password Not Mush To password confirmation");
+                    throw new PasswordNotMuchException("Password and confirmation do not match");
                 }
             }else {
                 throw new TokenInvalidException("Token Invalid Exception");
@@ -202,7 +202,7 @@ public class AuthService {
         }
     }
 
-    public MessageResponse logout(String token){
+    public MessageResponse logout(){
         MessageResponse message = new MessageResponse();
         String email= SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByEmail(email);
@@ -212,22 +212,25 @@ public class AuthService {
         return message;
     }
 
-    public UserInfoResponse Getuserinfo(String token){
+    public UserInfoResponse get_userinfo(){
         String email= SecurityContextHolder.getContext().getAuthentication().getName();
-        User user=userRepository.findByEmail(email);
-        UserInfoResponse resp=new UserInfoResponse();
-        resp.setEmail(user.getEmail());
-        resp.setFirstName(user.getFirstname());
-        resp.setLastName(user.getLastname());
-        resp.setRole(user.getRole());
-        resp.setMajor(user.getMajor());
-        resp.setBio(user.getBio());
-        resp.setUsername(user.getUsername());
-        resp.setCreatedAt(user.getCreatedAt());
-        resp.setImageURL(user.getUrlImage());
-        resp.setExperienceRequest(experienceService.getExperience(user.getEmail()));
-        return resp;
+        User user = userRepository.findByEmail((Object) email)
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+
+        return UserInfoResponse.builder()
+                .email(user.getEmail())
+                .firstName(user.getFirstname())
+                .lastName(user.getLastname())
+                .role(user.getRole())
+                .major(user.getMajor())
+                .bio(user.getBio())
+                .username(user.getUsername())
+                .createdAt(user.getCreatedAt())
+                .ImageURL(user.getUrlImage())
+                .experienceRequest(experienceService.getExperience(user.getEmail()))
+                .build();
     }
+
     public MessageResponse UpdateUserInfo(String firstname, String lastname,
                                            String role,
                                            MultipartFile image, String major,String bio) throws IOException {
@@ -244,7 +247,7 @@ public class AuthService {
         user.setRole(role);
         user.setBio(bio);
         if(image!=null&& !image.isEmpty()){
-            String uploadDir="auth-service/src/main/java/ma/nextstepest/auth_service/uploads/profile_pictures";
+            String uploadDir="auth-service/src/main/resources/static/images/profile_pictures";
             Path dirPath=Paths.get(uploadDir);
             if (!Files.exists(dirPath)) {
                 Files.createDirectories(dirPath);
@@ -260,23 +263,24 @@ public class AuthService {
     return message;
     }
 
-    public UserInfoResponse get_profile(String username){
-        User user = userRepository.findByUsername(username);
+    public UserInfoResponse get_profile(String username) {
 
-        if (user == null){
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
             throw new UserNotFoundException("This username doesn't exist");
         }
 
-        UserInfoResponse response = new UserInfoResponse();
-        response.setUsername(user.getUsername());
-        response.setBio(user.getBio());
-        response.setCreatedAt(user.getCreatedAt());
-        response.setLastName(user.getLastname());
-        response.setFirstName(user.getFirstname());
-        response.setRole(user.getRole());
-        response.setMajor(user.getMajor());
-        response.setImageURL(user.getUrlImage());
-        response.setExperienceRequest(experienceService.getExperience(user.getEmail()));
-        return response;
+        return UserInfoResponse.builder()
+                .username(user.getUsername())
+                .bio(user.getBio())
+                .createdAt(user.getCreatedAt())
+                .lastName(user.getLastname())
+                .firstName(user.getFirstname())
+                .role(user.getRole())
+                .major(user.getMajor())
+                .ImageURL(user.getUrlImage())
+                .experienceRequest(experienceService.getExperience(user.getEmail()))
+                .build();
     }
+
 }

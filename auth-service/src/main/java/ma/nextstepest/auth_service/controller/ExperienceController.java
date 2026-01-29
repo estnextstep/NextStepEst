@@ -1,5 +1,6 @@
 package ma.nextstepest.auth_service.controller;
 
+import ma.nextstepest.auth_service.dto.AllExperiencesResponse;
 import ma.nextstepest.auth_service.dto.ExperienceRequest;
 import ma.nextstepest.auth_service.dto.MessageResponse;
 import ma.nextstepest.auth_service.exception.UserNotAllowed;
@@ -40,7 +41,7 @@ public class ExperienceController {
     }
 
     @PutMapping("/experience/update")
-    public MessageResponse updateExperience(@RequestBody ExperienceRequest experienceRequest,String userId){
+    public MessageResponse updateExperience(@RequestBody ExperienceRequest experienceRequest){
         MessageResponse message = new MessageResponse();
         boolean works = experienceService.updateExperience(experienceRequest);
         if (!works){
@@ -48,5 +49,11 @@ public class ExperienceController {
         }
         message.setMessage("your experience updated by success");
         return message;
+    }
+
+    @GetMapping("/experiences")
+    public AllExperiencesResponse getAllExperience(@RequestParam Integer page){
+            int size = 6;
+            return experienceService.getAll(page,size);
     }
 }

@@ -10,6 +10,4 @@ public interface ExperienceRepository extends JpaRepository<Experience, Integer>
 
     Experience findByAlumniId(String alumniId);
 
-    @Override
-    Page<Experience> findAll(Pageable pageable);
 }

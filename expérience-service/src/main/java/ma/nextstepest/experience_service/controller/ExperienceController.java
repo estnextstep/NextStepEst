@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.*;
 public class ExperienceController {
 
 
-    private final ExperienceRepository experienceRepository;
     private  final ExperienceService experienceService;
-    public ExperienceController(ExperienceRepository experienceRepository, ExperienceService experienceService) {
-        this.experienceRepository = experienceRepository;
+    public ExperienceController(ExperienceService experienceService) {
         this.experienceService = experienceService;
     }
     @GetMapping("/{userId}")
@@ -25,7 +23,7 @@ public class ExperienceController {
         return experienceService.getUserExperience(userId);
 
     }
-    @GetMapping("/experiences")
+    @GetMapping("/exp")
     public AllExperiencesResponse getAll(@RequestParam int page,
                                          @RequestParam int size)
     {

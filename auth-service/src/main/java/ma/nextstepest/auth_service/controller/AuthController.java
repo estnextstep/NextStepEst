@@ -3,11 +3,8 @@ package ma.nextstepest.auth_service.controller;
 import ma.nextstepest.auth_service.dto.*;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.service.AuthService;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 
 @RestController
 @RequestMapping("/auth")
@@ -27,13 +24,13 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public AuthResponse login(@RequestBody User requestUser) {
+    public AuthResponse login(@RequestBody LoginRequest requestUser) {
         return authservice.login(requestUser);
     }
 
     @PostMapping("/logout")
-    public MessageResponse logout(@RequestHeader("Authorization") String token){
-        return  authservice.logout(token);
+    public MessageResponse logout(){
+        return  authservice.logout();
     }
 
     @PostMapping("/reset-password")

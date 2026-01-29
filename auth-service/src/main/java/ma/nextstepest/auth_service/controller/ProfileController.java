@@ -23,8 +23,8 @@ public class ProfileController {
     }
 
     @GetMapping("/me")
-    public UserInfoResponse GetUserInfo(@RequestHeader("Authorization") String token){
-        return authservice.Getuserinfo(token);
+    public UserInfoResponse GetUserInfo(){
+        return authservice.get_userinfo();
     }
 
     @PutMapping(value="/me/edit", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

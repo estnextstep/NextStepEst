@@ -4,7 +4,7 @@ import ma.nextstepest.auth_service.dto.AllExperiencesResponse;
 import ma.nextstepest.auth_service.dto.ExperienceRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
+
 
 @Service
 public class ExperienceClient {
@@ -21,10 +21,18 @@ public class ExperienceClient {
                 .retrieve()
                 .bodyToMono(ExperienceRequest.class).block();
     }
-    public Mono<AllExperiencesResponse> getAll(int page, int size){
+
+    public AllExperiencesResponse getAll(int page, int size){
         return webClient.get()
-                .uri("experiences?page={p}&size={s}",page,size)
+                .uri(uriBuilder -> uriBuilder
+                        .path("/getexperience/exp")
+                        .queryParam("page", page)
+                        .queryParam("size", size)
+                        .build()
+                )
                 .retrieve()
-                .bodyToMono(AllExperiencesResponse.class);
+                .bodyToMono(AllExperiencesResponse.class)
+                .block();
     }
+
 }

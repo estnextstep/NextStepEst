@@ -1,10 +1,12 @@
 package ma.nextstepest.auth_service.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
+@Builder
 @Data
 public class UserInfoResponse {
     private String email;
