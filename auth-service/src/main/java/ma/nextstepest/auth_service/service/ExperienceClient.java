@@ -21,10 +21,18 @@ public class ExperienceClient {
                 .retrieve()
                 .bodyToMono(ExperienceRequest.class).block();
     }
-    public Mono<AllExperiencesResponse> getAll(int page, int size){
+
+    public AllExperiencesResponse getAll(int page, int size){
         return webClient.get()
-                .uri("experiences?page={p}&size={s}",page,size)
+                .uri(uriBuilder -> uriBuilder
+                        .path("/getexperience/exp")
+                        .queryParam("page", page)
+                        .queryParam("size", size)
+                        .build()
+                )
                 .retrieve()
-                .bodyToMono(AllExperiencesResponse.class);
+                .bodyToMono(AllExperiencesResponse.class)
+                .block();
     }
+
 }

@@ -13,6 +13,10 @@ public class AllExperiencesResponse {
     private long totalElements;
 
     public AllExperiencesResponse(List<Experience> content, int totalPages, long totalElements) {
+        this.content = content;
+        this.totalPages = totalPages;
+        this.totalElements = totalElements;
+
     }
 
     // constructor + getters

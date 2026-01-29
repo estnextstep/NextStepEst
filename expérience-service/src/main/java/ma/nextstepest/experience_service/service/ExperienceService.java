@@ -35,7 +35,7 @@ public class ExperienceService {
         db_experience.setKeywords(experienceRequest.getKeywords());
         experienceRepository.save(db_experience);
     }
-    @RabbitListener(queues = "dellete.queue")
+    @RabbitListener(queues = "delete.queue")
     public void deleteExperience(String message){
         Experience experience =experienceRepository.findByAlumniId(message);
         experienceRepository.delete(experience);

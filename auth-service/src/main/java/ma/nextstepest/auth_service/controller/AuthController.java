@@ -27,13 +27,13 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public AuthResponse login(@RequestBody User requestUser) {
+    public AuthResponse login(@RequestBody LoginRequest requestUser) {
         return authservice.login(requestUser);
     }
 
     @PostMapping("/logout")
-    public MessageResponse logout(@RequestHeader("Authorization") String token){
-        return  authservice.logout(token);
+    public MessageResponse logout(){
+        return  authservice.logout();
     }
 
     @PostMapping("/reset-password")
