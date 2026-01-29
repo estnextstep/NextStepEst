@@ -41,7 +41,7 @@ public class ExperienceController {
     }
 
     @PutMapping("/experience/update")
-    public MessageResponse updateExperience(@RequestBody ExperienceRequest experienceRequest,String userId){
+    public MessageResponse updateExperience(@RequestBody ExperienceRequest experienceRequest){
         MessageResponse message = new MessageResponse();
         boolean works = experienceService.updateExperience(experienceRequest);
         if (!works){

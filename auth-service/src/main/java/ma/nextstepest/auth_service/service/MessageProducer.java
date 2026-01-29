@@ -28,7 +28,7 @@ public class MessageProducer {
     }
 
     public void addExperience(ExperienceRequest experienceRequest){
-        String json= objectMapper.writeValueAsString(experienceRequest);;
+        String json= objectMapper.writeValueAsString(experienceRequest);
         rabbitTemplate.convertAndSend(
                 "experience.exchange",
                 "experience.ajouter",
@@ -45,7 +45,7 @@ public class MessageProducer {
     }
 
     public void updateExperience(ExperienceRequest experienceRequest){
-        String json= objectMapper.writeValueAsString(experienceRequest);;
+        String json= objectMapper.writeValueAsString(experienceRequest);
         rabbitTemplate.convertAndSend(
                 "experience.exchange",
                 "experience.update",
