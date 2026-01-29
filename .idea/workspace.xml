@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c34bdbf-ce99-4728-95d1-604c6b228361" name="Changes" comment="add update experience ,and getexperience by userid (still not working)">
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/AllExperiencesResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/ExperienceUserInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/AllExperiencesResponse.java" afterDir="false" />
+    <list default="true" id="5c34bdbf-ce99-4728-95d1-604c6b228361" name="Changes" comment="add get All experiences">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ExperienceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ExperienceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/controller/ExperienceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/controller/ExperienceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/ExperienceRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/ExperienceRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/ExperienceResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/repository/ExperienceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/repository/ExperienceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/service/ExperienceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/service/ExperienceService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769527299419</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add get All experiences">
+      <option name="closed" value="true" />
+      <created>1769621307875</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1769621307875</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +207,7 @@
     <MESSAGE value="add username to register, add corsConfig for front connection,add edit role to update profil" />
     <MESSAGE value="add email service and connect confirmation link using email and reset password" />
     <MESSAGE value="add update experience ,and getexperience by userid (still not working)" />
-    <option name="LAST_COMMIT_MESSAGE" value="add update experience ,and getexperience by userid (still not working)" />
+    <MESSAGE value="add get All experiences" />
+    <option name="LAST_COMMIT_MESSAGE" value="add get All experiences" />
   </component>
 </project>
