@@ -2,6 +2,7 @@ package ma.nextstepest.auth_service.controller;
 
 import ma.nextstepest.auth_service.dto.ChangePasswordReq;
 import ma.nextstepest.auth_service.dto.MessageResponse;
+import ma.nextstepest.auth_service.dto.UpdateProfile;
 import ma.nextstepest.auth_service.dto.UserInfoResponse;
 import ma.nextstepest.auth_service.service.AuthService;
 import org.springframework.http.MediaType;
@@ -27,16 +28,12 @@ public class ProfileController {
         return authservice.get_userinfo();
     }
 
-    @PutMapping(value="/me/edit", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PatchMapping(value="/me/edit", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public MessageResponse updateUserinfo(
-            @RequestParam String firstname,
-            @RequestParam String lastname,
-            @RequestParam String role,
-            @RequestParam String major,
-            @RequestParam String bio,
+            @ModelAttribute UpdateProfile updateProfile,
             @RequestParam(required = false) MultipartFile image
     )throws IOException {
-        return authservice.UpdateUserInfo(firstname,lastname,role,image,major,bio);
+        return authservice.UpdateUserInfo(updateProfile,image);
     }
 
     @GetMapping("/profile/{username}")

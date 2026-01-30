@@ -17,6 +17,7 @@ public class UserInfoResponse {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime createdAt;
 
+    private String linkedIn;
     private String bio;
     private String username;
     private String ImageURL;

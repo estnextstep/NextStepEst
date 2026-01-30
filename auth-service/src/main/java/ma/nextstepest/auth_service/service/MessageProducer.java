@@ -2,6 +2,7 @@ package ma.nextstepest.auth_service.service;
 
 import ma.nextstepest.auth_service.dto.EmailDtoAuth;
 import ma.nextstepest.auth_service.dto.ExperienceRequest;
+import ma.nextstepest.auth_service.dto.QuestionRequest;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,4 +53,21 @@ public class MessageProducer {
                 json
         );
     }
+
+    public void createQuestion(QuestionRequest questionRequest){
+        String json= objectMapper.writeValueAsString(questionRequest);
+        rabbitTemplate.convertAndSend(
+                "qa.exchange",
+                "create.question",
+                json
+        );
+    }
+    public void deleteQuestion(Integer id){
+        rabbitTemplate.convertAndSend(
+                "qa.exchange",
+                "delete.question",
+                id
+        );
+    }
+
 }

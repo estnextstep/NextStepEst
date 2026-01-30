@@ -227,27 +227,39 @@ public class AuthService {
                 .username(user.getUsername())
                 .createdAt(user.getCreatedAt())
                 .ImageURL(user.getUrlImage())
+                .linkedIn(user.getLinkedIn())
                 .experienceRequest(experienceService.getExperience(user.getEmail()))
                 .build();
     }
 
-    public MessageResponse UpdateUserInfo(String firstname, String lastname,
-                                           String role,
-                                           MultipartFile image, String major,String bio) throws IOException {
+    public MessageResponse UpdateUserInfo(UpdateProfile updateProfile, MultipartFile image) throws IOException {
         String email=SecurityContextHolder.getContext().getAuthentication().getName();
         User user=userRepository.findByEmail(email);
         MessageResponse message=new MessageResponse();
-        if(firstname!=null){
-            user.setFirstname(firstname);
+        if(updateProfile.getFirstname()!=null){
+            user.setFirstname(updateProfile.getFirstname());
         }
-        if(lastname!=null){
-            user.setLastname(lastname);
+        if(updateProfile.getLastname()!=null){
+            user.setLastname(updateProfile.getLastname());
         }
-        user.setMajor(major);
-        user.setRole(role);
-        user.setBio(bio);
+        if(updateProfile.getLinkedIn()!=null){
+            user.setLinkedIn(updateProfile.getLinkedIn());
+        }
+        if(updateProfile.getBio()!=null){
+
+            user.setBio(updateProfile.getBio());
+        }
+        if (updateProfile.getMajor() != null) {
+            user.setMajor(updateProfile.getMajor());
+        }
+
+        if (updateProfile.getRole() != null) {
+            user.setRole(updateProfile.getRole());
+        }
+
+
         if(image!=null&& !image.isEmpty()){
-            String uploadDir="auth-service/src/main/resources/static/images/profile_pictures";
+            String uploadDir="/profile_pictures/default_profil.png";
             Path dirPath=Paths.get(uploadDir);
             if (!Files.exists(dirPath)) {
                 Files.createDirectories(dirPath);
@@ -279,6 +291,7 @@ public class AuthService {
                 .role(user.getRole())
                 .major(user.getMajor())
                 .ImageURL(user.getUrlImage())
+                .linkedIn(user.getLinkedIn())
                 .experienceRequest(experienceService.getExperience(user.getEmail()))
                 .build();
     }
