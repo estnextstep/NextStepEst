@@ -4,25 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="clean update profil and add linkedin to get user informations">
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/QaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/QuestionRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/exception/QaNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QuestionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/config/RabbitConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/dto/QuestionRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/entity/Question.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/exceptions/QaNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/repository/QuestionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/QuestionService.java" afterDir="false" />
+    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="fixed getAllexperience ,make the code more clean , added q/a rep">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/RabbitConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/RabbitConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/MessageProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/MessageProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
