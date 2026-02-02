@@ -1,11 +1,15 @@
 package ma.nextstepest.qa_service.service;
 
+import ma.nextstepest.qa_service.dto.DeleteQuestionRequest;
 import ma.nextstepest.qa_service.dto.QuestionRequest;
 import ma.nextstepest.qa_service.entity.Question;
 import ma.nextstepest.qa_service.repository.QuestionRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
+
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class QuestionService {
@@ -15,7 +19,7 @@ public class QuestionService {
         this.questionRepository = questionRepository;
     }
 
-    @RabbitListener(queues = "create.queue")
+    @RabbitListener(queues = "createQa.queue")
     public void createQuestion(String message){
         QuestionRequest questionRequest=new ObjectMapper().readValue(message, QuestionRequest.class);
         Question db_question=new Question();
@@ -26,9 +30,13 @@ public class QuestionService {
     }
 
     @RabbitListener(queues = "deleteQa.queue")
-    public void deleteQuestion(Integer id){
+    public void deleteQuestion(String message) {
+        DeleteQuestionRequest req=new ObjectMapper().readValue(message, DeleteQuestionRequest.class);
+        Optional<Question> question = questionRepository.findById(req.getQuestionId());
 
+        Question question_db = question.get();
 
-        questionRepository.deleteById(id);
+        questionRepository.delete(question_db);
+
     }
 }

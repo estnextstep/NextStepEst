@@ -1,5 +1,6 @@
 package ma.nextstepest.auth_service.service;
 
+import ma.nextstepest.auth_service.dto.DeleteQuestionRequest;
 import ma.nextstepest.auth_service.dto.QuestionRequest;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.repository.UserRepository;
@@ -26,8 +27,12 @@ public class QuestionService {
 
     }
     public boolean deleteQuestion(Integer id){
-
-        messageProducer.deleteQuestion(id);
+        DeleteQuestionRequest deleteQuestionRequest = new DeleteQuestionRequest();
+        String email= SecurityContextHolder.getContext().getAuthentication().getName();
+        User user=userRepository.findByEmail(email);
+        deleteQuestionRequest.setAuthorId(user.getId());
+        deleteQuestionRequest.setQuestionId(id);
+        messageProducer.deleteQuestion(deleteQuestionRequest);
         return true;
     }
 }

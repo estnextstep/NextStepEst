@@ -29,7 +29,7 @@ public class ExperienceController {
         return message;
     }
 
-    @GetMapping("/experience/{user_id}")
+    @DeleteMapping("/experience/{user_id}")
     public MessageResponse deleteExperience(@PathVariable Integer user_id){
         MessageResponse message = new MessageResponse();
         boolean works = experienceService.deleteExperience(user_id);

@@ -25,6 +25,7 @@ public class QaController {
         message.setMessage("your question added successfully");
         return message;
     }
+
     @DeleteMapping("/question/{id}")
     public MessageResponse deleteQuestion(@PathVariable Integer id){
         MessageResponse message = new MessageResponse();
@@ -35,4 +36,5 @@ public class QaController {
         message.setMessage("your question deleted successfully");
         return message;
     }
+
 }
