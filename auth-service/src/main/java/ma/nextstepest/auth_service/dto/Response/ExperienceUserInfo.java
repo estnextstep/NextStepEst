@@ -1,8 +1,7 @@
-package ma.nextstepest.auth_service.dto;
+package ma.nextstepest.auth_service.dto.Response;
 
 import lombok.Data;
 
-import java.util.List;
 @Data
 public class ExperienceUserInfo {
     private String title;

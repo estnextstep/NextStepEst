@@ -1,0 +1,57 @@
+package ma.nextstepest.auth_service.service;
+
+import ma.nextstepest.auth_service.dto.Response.AllExperiencesResponse;
+import ma.nextstepest.auth_service.dto.Response.AllQuestionResponse;
+import ma.nextstepest.auth_service.entity.User;
+import ma.nextstepest.auth_service.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Service
+public class QAclient {
+    private final WebClient webClient;
+    private final UserRepository userRepository;
+
+    public QAclient(
+
+            @Qualifier("qaWebClient") WebClient webClient, UserRepository userRepository) {
+        this.webClient = webClient;
+        this.userRepository = userRepository;
+    }
+
+    public boolean deleteAnswer(Integer answerId){
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User user = userRepository.findByEmail(email);
+        if (user == null) return false;
+
+        Integer userId = user.getId();
+        try{
+            webClient.delete()
+                    .uri("/answer/{answerId}", answerId)
+                    .header("X-USER-ID", userId.toString())
+                    .retrieve()
+                    .toBodilessEntity()
+                    .block();
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
+    public AllQuestionResponse getAllQuestions(int page,int size){
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/question/all")
+                        .queryParam("page", page)
+                        .queryParam("size", size)
+                        .build()
+                )
+                .retrieve()
+                .bodyToMono(AllQuestionResponse.class)
+                .block();
+
+    }
+}

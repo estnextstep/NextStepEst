@@ -14,4 +14,10 @@ public class WebClientConfig {
                 .baseUrl("http://localhost:8083") // experience-service
                 .build();
     }
+    @Bean (name = "qaWebClient")
+    public WebClient WebClientQa(){
+        return WebClient.builder()
+                .baseUrl("http://localhost:8084") // Question answer service
+                .build();
+    }
 }

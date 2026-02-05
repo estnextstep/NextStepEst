@@ -16,8 +16,9 @@ public class Question {
     @Column(nullable = false)
     private Integer authorId;
 
+    private String title;
     private String content;
-
+    private String keywords;
     private LocalDateTime created_at;
 
 

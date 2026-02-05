@@ -11,14 +11,15 @@ public class RabbitConfig {
 
     // add question
     public static final String EXCHANGE = "qa.exchange";
-    public static final String QUEUE = "createQa.queue";
+    public static final String QUEUE = "createQst.queue";
 
-    // add &&  answer
+    // add && delete answer
     public static final String QUEUE_an = "createAns.queue";
+
 
     // delete question
 
-    public static final String QUEUE_V2 = "deleteQa.queue";
+    public static final String QUEUE_V2 = "deleteQst.queue";
 
     @Bean
     public TopicExchange exchange() {
@@ -30,9 +31,11 @@ public class RabbitConfig {
         return QueueBuilder.durable(QUEUE).build();
     }
 
+    @Bean
     public Queue queueAddAnswer(){
         return QueueBuilder.durable(QUEUE_an).build();
     }
+
 
     @Bean
     public Queue queueDelete(){

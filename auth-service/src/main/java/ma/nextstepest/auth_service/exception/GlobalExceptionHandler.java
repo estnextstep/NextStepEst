@@ -2,7 +2,6 @@ package ma.nextstepest.auth_service.exception;
 
 
 import ma.nextstepest.auth_service.dto.Errorsdto;
-import ma.nextstepest.auth_service.dto.MessageResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

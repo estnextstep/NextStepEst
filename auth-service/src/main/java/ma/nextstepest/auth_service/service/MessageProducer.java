@@ -1,10 +1,7 @@
 package ma.nextstepest.auth_service.service;
 
-import ma.nextstepest.auth_service.dto.DeleteQuestionRequest;
-import ma.nextstepest.auth_service.dto.EmailDtoAuth;
-import ma.nextstepest.auth_service.dto.ExperienceRequest;
-import ma.nextstepest.auth_service.dto.QuestionRequest;
-import ma.nextstepest.auth_service.exception.UserNotAllowed;
+import ma.nextstepest.auth_service.dto.*;
+import ma.nextstepest.auth_service.dto.Request.*;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,5 +70,20 @@ public class MessageProducer {
                 json
         );
     }
-
+    public void createAnswer(AnswerRequest answerRequest){
+        String json=objectMapper.writeValueAsString(answerRequest);
+        rabbitTemplate.convertAndSend(
+                "qa.exchange",
+                "create.answer",
+                json
+        );
+    }
+    public void deleteAnswer(DeleteAnswerRequest deleteAnswerRequest){
+        String json=objectMapper.writeValueAsString(deleteAnswerRequest);
+        rabbitTemplate.convertAndSend(
+                "qa.exchange",
+                "delete.answer",
+                json
+        );
+    }
 }

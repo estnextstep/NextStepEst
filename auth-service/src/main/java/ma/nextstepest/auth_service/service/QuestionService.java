@@ -1,7 +1,8 @@
 package ma.nextstepest.auth_service.service;
 
-import ma.nextstepest.auth_service.dto.DeleteQuestionRequest;
-import ma.nextstepest.auth_service.dto.QuestionRequest;
+import ma.nextstepest.auth_service.dto.Request.DeleteQuestionRequest;
+import ma.nextstepest.auth_service.dto.Request.QuestionRequest;
+import ma.nextstepest.auth_service.dto.Response.AllQuestionResponse;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,10 +12,12 @@ import org.springframework.stereotype.Service;
 public class QuestionService {
     private final UserRepository userRepository;
     private final MessageProducer messageProducer;
+    private final QAclient qAclient;
 
-    public QuestionService(UserRepository userRepository, MessageProducer messageProducer) {
+    public QuestionService(UserRepository userRepository, MessageProducer messageProducer, QAclient qAclient) {
         this.userRepository = userRepository;
         this.messageProducer = messageProducer;
+        this.qAclient = qAclient;
     }
     public boolean createQuestion(QuestionRequest questionRequest){
         String email= SecurityContextHolder.getContext().getAuthentication().getName();
@@ -34,5 +37,9 @@ public class QuestionService {
         deleteQuestionRequest.setQuestionId(id);
         messageProducer.deleteQuestion(deleteQuestionRequest);
         return true;
+    }
+    public AllQuestionResponse getAllQuestions(int page,int size){
+        return qAclient.getAllQuestions(page,size);
+
     }
 }

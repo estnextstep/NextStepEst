@@ -1,6 +1,10 @@
 package ma.nextstepest.auth_service.controller;
 
-import ma.nextstepest.auth_service.dto.*;
+import ma.nextstepest.auth_service.dto.Request.ChangeRequest;
+import ma.nextstepest.auth_service.dto.Request.LoginRequest;
+import ma.nextstepest.auth_service.dto.Request.ResetRequest;
+import ma.nextstepest.auth_service.dto.Response.AuthResponse;
+import ma.nextstepest.auth_service.dto.Response.MessageResponse;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.service.AuthService;
 import org.springframework.web.bind.annotation.*;

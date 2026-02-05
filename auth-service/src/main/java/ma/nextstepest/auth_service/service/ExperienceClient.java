@@ -1,7 +1,7 @@
 package ma.nextstepest.auth_service.service;
 
-import ma.nextstepest.auth_service.dto.AllExperiencesResponse;
-import ma.nextstepest.auth_service.dto.ExperienceRequest;
+import ma.nextstepest.auth_service.dto.Response.AllExperiencesResponse;
+import ma.nextstepest.auth_service.dto.Request.ExperienceRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -10,8 +10,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class ExperienceClient {
     private final WebClient webClient;
 
-    public ExperienceClient(WebClient webClientBuilder) {
-        this.webClient = webClientBuilder;
+    public ExperienceClient(WebClient webClient) {
+        this.webClient = webClient;
     }
 
     public ExperienceRequest getExperience(Integer userId){
@@ -33,6 +33,6 @@ public class ExperienceClient {
                 .retrieve()
                 .bodyToMono(AllExperiencesResponse.class)
                 .block();
-    }
+        }
 
 }

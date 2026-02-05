@@ -1,8 +1,9 @@
-package ma.nextstepest.auth_service.dto;
+package ma.nextstepest.auth_service.dto.Response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
+import ma.nextstepest.auth_service.dto.Request.ExperienceRequest;
 
 import java.time.LocalDateTime;
 
