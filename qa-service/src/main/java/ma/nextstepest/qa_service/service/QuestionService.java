@@ -2,6 +2,7 @@ package ma.nextstepest.qa_service.service;
 
 import ma.nextstepest.qa_service.dto.AllQuestionResponse;
 import ma.nextstepest.qa_service.dto.DeleteQuestionRequest;
+import ma.nextstepest.qa_service.dto.QuestionDto;
 import ma.nextstepest.qa_service.dto.QuestionRequest;
 import ma.nextstepest.qa_service.entity.Question;
 import ma.nextstepest.qa_service.repository.QuestionRepository;
@@ -45,6 +46,8 @@ public class QuestionService {
     }
 
     public Page<Question> getAllQuestions(int page, int size){
-      return questionRepository.findAll(PageRequest.of(page,size));
+
+    return   questionRepository.findAll(PageRequest.of(page, size));
+
     }
 }

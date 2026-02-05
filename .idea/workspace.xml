@@ -4,54 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="fixed getAllexperience ,make the code more clean , added q/a rep">
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/AnswerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Request/AnswerRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Request/DeleteAnswerRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AllQuestionResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AnswerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QAclient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/Exceptions/QANotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/controller/QAcontroller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/dto/AllQuestionResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/dto/AnswerDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/dto/DeleteAnswerRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i restrecture the dto package, and i create  add answer and delte answer">
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/QuestionDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/dto/QuestionDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/WebClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/WebClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ExperienceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ExperienceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/QaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/QaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/AllExperiencesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AllExperiencesResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/AuthResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AuthResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/ChangePasswordReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Request/ChangePasswordReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/ChangeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Request/ChangeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/DeleteQuestionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Request/DeleteQuestionRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/ExperienceRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Request/ExperienceRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/ExperienceUserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/ExperienceUserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Request/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/MessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/MessageResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/QuestionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Request/QuestionRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/RegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Request/RegisterRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/ResetRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Request/ResetRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/ResetResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/ResetResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/UpdateProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Request/UpdateProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/UserInfoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/UserInfoResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/MessageProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/MessageProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QuestionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/AllExperiencesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/AllExperiencesResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/config/RabbitConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/config/RabbitConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/dto/QuestionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/dto/QuestionRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/entity/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/entity/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/entity/QuestionLike.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/repository/QuestionLikeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/AnswerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AllQuestionResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AllQuestionResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/controller/QAcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/controller/QAcontroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/dto/AllQuestionResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/dto/AllQuestionResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/QuestionService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -127,11 +86,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ma.nextstepest.auth_service.dto.Response" />
       <recent name="ma.nextstepest.qa_service.dto" />
       <recent name="ma.nextstepest.qa_service.service" />
       <recent name="ma.nextstepest.auth_service.dto" />
       <recent name="ma.nextstepest.auth_service.exception" />
-      <recent name="ma.nextstepest.qa_service.exceptions" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -228,7 +187,8 @@
       <workItem from="1769781812058" duration="12740000" />
       <workItem from="1769802125584" duration="4262000" />
       <workItem from="1770211009353" duration="14532000" />
-      <workItem from="1770283740559" duration="7523000" />
+      <workItem from="1770283740559" duration="7954000" />
+      <workItem from="1770311712262" duration="5307000" />
     </task>
     <task id="LOCAL-00001" summary="fixed getAllexperience ,make the code more clean , added q/a rep">
       <option name="closed" value="true" />
@@ -254,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769945116428</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="i restrecture the dto package, and i create  add answer and delte answer">
+      <option name="closed" value="true" />
+      <created>1770292688326</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1770292688328</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +231,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="clean update profil and add linkedin to get user informations" />
     <MESSAGE value="fixed getAllexperience ,make the code more clean , added q/a rep" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed getAllexperience ,make the code more clean , added q/a rep" />
+    <MESSAGE value="i restrecture the dto package, and i create  add answer and delte answer" />
+    <option name="LAST_COMMIT_MESSAGE" value="i restrecture the dto package, and i create  add answer and delte answer" />
   </component>
 </project>
