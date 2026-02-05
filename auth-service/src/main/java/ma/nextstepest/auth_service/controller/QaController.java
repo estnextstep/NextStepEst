@@ -1,7 +1,8 @@
 package ma.nextstepest.auth_service.controller;
 
-import ma.nextstepest.auth_service.dto.MessageResponse;
-import ma.nextstepest.auth_service.dto.QuestionRequest;
+import ma.nextstepest.auth_service.dto.Response.AllQuestionResponse;
+import ma.nextstepest.auth_service.dto.Response.MessageResponse;
+import ma.nextstepest.auth_service.dto.Request.QuestionRequest;
 import ma.nextstepest.auth_service.exception.UserNotAllowed;
 import ma.nextstepest.auth_service.service.QuestionService;
 import org.springframework.web.bind.annotation.*;
@@ -36,5 +37,10 @@ public class QaController {
         message.setMessage("your question deleted successfully");
         return message;
     }
+    @GetMapping("/question/all")
+    public AllQuestionResponse getAllQuestions(@RequestParam(defaultValue = "0") int page,
+                                               @RequestParam(defaultValue = "10") int size){
 
+        return questionService.getAllQuestions(page,size);
+    }
 }

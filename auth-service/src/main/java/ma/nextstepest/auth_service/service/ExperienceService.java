@@ -1,8 +1,8 @@
 package ma.nextstepest.auth_service.service;
 
-import ma.nextstepest.auth_service.dto.AllExperiencesResponse;
-import ma.nextstepest.auth_service.dto.ExperienceRequest;
-import ma.nextstepest.auth_service.dto.ExperienceUserInfo;
+import ma.nextstepest.auth_service.dto.Response.AllExperiencesResponse;
+import ma.nextstepest.auth_service.dto.Request.ExperienceRequest;
+import ma.nextstepest.auth_service.dto.Response.ExperienceUserInfo;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;

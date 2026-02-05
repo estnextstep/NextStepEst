@@ -1,8 +1,6 @@
-package ma.nextstepest.auth_service.dto;
+package ma.nextstepest.auth_service.dto.Request;
 
 import lombok.Data;
-
-import java.util.ArrayList;
 
 @Data
 public class ExperienceRequest {

@@ -1,9 +1,9 @@
 package ma.nextstepest.auth_service.controller;
 
-import ma.nextstepest.auth_service.dto.ChangePasswordReq;
-import ma.nextstepest.auth_service.dto.MessageResponse;
-import ma.nextstepest.auth_service.dto.UpdateProfile;
-import ma.nextstepest.auth_service.dto.UserInfoResponse;
+import ma.nextstepest.auth_service.dto.Request.ChangePasswordReq;
+import ma.nextstepest.auth_service.dto.Response.MessageResponse;
+import ma.nextstepest.auth_service.dto.Request.UpdateProfile;
+import ma.nextstepest.auth_service.dto.Response.UserInfoResponse;
 import ma.nextstepest.auth_service.service.AuthService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

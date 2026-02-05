@@ -3,6 +3,11 @@ package ma.nextstepest.auth_service.service;
 
 import ma.nextstepest.auth_service.config.TokenUtil;
 import ma.nextstepest.auth_service.dto.*;
+import ma.nextstepest.auth_service.dto.Request.*;
+import ma.nextstepest.auth_service.dto.Response.AuthResponse;
+import ma.nextstepest.auth_service.dto.Response.MessageResponse;
+import ma.nextstepest.auth_service.dto.Response.ResetResponse;
+import ma.nextstepest.auth_service.dto.Response.UserInfoResponse;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.exception.*;
 import ma.nextstepest.auth_service.repository.UserRepository;

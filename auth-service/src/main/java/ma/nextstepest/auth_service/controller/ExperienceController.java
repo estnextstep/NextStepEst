@@ -1,8 +1,8 @@
 package ma.nextstepest.auth_service.controller;
 
-import ma.nextstepest.auth_service.dto.AllExperiencesResponse;
-import ma.nextstepest.auth_service.dto.ExperienceRequest;
-import ma.nextstepest.auth_service.dto.MessageResponse;
+import ma.nextstepest.auth_service.dto.Response.AllExperiencesResponse;
+import ma.nextstepest.auth_service.dto.Request.ExperienceRequest;
+import ma.nextstepest.auth_service.dto.Response.MessageResponse;
 import ma.nextstepest.auth_service.exception.UserNotAllowed;
 import ma.nextstepest.auth_service.service.ExperienceService;
 import org.springframework.web.bind.annotation.*;
