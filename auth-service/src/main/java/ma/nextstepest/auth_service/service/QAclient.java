@@ -2,6 +2,8 @@ package ma.nextstepest.auth_service.service;
 
 import ma.nextstepest.auth_service.dto.Response.AllExperiencesResponse;
 import ma.nextstepest.auth_service.dto.Response.AllQuestionResponse;
+import ma.nextstepest.auth_service.dto.Response.QuestionDto;
+import ma.nextstepest.auth_service.dto.Response.QuestionInfoDto;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -53,5 +55,18 @@ public class QAclient {
                 .bodyToMono(AllQuestionResponse.class)
                 .block();
 
+    }
+
+    public QuestionInfoDto getQuestionInfo(int id_q, int page){
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/detailsQuestion")
+                        .queryParam("id", id_q)
+                        .queryParam("page", page)
+                        .build()
+                )
+                .retrieve()
+                .bodyToMono(QuestionInfoDto.class)
+                .block();
     }
 }

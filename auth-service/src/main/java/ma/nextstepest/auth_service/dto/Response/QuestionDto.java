@@ -12,6 +12,7 @@ public class QuestionDto{
     private Integer id;
     private String title;
     private String keywords;
+    private String content;
     private LocalDateTime created_at;
 }
 

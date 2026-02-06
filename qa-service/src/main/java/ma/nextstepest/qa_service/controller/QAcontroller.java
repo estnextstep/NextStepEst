@@ -2,6 +2,7 @@ package ma.nextstepest.qa_service.controller;
 
 import ma.nextstepest.qa_service.dto.AllQuestionResponse;
 import ma.nextstepest.qa_service.dto.QuestionDto;
+import ma.nextstepest.qa_service.dto.QuestionInfoDto;
 import ma.nextstepest.qa_service.entity.Question;
 import ma.nextstepest.qa_service.service.AnswerService;
 import ma.nextstepest.qa_service.service.QuestionService;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class QAcontroller {
@@ -39,6 +41,7 @@ public class QAcontroller {
                 .map(q -> new QuestionDto(
                         q.getId(),
                         q.getTitle(),
+                        q.getContent(),
                         q.getKeywords(),
                         q.getCreated_at()
                 ))
@@ -48,5 +51,11 @@ public class QAcontroller {
                 questions.getTotalPages(),
                 questions.getTotalElements()
         );
+    }
+
+    @GetMapping("/detailsQuestion")
+    public QuestionInfoDto getQuestionInfo(@RequestParam int id, @RequestParam int page){
+
+        return questionService.getQuestionInfo(id,page);
     }
 }
