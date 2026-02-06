@@ -1,12 +1,15 @@
 package ma.nextstepest.qa_service.controller;
 
 import ma.nextstepest.qa_service.dto.AllQuestionResponse;
+import ma.nextstepest.qa_service.dto.QuestionDto;
 import ma.nextstepest.qa_service.entity.Question;
 import ma.nextstepest.qa_service.service.AnswerService;
 import ma.nextstepest.qa_service.service.QuestionService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class QAcontroller {
@@ -30,8 +33,18 @@ public class QAcontroller {
     public AllQuestionResponse getAllQuestions(@RequestParam int page,
                                                @RequestParam int size){
         Page<Question> questions=questionService.getAllQuestions(page,size);
+
+        List<QuestionDto> content = questions.getContent()
+                .stream()
+                .map(q -> new QuestionDto(
+                        q.getId(),
+                        q.getTitle(),
+                        q.getKeywords(),
+                        q.getCreated_at()
+                ))
+                .toList();
         return new AllQuestionResponse(
-                questions.getContent(),
+                content,
                 questions.getTotalPages(),
                 questions.getTotalElements()
         );
