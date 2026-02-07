@@ -3,6 +3,8 @@ package ma.nextstepest.auth_service.controller;
 import ma.nextstepest.auth_service.dto.Response.AllQuestionResponse;
 import ma.nextstepest.auth_service.dto.Response.MessageResponse;
 import ma.nextstepest.auth_service.dto.Request.QuestionRequest;
+import ma.nextstepest.auth_service.dto.Response.QuestionDto;
+import ma.nextstepest.auth_service.dto.Response.QuestionInfoDto;
 import ma.nextstepest.auth_service.exception.UserNotAllowed;
 import ma.nextstepest.auth_service.service.QuestionService;
 import org.springframework.web.bind.annotation.*;
@@ -42,5 +44,9 @@ public class QaController {
                                                @RequestParam(defaultValue = "10") int size){
 
         return questionService.getAllQuestions(page,size);
+    }
+    @GetMapping("/questionInfo")
+    public QuestionInfoDto getQuestionInfo(@RequestParam Integer id, @RequestParam Integer page){
+        return questionService.getQuestionInfo(id,page);
     }
 }

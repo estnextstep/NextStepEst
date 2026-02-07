@@ -32,7 +32,6 @@ public class AnswerService {
 
     public void deleteAnswer(Integer answerId, Integer userId) {
 
-
         Answer answer = answerRepository.findById(answerId)
                 .orElseThrow(() -> new QANotFoundException("Answer not found"));
 
