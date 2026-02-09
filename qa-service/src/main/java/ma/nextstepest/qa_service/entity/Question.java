@@ -3,6 +3,7 @@ package ma.nextstepest.qa_service.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -19,7 +20,7 @@ public class Question {
     private String title;
     private String content;
     private String keywords;
-    private LocalDateTime created_at;
+    private LocalDate created_at;
 
 
 }

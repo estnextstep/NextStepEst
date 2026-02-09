@@ -69,4 +69,17 @@ public class QAclient {
                 .bodyToMono(QuestionInfoDto.class)
                 .block();
     }
+    public AllQuestionResponse getRecommendedQuestion(int page,int size,String major){
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/questions/recommendation")
+                        .queryParam("major", major)
+                        .queryParam("page", page)
+                        .queryParam("size", size)
+                        .build()
+                )
+                .retrieve()
+                .bodyToMono(AllQuestionResponse.class)
+                .block();
+    }
 }

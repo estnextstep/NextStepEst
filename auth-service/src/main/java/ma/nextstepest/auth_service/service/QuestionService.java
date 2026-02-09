@@ -42,6 +42,7 @@ public class QuestionService {
         return true;
     }
     public AllQuestionResponse getAllQuestions(int page,int size){
+
         return qAclient.getAllQuestions(page,size);
 
     }

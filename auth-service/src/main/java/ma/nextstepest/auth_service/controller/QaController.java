@@ -7,15 +7,17 @@ import ma.nextstepest.auth_service.dto.Response.QuestionDto;
 import ma.nextstepest.auth_service.dto.Response.QuestionInfoDto;
 import ma.nextstepest.auth_service.exception.UserNotAllowed;
 import ma.nextstepest.auth_service.service.QuestionService;
+import ma.nextstepest.auth_service.service.RecommendationService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class QaController {
 
     private final QuestionService questionService;
-
-    public QaController(QuestionService questionService) {
+    private final RecommendationService recommendationService;
+    public QaController(QuestionService questionService, RecommendationService recommendationService) {
         this.questionService = questionService;
+        this.recommendationService = recommendationService;
     }
 
     @PostMapping("/question")
@@ -48,5 +50,10 @@ public class QaController {
     @GetMapping("/questionInfo")
     public QuestionInfoDto getQuestionInfo(@RequestParam Integer id, @RequestParam Integer page){
         return questionService.getQuestionInfo(id,page);
+    }
+    @GetMapping("/questions/recommendation")
+    public AllQuestionResponse getRecommendedQuestions(@RequestParam(defaultValue = "0") int page,
+                                                       @RequestParam(defaultValue = "10") int size){
+        return recommendationService.getRecommendedQuestions(page,size);
     }
 }

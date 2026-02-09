@@ -6,7 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
+
 @Builder
 @Data
 @NoArgsConstructor
@@ -15,7 +17,7 @@ public class QuestionDto{
     private Integer id;
     private String title;
     private String content;
-    private String keywords;
-    private LocalDateTime created_at;
+    private List<String> keywords;
+    private LocalDate created_at;
 }
 
