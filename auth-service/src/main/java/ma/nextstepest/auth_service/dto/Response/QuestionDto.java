@@ -4,15 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuestionDto{
     private Integer id;
     private String title;
-    private String keywords;
+    private List<String> keywords;
     private String content;
-    private LocalDateTime created_at;
+    private LocalDate created_at;
 }
 

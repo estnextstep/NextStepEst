@@ -6,18 +6,26 @@ import ma.nextstepest.qa_service.entity.Question;
 import ma.nextstepest.qa_service.repository.AnswerRepository;
 import ma.nextstepest.qa_service.repository.QuestionRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
 
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionService {
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
+    @Autowired
+    private ElasticsearchOperations elasticsearchOperations;
     public QuestionService(QuestionRepository questionRepository, AnswerRepository answerRepository) {
         this.questionRepository = questionRepository;
         this.answerRepository = answerRepository;
@@ -31,8 +39,21 @@ public class QuestionService {
         db_question.setContent(questionRequest.getContent());
         db_question.setKeywords(questionRequest.getKeywords());
         db_question.setAuthorId(questionRequest.getAuthorId());
-        db_question.setCreated_at(java.time.LocalDateTime.now());
-        questionRepository.save(db_question);
+        db_question.setCreated_at(LocalDate.now());
+        Question savedQst= questionRepository.save(db_question);
+
+        //elasticsearch
+        QuestionDocument questionDocument=new QuestionDocument();
+        questionDocument.setId(savedQst.getId());
+        questionDocument.setTitle(savedQst.getTitle());
+        questionDocument.setContent(savedQst.getContent());
+        questionDocument.setKeywords(
+                Arrays.stream(savedQst.getKeywords().split(","))
+                        .map(String::trim)
+                        .collect(Collectors.toList())
+        );
+        questionDocument.setCreated_at(savedQst.getCreated_at());
+        elasticsearchOperations.save(questionDocument);
     }
 
     @RabbitListener(queues = "deleteQst.queue")
@@ -57,7 +78,7 @@ public class QuestionService {
                 .id(question.getId())
                 .title(question.getTitle())
                 .created_at(question.getCreated_at())
-                .keywords(question.getKeywords())
+                .keywords(Collections.singletonList(question.getKeywords()))
                 .content(question.getContent()).build());
 
         Page<Answer> answers= answerRepository.findAllByQuestionId(id,PageRequest.of(page,6));
