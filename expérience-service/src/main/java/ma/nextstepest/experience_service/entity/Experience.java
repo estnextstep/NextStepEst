@@ -17,7 +17,7 @@ public class Experience {
     private Integer id;
 
     @Column(unique = true,nullable = false)
-    private String alumniId;
+    private int alumniId;
 
     private String title;
     private String description;

@@ -1,39 +1,67 @@
 package ma.nextstepest.experience_service.service;
 
+import ma.nextstepest.experience_service.dto.AllExperienceRecommendation;
+import ma.nextstepest.experience_service.dto.ExperienceDocument;
 import ma.nextstepest.experience_service.dto.ExperienceRequest;
 import ma.nextstepest.experience_service.entity.Experience;
 import ma.nextstepest.experience_service.repository.ExperienceRepository;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
 
-import java.util.Optional;
-import java.util.TreeSet;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 @Service
 public class ExperienceService {
 
+    @Autowired
+    private ElasticsearchOperations elasticsearchOperations;
     private final ExperienceRepository experienceRepository;
+    private final RecommendationService recommendationService;
 
-    public ExperienceService(ExperienceRepository experienceRepository){
+    public ExperienceService(ExperienceRepository experienceRepository, RecommendationService recommendationService){
         this.experienceRepository = experienceRepository;
+        this.recommendationService = recommendationService;
     }
 
     @RabbitListener(queues = "add.queue")
     public void addExperience(String message){
         ExperienceRequest experienceRequest = new ObjectMapper().readValue(message, ExperienceRequest.class);
         Experience db_experience = new Experience();
-        db_experience.setAlumniId(String.valueOf(experienceRequest.getAlumniId()));
+        db_experience.setAlumniId(experienceRequest.getAlumniId());
         db_experience.setCreated_at(java.time.LocalDateTime.now());
         db_experience.setDescription(experienceRequest.getDescription());
         db_experience.setDomain(experienceRequest.getDomain());
         db_experience.setTitle(experienceRequest.getTitle());
         db_experience.setKeywords(experienceRequest.getKeywords());
-        experienceRepository.save(db_experience);
+        Experience savedExp = experienceRepository.save(db_experience);
+
+        //elasticsearch
+        ExperienceDocument experienceDocument = new ExperienceDocument();
+        experienceDocument.setId(savedExp.getId());
+        experienceDocument.setDomain(savedExp.getDomain());
+        experienceDocument.setKeywords(
+                Arrays.stream(savedExp.getKeywords().split(","))
+                        .map(String::trim)
+                        .collect(Collectors.toList())
+        );
+        experienceDocument.setAlumniId(savedExp.getAlumniId());
+        experienceDocument.setDescription(savedExp.getDescription());
+        experienceDocument.setTitle(savedExp.getTitle());
+        experienceDocument.setCreated_at(LocalDate.from(savedExp.getCreated_at()));
+        try {
+            elasticsearchOperations.save(experienceDocument);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
     @RabbitListener(queues = "delete.queue")
     public void deleteExperience(String message){
@@ -57,7 +85,7 @@ public class ExperienceService {
             return ResponseEntity.notFound().build();
         }
         ExperienceRequest exp=new ExperienceRequest();
-        exp.setAlumniId(Integer.valueOf(experience.getAlumniId()));
+        exp.setAlumniId(experience.getAlumniId());
         exp.setTitle(experience.getTitle());
         exp.setDescription(experience.getDescription());
         exp.setKeywords(experience.getKeywords());
@@ -66,5 +94,9 @@ public class ExperienceService {
 
     public Page<Experience> getAll(int page,int size){
         return experienceRepository.findAll(PageRequest.of(page,size));
+    }
+
+    public AllExperienceRecommendation getRecommendedExperience(int page, int size, String major){
+        return recommendationService.getRecommendedExperience(page, size, major);
     }
 }

@@ -2,6 +2,7 @@ package ma.nextstepest.auth_service.controller;
 
 import ma.nextstepest.auth_service.dto.Response.AllExperiencesResponse;
 import ma.nextstepest.auth_service.dto.Request.ExperienceRequest;
+import ma.nextstepest.auth_service.dto.Response.AllExperiencesRocom;
 import ma.nextstepest.auth_service.dto.Response.MessageResponse;
 import ma.nextstepest.auth_service.exception.UserNotAllowed;
 import ma.nextstepest.auth_service.service.ExperienceService;
@@ -55,5 +56,11 @@ public class ExperienceController {
     public AllExperiencesResponse getAllExperience(@RequestParam Integer page){
             int size = 6;
             return experienceService.getAll(page,size);
+    }
+
+    @GetMapping("/experiences/recomandation")
+    public AllExperiencesRocom getRecommendedExperience(@RequestParam(defaultValue = "0") int page,
+                                                        @RequestParam(defaultValue = "10") int size){
+        return experienceService.getRecommendedExperience(page, size);
     }
 }

@@ -2,6 +2,7 @@ package ma.nextstepest.auth_service.service;
 
 import ma.nextstepest.auth_service.dto.Response.AllExperiencesResponse;
 import ma.nextstepest.auth_service.dto.Request.ExperienceRequest;
+import ma.nextstepest.auth_service.dto.Response.AllExperiencesRocom;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -33,6 +34,19 @@ public class ExperienceClient {
                 .retrieve()
                 .bodyToMono(AllExperiencesResponse.class)
                 .block();
-        }
+    }
 
+    public AllExperiencesRocom getRecommendedExperience(int page, int size, String major){
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("getexperience/exp/recommendation")
+                        .queryParam("page", page)
+                        .queryParam("size", size)
+                        .queryParam("major",major)
+                        .build()
+                )
+                .retrieve()
+                .bodyToMono(AllExperiencesRocom.class)
+                .block();
+    }
 }
