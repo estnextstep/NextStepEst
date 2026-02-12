@@ -1,9 +1,9 @@
 package ma.nextstepest.experience_service.controller;
 
+import ma.nextstepest.experience_service.dto.AllExperienceRecommendation;
 import ma.nextstepest.experience_service.dto.AllExperiencesResponse;
 import ma.nextstepest.experience_service.dto.ExperienceRequest;
 import ma.nextstepest.experience_service.entity.Experience;
-import ma.nextstepest.experience_service.repository.ExperienceRepository;
 import ma.nextstepest.experience_service.service.ExperienceService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -34,5 +34,11 @@ public class ExperienceController {
                 p.getTotalElements()
 
         );
+    }
+    @GetMapping("/exp/recommendation")
+    public AllExperienceRecommendation getRecommendedExperience(@RequestParam(defaultValue = "0") int page,
+                                                                @RequestParam(defaultValue = "10") int size,
+                                                                @RequestParam String major){
+        return experienceService.getRecommendedExperience(page,size,major);
     }
 }

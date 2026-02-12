@@ -2,7 +2,9 @@ package ma.nextstepest.auth_service.service;
 
 import ma.nextstepest.auth_service.dto.Response.AllExperiencesResponse;
 import ma.nextstepest.auth_service.dto.Request.ExperienceRequest;
+import ma.nextstepest.auth_service.dto.Response.AllExperiencesRocom;
 import ma.nextstepest.auth_service.dto.Response.ExperienceUserInfo;
+import ma.nextstepest.auth_service.dto.Response.ExperienceUserInfoRocom;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -109,4 +111,32 @@ public class ExperienceService {
         return response;
     }
 
+    public AllExperiencesRocom getRecommendedExperience(int page,int size){
+        String email= SecurityContextHolder.getContext().getAuthentication().getName();
+        User db_user=userRepository.findByEmail(email);
+        String major=db_user.getMajor();
+        AllExperiencesRocom response = experienceClient.getRecommendedExperience(page, size,major);
+        List<ExperienceUserInfoRocom> experiences = response.getContent();
+
+        List<Integer> alumniIds = experiences.stream()
+                .map(ExperienceUserInfoRocom::getAlumniId)
+                .distinct()
+                .toList();
+
+        Map<Integer, User> usersMap = userRepository.findAllById(alumniIds)
+                .stream()
+                .collect(Collectors.toMap(User::getId, u -> u));
+
+        experiences.forEach(exp -> {
+            User user = usersMap.get(exp.getAlumniId());
+            if (user != null) {
+                exp.setUsername(user.getUsername());
+                exp.setImgUrl(user.getUrlImage());
+                exp.setFirstName(user.getFirstname());
+                exp.setLastName(user.getLastname());
+            }
+        });
+
+        return response;
+    }
 }

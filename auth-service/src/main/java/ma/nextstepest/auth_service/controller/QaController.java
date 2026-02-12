@@ -41,16 +41,19 @@ public class QaController {
         message.setMessage("your question deleted successfully");
         return message;
     }
+
     @GetMapping("/question/all")
     public AllQuestionResponse getAllQuestions(@RequestParam(defaultValue = "0") int page,
                                                @RequestParam(defaultValue = "10") int size){
 
         return questionService.getAllQuestions(page,size);
     }
+
     @GetMapping("/questionInfo")
     public QuestionInfoDto getQuestionInfo(@RequestParam Integer id, @RequestParam Integer page){
         return questionService.getQuestionInfo(id,page);
     }
+
     @GetMapping("/questions/recommendation")
     public AllQuestionResponse getRecommendedQuestions(@RequestParam(defaultValue = "0") int page,
                                                        @RequestParam(defaultValue = "10") int size){

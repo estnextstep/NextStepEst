@@ -53,7 +53,11 @@ public class QuestionService {
                         .collect(Collectors.toList())
         );
         questionDocument.setCreated_at(savedQst.getCreated_at());
-        elasticsearchOperations.save(questionDocument);
+        try {
+            elasticsearchOperations.save(questionDocument);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @RabbitListener(queues = "deleteQst.queue")

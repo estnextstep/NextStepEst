@@ -1,7 +1,7 @@
 package ma.nextstepest.qa_service.service;
 
 
-import ma.nextstepest.qa_service.dto.AllQuestionResponse;
+
 import ma.nextstepest.qa_service.dto.AllrecQaResponse;
 import ma.nextstepest.qa_service.dto.QuestionDocument;
 import org.springframework.beans.factory.annotation.Autowired;
