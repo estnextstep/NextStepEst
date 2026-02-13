@@ -12,9 +12,7 @@ public class RabbitConfig {
     public static final String EXCHANGE = "experience.exchange";
     public static final String QUEUE = "add.queue";
 
-    // delete experience
 
-    public static final String QUEUE_V2 = "delete.queue";
 
     // update experience
 
@@ -30,10 +28,6 @@ public class RabbitConfig {
         return QueueBuilder.durable(QUEUE).build();
     }
 
-    @Bean
-    public Queue deleteQueue() {
-        return QueueBuilder.durable(QUEUE_V2).build();
-    }
 
     @Bean
     public Queue updateQueue() {
@@ -48,13 +42,7 @@ public class RabbitConfig {
                 .with("experience.ajouter");
     }
 
-    @Bean
-    public Binding deleteBinding(){
-        return BindingBuilder
-                .bind(deleteQueue())
-                .to(exchange())
-                .with("experience.delete");
-    }
+
 
     @Bean
     public Binding updteBinding(){

@@ -5,16 +5,19 @@ import ma.nextstepest.auth_service.dto.Request.ExperienceRequest;
 import ma.nextstepest.auth_service.dto.Response.AllExperiencesRocom;
 import ma.nextstepest.auth_service.dto.Response.MessageResponse;
 import ma.nextstepest.auth_service.exception.UserNotAllowed;
+import ma.nextstepest.auth_service.service.ExperienceClient;
 import ma.nextstepest.auth_service.service.ExperienceService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ExperienceController {
 
     private  final ExperienceService experienceService;
-
-    public ExperienceController(ExperienceService experienceService ){
+    private final ExperienceClient experienceClient;
+    public ExperienceController(ExperienceService experienceService, ExperienceClient experienceClient){
         this.experienceService = experienceService;
+        this.experienceClient = experienceClient;
     }
 
 
@@ -31,14 +34,10 @@ public class ExperienceController {
     }
 
     @DeleteMapping("/experience/{user_id}")
-    public MessageResponse deleteExperience(@PathVariable Integer user_id){
-        MessageResponse message = new MessageResponse();
-        boolean works = experienceService.deleteExperience(user_id);
-        if (!works){
-            throw new UserNotAllowed("you are not allowed, you cant delete it");
-        }
-        message.setMessage("your experience deleted by success");
-        return message;
+    public ResponseEntity deleteExperience(@PathVariable Integer user_id){
+
+        return experienceClient.deleteExperience(user_id);
+
     }
 
     @PutMapping("/experience/update")

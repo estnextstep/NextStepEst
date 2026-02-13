@@ -1,5 +1,7 @@
 package ma.nextstepest.qa_service.service;
 
+import ma.nextstepest.qa_service.Exceptions.QANotFoundException;
+import ma.nextstepest.qa_service.Exceptions.UserNotAllowed;
 import ma.nextstepest.qa_service.dto.*;
 import ma.nextstepest.qa_service.entity.Answer;
 import ma.nextstepest.qa_service.entity.Question;
@@ -60,13 +62,16 @@ public class QuestionService {
         }
     }
 
-    @RabbitListener(queues = "deleteQst.queue")
-    public void deleteQuestion(String message) {
-        DeleteQuestionRequest req=new ObjectMapper().readValue(message, DeleteQuestionRequest.class);
-        Optional<Question> question = questionRepository.findById(req.getQuestionId());
 
-        Question question_db = question.get();
-        questionRepository.delete(question_db);
+    public void deleteQuestion(Integer id, Integer user_id) {
+
+        Question question = questionRepository.findById(id).orElseThrow(()->
+                new QANotFoundException("there is an error while trying to remove this question"));
+
+        if(!question.getAuthorId().equals(user_id)){
+            throw new UserNotAllowed("user not allowed to remove the question");
+        }
+        questionRepository.delete(question);
 
     }
 

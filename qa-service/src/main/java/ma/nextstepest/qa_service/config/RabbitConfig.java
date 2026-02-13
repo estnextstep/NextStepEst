@@ -17,9 +17,6 @@ public class RabbitConfig {
     public static final String QUEUE_an = "createAns.queue";
 
 
-    // delete question
-
-    public static final String QUEUE_V2 = "deleteQst.queue";
 
     @Bean
     public TopicExchange exchange() {
@@ -38,11 +35,6 @@ public class RabbitConfig {
 
 
     @Bean
-    public Queue queueDelete(){
-        return QueueBuilder.durable(QUEUE_V2).build();
-    }
-
-    @Bean
     public Binding binding() {
         return BindingBuilder
                 .bind(queue())
@@ -50,13 +42,7 @@ public class RabbitConfig {
                 .with("create.question");
     }
 
-    @Bean
-    public Binding bindingDelete(){
-        return BindingBuilder
-                .bind(queueDelete())
-                .to(exchange())
-                .with("delete.question");
-    }
+
 
     @Bean
     public Binding bindingAddAnswer(){

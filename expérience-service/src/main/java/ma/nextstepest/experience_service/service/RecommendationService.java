@@ -52,6 +52,7 @@ public class RecommendationService {
         SearchHits<ExperienceDocument> searchHits=elasticsearchOperations.search(query, ExperienceDocument.class);
         List<ExperienceDocument> experiences=searchHits.getSearchHits()
                 .stream().map(SearchHit::getContent).toList();
+
         return new AllExperienceRecommendation(experiences,searchHits.getTotalHits(),size);
     }
 }

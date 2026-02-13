@@ -1,5 +1,6 @@
 package ma.nextstepest.experience_service.service;
 
+import ma.nextstepest.experience_service.Excpetions.ExperienceNotfoundException;
 import ma.nextstepest.experience_service.dto.AllExperienceRecommendation;
 import ma.nextstepest.experience_service.dto.ExperienceDocument;
 import ma.nextstepest.experience_service.dto.ExperienceRequest;
@@ -56,16 +57,19 @@ public class ExperienceService {
         experienceDocument.setAlumniId(savedExp.getAlumniId());
         experienceDocument.setDescription(savedExp.getDescription());
         experienceDocument.setTitle(savedExp.getTitle());
-        experienceDocument.setCreated_at(LocalDate.from(savedExp.getCreated_at()));
+        experienceDocument.setCreated_at(savedExp.getCreated_at().toLocalDate());
         try {
             elasticsearchOperations.save(experienceDocument);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
-    @RabbitListener(queues = "delete.queue")
-    public void deleteExperience(String message){
-        Experience experience =experienceRepository.findByAlumniId(message);
+
+    public void deleteExperience(Integer user_Id){
+        Experience experience =experienceRepository.findByAlumniId(String.valueOf(user_Id));
+    if(experience==null){
+        throw new ExperienceNotfoundException("error while removing experience");
+    }
         experienceRepository.delete(experience);
     }
 
@@ -88,6 +92,7 @@ public class ExperienceService {
         exp.setAlumniId(experience.getAlumniId());
         exp.setTitle(experience.getTitle());
         exp.setDescription(experience.getDescription());
+        exp.setDomain(experience.getDomain());
         exp.setKeywords(experience.getKeywords());
         return ResponseEntity.ok(exp);
     }

@@ -8,13 +8,13 @@ public class AllExperienceRecommendation {
 
 
     private List<ExperienceDocument> content;
-    private Long totalElements;
     private int totalPages;
+    private long totalElements;
 
-    public AllExperienceRecommendation(List<ExperienceDocument> content, long totalPages, int totalElements) {
+    public AllExperienceRecommendation(List<ExperienceDocument> content, long totalHits,int size) {
         this.content = content;
-        this.totalPages = Math.toIntExact(totalPages);
-        this.totalElements = (long) Math.ceil((double) totalPages / totalElements);
+        this.totalElements = totalHits;
+        this.totalPages = (int) Math.ceil((double) totalHits / size);
     }
 
 }

@@ -1,10 +1,14 @@
 package ma.nextstepest.auth_service.dto.Response;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ExperienceUserInfoRocom {
     private String title;
     private String description;
@@ -20,6 +24,5 @@ public class ExperienceUserInfoRocom {
     private String username;
 
 
-    public ExperienceUserInfoRocom(String title, String description, String domain, String firstname, String lastname, String username) {
-    }
+
 }

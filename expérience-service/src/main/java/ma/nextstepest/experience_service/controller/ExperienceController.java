@@ -41,4 +41,9 @@ public class ExperienceController {
                                                                 @RequestParam String major){
         return experienceService.getRecommendedExperience(page,size,major);
     }
+    @DeleteMapping("/delete/{user_id}")
+    public ResponseEntity deleteExperience(@PathVariable Integer user_id){
+        experienceService.deleteExperience(user_id);
+        return ResponseEntity.noContent().build();
+    }
 }
