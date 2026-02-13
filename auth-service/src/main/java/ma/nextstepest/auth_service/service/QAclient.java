@@ -1,15 +1,15 @@
 package ma.nextstepest.auth_service.service;
 
-import ma.nextstepest.auth_service.dto.Response.AllExperiencesResponse;
 import ma.nextstepest.auth_service.dto.Response.AllQuestionResponse;
-import ma.nextstepest.auth_service.dto.Response.QuestionDto;
 import ma.nextstepest.auth_service.dto.Response.QuestionInfoDto;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 @Service
 public class QAclient {
@@ -81,5 +81,28 @@ public class QAclient {
                 .retrieve()
                 .bodyToMono(AllQuestionResponse.class)
                 .block();
+    }
+    public ResponseEntity<?> deleteQuestion(Integer id){
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        User user = userRepository.findByEmail(email);
+        if (user == null)
+            throw new RuntimeException("User not found");;
+
+        Integer userId = user.getId();
+        try{
+            return webClient.delete()
+                    .uri("/question/{id}", id)
+                    .header("X-USER-ID", userId.toString())
+                    .retrieve()
+                    .toBodilessEntity()
+                    .block();
+        }catch (WebClientResponseException e){
+            return ResponseEntity
+                    .status(e.getStatusCode())
+                    .body(e.getResponseBodyAsString());
+        }
+
+
     }
 }

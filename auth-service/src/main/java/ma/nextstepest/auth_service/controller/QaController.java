@@ -6,8 +6,10 @@ import ma.nextstepest.auth_service.dto.Request.QuestionRequest;
 import ma.nextstepest.auth_service.dto.Response.QuestionDto;
 import ma.nextstepest.auth_service.dto.Response.QuestionInfoDto;
 import ma.nextstepest.auth_service.exception.UserNotAllowed;
+import ma.nextstepest.auth_service.service.QAclient;
 import ma.nextstepest.auth_service.service.QuestionService;
 import ma.nextstepest.auth_service.service.RecommendationService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,9 +17,11 @@ public class QaController {
 
     private final QuestionService questionService;
     private final RecommendationService recommendationService;
-    public QaController(QuestionService questionService, RecommendationService recommendationService) {
+    private final QAclient qAclient;
+    public QaController(QuestionService questionService, RecommendationService recommendationService, QAclient qAclient) {
         this.questionService = questionService;
         this.recommendationService = recommendationService;
+        this.qAclient = qAclient;
     }
 
     @PostMapping("/question")
@@ -32,14 +36,8 @@ public class QaController {
     }
 
     @DeleteMapping("/question/{id}")
-    public MessageResponse deleteQuestion(@PathVariable Integer id){
-        MessageResponse message = new MessageResponse();
-        boolean works = questionService.deleteQuestion(id);
-        if (!works){
-            throw new UserNotAllowed("you are not allowed, you cant delete it");
-        }
-        message.setMessage("your question deleted successfully");
-        return message;
+    public ResponseEntity deleteQuestion(@PathVariable Integer id){
+        return qAclient.deleteQuestion(id);
     }
 
     @GetMapping("/question/all")

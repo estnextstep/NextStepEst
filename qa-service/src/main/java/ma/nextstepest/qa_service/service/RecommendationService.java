@@ -19,6 +19,7 @@ import java.util.List;
 public class RecommendationService {
     @Autowired
     private ElasticsearchOperations elasticsearchOperations;
+
     public AllrecQaResponse getRecommendedQuestions(int page, int size,String major){
         NativeQuery query = NativeQuery.builder()
                 .withQuery(q -> q.bool(b -> b

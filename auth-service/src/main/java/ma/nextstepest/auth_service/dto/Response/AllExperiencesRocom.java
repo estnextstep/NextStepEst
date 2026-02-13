@@ -1,10 +1,14 @@
 package ma.nextstepest.auth_service.dto.Response;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AllExperiencesRocom {
 
 
@@ -12,17 +16,6 @@ public class AllExperiencesRocom {
     private int totalPages;
     private long totalElements;
 
-    public AllExperiencesRocom(List<ExperienceUserInfoRocom> list, int totalPages, long totalElements) {
-        this.content = list;
-        this.totalPages=totalPages;
-        this.totalElements = totalElements;
-    }
 
-    public AllExperiencesRocom(){
-
-    }
-
-
-    // constructor + getters
 }
 

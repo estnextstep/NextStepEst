@@ -4,7 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i add the elastic search in Qa to suggest the question based on the user major" />
+    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i add the elastic search in Qa to suggest the question based on the user major">
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/exception/QaNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/Excpetions/ExperienceNotfoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/Excpetions/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/Errorsdto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/Exceptions/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/Exceptions/UserNotAllowed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/dto/Errorsdto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ExperienceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ExperienceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/QaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/QaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Errorsdto.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Errorsdto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AllExperiencesRocom.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AllExperiencesRocom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AllQuestionResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AllQuestionResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/ExperienceUserInfoRocom.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/ExperienceUserInfoRocom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QAclient.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QAclient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/config/RabbitConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/config/RabbitConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/controller/ExperienceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/controller/ExperienceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/AllExperienceRecommendation.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/AllExperienceRecommendation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/service/ExperienceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/service/ExperienceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/service/RecommendationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/service/RecommendationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/config/RabbitConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/config/RabbitConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/controller/QAcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/controller/QAcontroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/QuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/RecommendationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/RecommendationService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +42,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Exception" />
         <option value="Interface" />
         <option value="Record" />
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -58,34 +87,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.AuthServiceApplication.executor": "Run",
-    "Spring Boot.ExperienceServiceApplication.executor": "Run",
-    "Spring Boot.QaServiceApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ExperienceServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.QaServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ma.nextstepest.experience_service.dto" />
+      <recent name="ma.nextstepest.experience_service.Excpetions" />
+      <recent name="ma.nextstepest.qa_service.dto" />
       <recent name="ma.nextstepest.qa_service.service" />
       <recent name="ma.nextstepest.auth_service.dto.Response" />
-      <recent name="ma.nextstepest.qa_service.dto" />
-      <recent name="ma.nextstepest.auth_service.dto" />
-      <recent name="ma.nextstepest.auth_service.exception" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -102,7 +131,9 @@
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <set>
+              <option value="AuthServiceApplication" />
               <option value="ExperienceServiceApplication" />
+              <option value="QaServiceApplication" />
             </set>
           </value>
         </entry>
@@ -122,7 +153,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.QaServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ExperienceServiceApplication">
     <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="auth-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ma.nextstepest.auth_service.AuthServiceApplication" />
@@ -233,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770677157990</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="i add the elastic search in Qa to suggest the question based on the user major">
+      <option name="closed" value="true" />
+      <created>1770907241739</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1770907241739</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

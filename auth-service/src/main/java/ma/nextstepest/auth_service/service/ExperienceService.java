@@ -47,18 +47,7 @@ public class ExperienceService {
         }
     }
 
-    public boolean deleteExperience(Integer userId) {
-        String email= SecurityContextHolder.getContext().getAuthentication().getName();
-        User db_user = userRepository.findByEmail(email);
-        if (db_user.isExpr() && db_user.getRole().equals("ALUMNI") && Objects.equals(db_user.getId(), userId)){
-            messageProducer.deleteExperience(String.valueOf(userId));
-            db_user.setExpr(false);
-            userRepository.save(db_user);
-            return true;
-        }else {
-            return false;
-        }
-    }
+
 
     public boolean updateExperience(ExperienceRequest experienceRequest) {
         String email= SecurityContextHolder.getContext().getAuthentication().getName();

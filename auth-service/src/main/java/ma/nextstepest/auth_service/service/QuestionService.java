@@ -32,15 +32,7 @@ public class QuestionService {
         return true;
 
     }
-    public boolean deleteQuestion(Integer id){
-        DeleteQuestionRequest deleteQuestionRequest = new DeleteQuestionRequest();
-        String email= SecurityContextHolder.getContext().getAuthentication().getName();
-        User user=userRepository.findByEmail(email);
-        deleteQuestionRequest.setAuthorId(user.getId());
-        deleteQuestionRequest.setQuestionId(id);
-        messageProducer.deleteQuestion(deleteQuestionRequest);
-        return true;
-    }
+
     public AllQuestionResponse getAllQuestions(int page,int size){
 
         return qAclient.getAllQuestions(page,size);

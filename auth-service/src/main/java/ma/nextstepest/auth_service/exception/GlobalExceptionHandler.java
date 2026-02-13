@@ -2,8 +2,10 @@ package ma.nextstepest.auth_service.exception;
 
 
 import ma.nextstepest.auth_service.dto.Errorsdto;
+import ma.nextstepest.auth_service.dto.Response.MessageResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -55,5 +57,12 @@ public class GlobalExceptionHandler {
                 new Errorsdto(false,br.getMessage())
         ));
     }
+    @ExceptionHandler(QaNotFoundException.class)
+    public ResponseEntity<Errorsdto> handleQaNotfound(QaNotFoundException qaNotFoundException){
+        Errorsdto error = new Errorsdto(false,
+                qaNotFoundException.getMessage()
+        );
 
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
 }

@@ -69,4 +69,10 @@ public class QAcontroller {
     {
     return recommendationService.getRecommendedQuestions(page,size,major);
     }
+    @DeleteMapping("/question/{id}")
+    public ResponseEntity deleteQuestion(@PathVariable Integer id,
+                                       @RequestHeader("X-USER-ID") Integer userId) throws Exception {
+        questionService.deleteQuestion(id,userId);
+        return ResponseEntity.noContent().build();
+    }
 }
