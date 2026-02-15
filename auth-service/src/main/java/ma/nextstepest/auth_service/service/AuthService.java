@@ -35,18 +35,22 @@ public class AuthService {
     private final OtpService service;
     private final MessageProducer producer;
     private  final ExperienceService experienceService;
+    private final QAclient qAclient;
+    private final ExperienceClient experienceClient;
 
     public AuthService(UserRepository userRepository,
                        JwtService jwtService,
                        PasswordEncoder passwordEncoder,
                        OtpService service,
-                       MessageProducer producer,ExperienceService experienceService) {
+                       MessageProducer producer, ExperienceService experienceService, QAclient qAclient, ExperienceClient experienceClient) {
         this.userRepository = userRepository;
         this.jwtService = jwtService;
         this.passwordEncoder = passwordEncoder;
         this.service = service;
         this.producer = producer;
         this.experienceService = experienceService;
+        this.qAclient = qAclient;
+        this.experienceClient = experienceClient;
     }
 
     public MessageResponse register(User user) {
@@ -299,6 +303,24 @@ public class AuthService {
                 .linkedIn(user.getLinkedIn())
                 .experienceRequest(experienceService.getExperience(user.getEmail()))
                 .build();
+    }
+
+    public MessageResponse deleteUser(){
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByEmail(email);
+        if (user == null)
+            throw new RuntimeException("User not found");;
+        int id = user.getId();
+        MessageResponse m1= qAclient.deleteUserInfo(id);
+        MessageResponse m2= experienceClient.deleteUserInfo(id);
+        userRepository.delete(user);
+        MessageResponse message = new MessageResponse();
+        if (m1.isSuccess() && m2.isSuccess()){
+            message.setMessage("user deleted successfully");
+            return message;
+        }else{
+            throw  new RuntimeException("an error in deleting your account");
+        }
     }
 
 }

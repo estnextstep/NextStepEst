@@ -1,6 +1,7 @@
 package ma.nextstepest.auth_service.service;
 
 import ma.nextstepest.auth_service.dto.Response.AllQuestionResponse;
+import ma.nextstepest.auth_service.dto.Response.MessageResponse;
 import ma.nextstepest.auth_service.dto.Response.QuestionInfoDto;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.repository.UserRepository;
@@ -102,7 +103,16 @@ public class QAclient {
                     .status(e.getStatusCode())
                     .body(e.getResponseBodyAsString());
         }
-
-
+    }
+    public MessageResponse deleteUserInfo(int id){
+        return webClient.delete()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/deleteUserInfo")
+                        .queryParam("id", id)
+                        .build()
+                )
+                .retrieve()
+                .bodyToMono(MessageResponse.class)
+                .block();
     }
 }

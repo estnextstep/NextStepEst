@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @RestController
 public class ProfileController {
 
@@ -44,6 +46,11 @@ public class ProfileController {
     @PutMapping("/me/edit/change-password")
     public MessageResponse ChangeUserPassword(@RequestBody ChangePasswordReq changePasswordReq){
         return authservice.updatepassword(changePasswordReq);
+    }
+
+    @DeleteMapping("/user/delete")
+    public MessageResponse deleteUser(){
+        return authservice.deleteUser();
     }
 
 }
