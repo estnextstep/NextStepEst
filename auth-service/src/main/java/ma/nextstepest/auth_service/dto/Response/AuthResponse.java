@@ -12,4 +12,5 @@ public class AuthResponse {
     public String token;
     public String role;
     private Date experation;
+    private Integer id;
 }
