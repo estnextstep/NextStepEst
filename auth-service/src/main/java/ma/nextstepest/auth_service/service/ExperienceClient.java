@@ -4,6 +4,7 @@ import ma.nextstepest.auth_service.dto.Errorsdto;
 import ma.nextstepest.auth_service.dto.Response.AllExperiencesResponse;
 import ma.nextstepest.auth_service.dto.Request.ExperienceRequest;
 import ma.nextstepest.auth_service.dto.Response.AllExperiencesRocom;
+import ma.nextstepest.auth_service.dto.Response.MessageResponse;
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.repository.UserRepository;
 import org.springframework.http.HttpStatus;
@@ -59,6 +60,7 @@ public class ExperienceClient {
                 .bodyToMono(AllExperiencesRocom.class)
                 .block();
     }
+
     public ResponseEntity<?> deleteExperience(Integer user_id){
         String email= SecurityContextHolder.getContext().getAuthentication().getName();
         User db_user = userRepository.findByEmail(email);
@@ -86,7 +88,19 @@ public class ExperienceClient {
     }else {
             return ResponseEntity.status(HttpStatus.FORBIDDEN)
                     .body(new Errorsdto(false,"Not allowed"));}
-        }
+    }
 
+
+    public MessageResponse deleteUserInfo(int id){
+        return webClient.delete()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/deleteUserExp")
+                        .queryParam("id", id)
+                        .build()
+                )
+                .retrieve()
+                .bodyToMono(MessageResponse.class)
+                .block();
+    }
 
 }
