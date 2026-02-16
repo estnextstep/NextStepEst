@@ -7,4 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AnswerRepository  extends JpaRepository<Answer,Integer> {
     Page<Answer> findAllByQuestionId(int questionId, Pageable pageable);
+    void deleteByAuthorId(Long authorId);
+
+    void deleteByQuestionId(Integer id);
 }

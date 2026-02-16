@@ -3,6 +3,7 @@ package ma.nextstepest.experience_service.controller;
 import ma.nextstepest.experience_service.dto.AllExperienceRecommendation;
 import ma.nextstepest.experience_service.dto.AllExperiencesResponse;
 import ma.nextstepest.experience_service.dto.ExperienceRequest;
+import ma.nextstepest.experience_service.dto.MessageResponse;
 import ma.nextstepest.experience_service.entity.Experience;
 import ma.nextstepest.experience_service.service.ExperienceService;
 import org.springframework.data.domain.Page;
@@ -46,4 +47,10 @@ public class ExperienceController {
         experienceService.deleteExperience(user_id);
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping("/deleteUserExp")
+    public MessageResponse deleteUserInfo(@RequestParam int id){
+        return experienceService.deleteUserInfo(id);
+    }
+
 }

@@ -4,6 +4,7 @@ import ma.nextstepest.experience_service.Excpetions.ExperienceNotfoundException;
 import ma.nextstepest.experience_service.dto.AllExperienceRecommendation;
 import ma.nextstepest.experience_service.dto.ExperienceDocument;
 import ma.nextstepest.experience_service.dto.ExperienceRequest;
+import ma.nextstepest.experience_service.dto.MessageResponse;
 import ma.nextstepest.experience_service.entity.Experience;
 import ma.nextstepest.experience_service.repository.ExperienceRepository;
 
@@ -103,5 +104,14 @@ public class ExperienceService {
 
     public AllExperienceRecommendation getRecommendedExperience(int page, int size, String major){
         return recommendationService.getRecommendedExperience(page, size, major);
+    }
+
+    public MessageResponse deleteUserInfo(int id) {
+        Experience experience =experienceRepository.findByAlumniId(String.valueOf(id));
+        if(experience==null){
+            throw new ExperienceNotfoundException("error while removing experience");
+        }
+        experienceRepository.delete(experience);
+        return new MessageResponse();
     }
 }
