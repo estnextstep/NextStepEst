@@ -14,6 +14,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -106,4 +108,16 @@ public class QuestionService {
         return questionInfoDto;
     }
 
+    @Transactional
+    public MessageResponse deleteUserInfo(int id) {
+        List<Question> questions = questionRepository.findByAuthorId((long) id);
+
+        for (Question q : questions) {
+            answerRepository.deleteByQuestionId(q.getId());
+        }
+
+        questionRepository.deleteByAuthorId((long) id);
+
+        return new MessageResponse();
+    }
 }

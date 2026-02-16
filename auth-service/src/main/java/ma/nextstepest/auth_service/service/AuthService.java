@@ -12,6 +12,7 @@ import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.exception.*;
 import ma.nextstepest.auth_service.repository.UserRepository;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

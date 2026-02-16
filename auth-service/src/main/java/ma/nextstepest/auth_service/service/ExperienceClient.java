@@ -94,7 +94,7 @@ public class ExperienceClient {
     public MessageResponse deleteUserInfo(int id){
         return webClient.delete()
                 .uri(uriBuilder -> uriBuilder
-                        .path("/deleteUserExp")
+                        .path("/getexperience/deleteUserExp")
                         .queryParam("id", id)
                         .build()
                 )

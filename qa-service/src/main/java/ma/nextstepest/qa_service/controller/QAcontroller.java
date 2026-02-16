@@ -1,9 +1,6 @@
 package ma.nextstepest.qa_service.controller;
 
-import ma.nextstepest.qa_service.dto.AllQuestionResponse;
-import ma.nextstepest.qa_service.dto.AllrecQaResponse;
-import ma.nextstepest.qa_service.dto.QuestionDto;
-import ma.nextstepest.qa_service.dto.QuestionInfoDto;
+import ma.nextstepest.qa_service.dto.*;
 import ma.nextstepest.qa_service.entity.Question;
 import ma.nextstepest.qa_service.service.AnswerService;
 import ma.nextstepest.qa_service.service.QuestionService;
@@ -74,5 +71,10 @@ public class QAcontroller {
                                        @RequestHeader("X-USER-ID") Integer userId) throws Exception {
         questionService.deleteQuestion(id,userId);
         return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/deleteUserInfo")
+    public MessageResponse deleteUserInfo(@RequestParam int id){
+        return questionService.deleteUserInfo(id);
     }
 }
