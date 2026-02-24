@@ -24,24 +24,25 @@ public class QAclient {
         this.userRepository = userRepository;
     }
 
-    public boolean deleteAnswer(Integer answerId){
+    public ResponseEntity<?> deleteAnswer(Integer answerId){
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
         User user = userRepository.findByEmail(email);
-        if (user == null) return false;
+        if (user == null) throw new RuntimeException("User not found");
 
         Integer userId = user.getId();
         try{
-            webClient.delete()
+           return webClient.delete()
                     .uri("/answer/{answerId}", answerId)
                     .header("X-USER-ID", userId.toString())
                     .retrieve()
                     .toBodilessEntity()
                     .block();
-            return true;
         }
-        catch (Exception e){
-            return false;
+        catch (WebClientResponseException ex){
+            return ResponseEntity
+                    .status(ex.getStatusCode())
+                    .body(ex.getResponseBodyAsString());
         }
     }
     public AllQuestionResponse getAllQuestions(int page,int size){
@@ -88,7 +89,7 @@ public class QAclient {
 
         User user = userRepository.findByEmail(email);
         if (user == null)
-            throw new RuntimeException("User not found");;
+            throw new RuntimeException("User not found");
 
         Integer userId = user.getId();
         try{

@@ -33,7 +33,7 @@ public class AnswerService {
     public void deleteAnswer(Integer answerId, Integer userId) {
 
         Answer answer = answerRepository.findById(answerId)
-                .orElseThrow(() -> new QANotFoundException("Answer not found"));
+                .orElseThrow(() -> new QANotFoundException("there is an error while trying to remove this question"));
 
         if (!answer.getAuthorId().equals(userId)) {
             throw new RuntimeException("Not allowed");
