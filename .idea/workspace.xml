@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="add id to login response">
+      <change afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/config/CorsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/AnswerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/AnswerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QAclient.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QAclient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/AnswerService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,11 +84,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ma.nextstepest.qa_service.config" />
       <recent name="ma.nextstepest.experience_service.dto" />
       <recent name="ma.nextstepest.qa_service.dto" />
       <recent name="ma.nextstepest.experience_service.Excpetions" />
       <recent name="ma.nextstepest.qa_service.service" />
-      <recent name="ma.nextstepest.auth_service.dto.Response" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -164,9 +160,9 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Spring Boot.QaServiceApplication" />
       <item itemvalue="Spring Boot.AuthServiceApplication" />
       <item itemvalue="Spring Boot.ExperienceServiceApplication" />
-      <item itemvalue="Spring Boot.QaServiceApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -253,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770907241739</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add id to login response">
+      <option name="closed" value="true" />
+      <created>1771938871902</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1771938871902</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,6 +279,7 @@
     <MESSAGE value="fixed getAllexperience ,make the code more clean , added q/a rep" />
     <MESSAGE value="i restrecture the dto package, and i create  add answer and delte answer" />
     <MESSAGE value="i add the elastic search in Qa to suggest the question based on the user major" />
-    <option name="LAST_COMMIT_MESSAGE" value="i add the elastic search in Qa to suggest the question based on the user major" />
+    <MESSAGE value="add id to login response" />
+    <option name="LAST_COMMIT_MESSAGE" value="add id to login response" />
   </component>
 </project>
