@@ -12,6 +12,7 @@ import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.exception.*;
 import ma.nextstepest.auth_service.repository.UserRepository;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -118,7 +119,7 @@ public class AuthService {
         }
     }
 
-    public Object resetPassword(@RequestBody ResetRequest resetRequest){
+    public ResponseEntity<Object> resetPassword(@RequestBody ResetRequest resetRequest){
         Optional<User> optionalUser = userRepository.findByEmail((Object) resetRequest.getEmail());
         if (optionalUser.isEmpty()) {
             throw new UserNotFoundException("Email invalid");
@@ -134,11 +135,11 @@ public class AuthService {
                 ResetResponse success = new ResetResponse();
                 success.setReset_token(dbUser.getResetToken());
                 success.setUser_id(dbUser.getId());
-                return success;
+                return ResponseEntity.ok(success);
             }else{
                 message.setSuccess(false);
                 message.setMessage("your otp is expired or wrong");
-                return message;
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
             }
         } else {
             // send otp mail
@@ -150,7 +151,7 @@ public class AuthService {
             emailDtoAuth.setSubject("Your One-Time Password (OTP)");
             emailDtoAuth.setIndex(2);
             producer.sendEmail(emailDtoAuth);
-            return message;
+            return ResponseEntity.ok(message);
         }
     }
 
@@ -270,16 +271,21 @@ public class AuthService {
 
 
         if(image!=null&& !image.isEmpty()){
-            String uploadDir="/profile_pictures/default_profil.png";
-            Path dirPath=Paths.get(uploadDir);
+            String uploadDir = "profile_pictures";
+            Path dirPath = Paths.get(uploadDir);
+
             if (!Files.exists(dirPath)) {
                 Files.createDirectories(dirPath);
             }
 
-            String filename=System.currentTimeMillis()+"_"+image.getOriginalFilename();
-            Path filepath= Paths.get(uploadDir,filename);
-            Files.write(filepath,image.getBytes());
+            String filename = System.currentTimeMillis() + "_" + image.getOriginalFilename();
+            Path filepath = dirPath.resolve(filename);
+
+            Files.write(filepath, image.getBytes());
+
             user.setUrlImage("/profile_pictures/" + filename);
+
+
         }
     userRepository.save(user);
     message.setMessage("profile updated with success ");

@@ -5,6 +5,7 @@ import ma.nextstepest.auth_service.dto.Response.MessageResponse;
 import ma.nextstepest.auth_service.exception.UserNotAllowed;
 import ma.nextstepest.auth_service.service.AnswerService;
 import ma.nextstepest.auth_service.service.QAclient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -30,13 +31,9 @@ public class AnswerController {
         return message;
     }
     @DeleteMapping("/answer/{answerId}")
-    public MessageResponse deleteAnswer(@PathVariable Integer answerId){
-        MessageResponse message=new MessageResponse();
-        boolean worked=qAclient.deleteAnswer(answerId);
-        if (!worked){
-            throw new UserNotAllowed("couldn't delete your answer, please try again");
-        }
-        message.setMessage("your answer deleted successfully");
-        return message;
+    public ResponseEntity deleteAnswer(@PathVariable Integer answerId){
+
+        return qAclient.deleteAnswer(answerId);
+
     }
 }
