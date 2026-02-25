@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/qa-service/pom.xml" />
         <option value="$PROJECT_DIR$/auth-service/pom.xml" />
+        <option value="$PROJECT_DIR$/recomand-service/pom.xml" />
         <option value="$PROJECT_DIR$/expérience-service/pom.xml" />
         <option value="$PROJECT_DIR$/email-notification-service/pom.xml" />
       </list>
