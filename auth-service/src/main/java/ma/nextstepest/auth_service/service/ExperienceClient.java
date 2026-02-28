@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
+import reactor.core.publisher.Mono;
 
 import java.util.Objects;
 
@@ -27,11 +28,12 @@ public class ExperienceClient {
     }
 
     public ExperienceRequest getExperience(Integer userId){
-
         return webClient.get()
-                .uri("getexperience/{id}",userId)
+                .uri("/getexperience/{id}", userId)
                 .retrieve()
-                .bodyToMono(ExperienceRequest.class).block();
+                .bodyToMono(ExperienceRequest.class)
+                .onErrorResume(e -> Mono.empty())
+                .block();
     }
 
     public AllExperiencesResponse getAll(int page, int size){
@@ -93,11 +95,7 @@ public class ExperienceClient {
 
     public MessageResponse deleteUserInfo(int id){
         return webClient.delete()
-                .uri(uriBuilder -> uriBuilder
-                        .path("/getexperience/deleteUserExp")
-                        .queryParam("id", id)
-                        .build()
-                )
+                .uri("/getexperience/deleteUserExp?id={id}", id)
                 .retrieve()
                 .bodyToMono(MessageResponse.class)
                 .block();

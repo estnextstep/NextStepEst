@@ -9,4 +9,6 @@ public class AnswerDto {
     private Integer authorId;
 
     private Integer questionId;
+
+
 }

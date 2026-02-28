@@ -1,15 +1,13 @@
 package ma.nextstepest.auth_service.service;
 
-import ma.nextstepest.auth_service.dto.Request.DeleteQuestionRequest;
 import ma.nextstepest.auth_service.dto.Request.QuestionRequest;
 import ma.nextstepest.auth_service.dto.Response.AllQuestionResponse;
-import ma.nextstepest.auth_service.dto.Response.QuestionDto;
 import ma.nextstepest.auth_service.dto.Response.QuestionInfoDto;
+
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class QuestionService {
