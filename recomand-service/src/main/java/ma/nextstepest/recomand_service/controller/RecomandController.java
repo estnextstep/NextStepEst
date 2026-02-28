@@ -17,7 +17,7 @@ public class RecomandController {
     }
 
     @PostMapping("/recommand")
-    public List<FiliereDTO> recommend(@RequestBody List<QuestionAnswer> answers) throws Exception {
-        return recomandService.getTop4Filiere(answers);
+    public List<FiliereDTO> recommend(@RequestBody List<QuestionAnswer> answers,@RequestParam int authorId) throws Exception {
+        return recomandService.getTop4Filiere(answers,authorId);
     }
 }

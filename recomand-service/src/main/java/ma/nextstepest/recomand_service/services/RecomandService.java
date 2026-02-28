@@ -2,6 +2,7 @@ package ma.nextstepest.recomand_service.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ma.nextstepest.recomand_service.dto.*;
+import ma.nextstepest.recomand_service.repository.DataSetRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -12,11 +13,18 @@ import java.util.stream.Collectors;
 @Service
 public class RecomandService {
 
+    private final DataSetService dataSetService;
+
     private final String OLLAMA_URL = "http://localhost:11434/api/generate";
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public List<FiliereDTO> getTop4Filiere(List<QuestionAnswer> answers) throws Exception {
+    public RecomandService(DataSetService dataSetService) {
+        this.dataSetService = dataSetService;
+    }
+
+
+    public List<FiliereDTO> getTop4Filiere(List<QuestionAnswer> answers,int author) throws Exception {
 
         String studentAnswers = answers.stream()
                 .map(qa -> qa.getQuestion() + ": " + qa.getAnswer())
@@ -60,6 +68,8 @@ public class RecomandService {
         // Convert directly to DTO
         TopFiliereResponse result =
                 objectMapper.readValue(innerJson, TopFiliereResponse.class);
+
+        dataSetService.appendAnswerAsync(author,answers,result.getTop_filiere().getFirst().getName());
 
         // Return only top 4
         return result.getTop_filiere()
