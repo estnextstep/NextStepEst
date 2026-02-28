@@ -313,21 +313,39 @@ public class AuthService {
                 .build();
     }
 
-    public MessageResponse deleteUser(){
+    public MessageResponse deleteUser() {
+
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByEmail(email);
-        if (user == null)
-            throw new RuntimeException("User not found");;
+
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+
         int id = user.getId();
-        MessageResponse m1= qAclient.deleteUserInfo(id);
-        MessageResponse m2= experienceClient.deleteUserInfo(id);
+
+        MessageResponse m1 = qAclient.deleteUserInfo(id);
+        MessageResponse m2 = null;
+
+        if (user.isExpr()) {
+            m2 = experienceClient.deleteUserInfo(id);
+        }
+
         userRepository.delete(user);
-        MessageResponse message = new MessageResponse();
-        if (m1.isSuccess() && m2.isSuccess()){
+
+        boolean success = m1.isSuccess();
+
+
+        if (user.isExpr()) {
+            success = success && (m2 != null && m2.isSuccess());
+        }
+
+        if (success) {
+            MessageResponse message = new MessageResponse();
             message.setMessage("user deleted successfully");
             return message;
-        }else{
-            throw  new RuntimeException("an error in deleting your account");
+        } else {
+            throw new RuntimeException("an error in deleting your account");
         }
     }
 
