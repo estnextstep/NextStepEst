@@ -11,6 +11,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuestionDto{
+    private Integer author_id;
+    private String name;
+    private String lastName;
+    private String username;
+    private String profileUrl;
     private Integer id;
     private String title;
     private List<String> keywords;
