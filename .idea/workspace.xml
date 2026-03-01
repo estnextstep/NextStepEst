@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="fixing delete user bug" />
+    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="add id to login response">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ExperienceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ExperienceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/security/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/security/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/ExperienceClient.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +19,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Record" />
         <option value="Exception" />
-        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -31,8 +37,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst.git&quot;,
-    &quot;accountId&quot;: &quot;c68d574c-fc32-46ba-894c-4dcc6b6c974a&quot;
+    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst&quot;,
+    &quot;accountId&quot;: &quot;bcbf85af-b209-48d6-a3e6-be057a6b7298&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -45,6 +51,9 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -66,9 +75,9 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EmailNotificationServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.ExperienceServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.QaServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.RecomandServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
@@ -82,11 +91,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ma.nextstepest.experience_service.config" />
+      <recent name="ma.nextstepest.auth_service.dto.Response" />
       <recent name="ma.nextstepest.qa_service.config" />
       <recent name="ma.nextstepest.experience_service.dto" />
       <recent name="ma.nextstepest.qa_service.dto" />
-      <recent name="ma.nextstepest.experience_service.Excpetions" />
-      <recent name="ma.nextstepest.qa_service.service" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -116,21 +125,35 @@
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
+              <entry key="EmailNotificationServiceApplication" value="STOPPED" />
               <entry key="QaServiceApplication" value="STOPPED" />
-              <entry key="RecomandServiceApplication" value="STOPPED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.QaServiceApplication">
+  <component name="RunManager" selected="Spring Boot.AuthServiceApplication">
     <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="auth-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ma.nextstepest.auth_service.AuthServiceApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ma.nextstepest.auth_service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmailNotificationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+      <module name="email-notification-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ma.nextstepest.email_notification_service.EmailNotificationServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ma.nextstepest.email_notification_service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -159,14 +182,16 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.QaServiceApplication" />
       <item itemvalue="Spring Boot.AuthServiceApplication" />
+      <item itemvalue="Spring Boot.EmailNotificationServiceApplication" />
       <item itemvalue="Spring Boot.ExperienceServiceApplication" />
+      <item itemvalue="Spring Boot.QaServiceApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.ExperienceServiceApplication" />
         <item itemvalue="Spring Boot.AuthServiceApplication" />
+        <item itemvalue="Spring Boot.EmailNotificationServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -256,39 +281,31 @@
       <option name="project" value="LOCAL" />
       <updated>1771938871902</updated>
     </task>
-    <task id="LOCAL-00009" summary="improving recomand service">
+    <task id="LOCAL-00009" summary="add id to login response">
       <option name="closed" value="true" />
-      <created>1772068246950</created>
+      <created>1772043598204</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1772068246952</updated>
+      <updated>1772043598204</updated>
     </task>
-    <task id="LOCAL-00010" summary="fixed some bugs , complete the service">
+    <task id="LOCAL-00010" summary="add id to login response">
       <option name="closed" value="true" />
-      <created>1772228000022</created>
+      <created>1772116467902</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1772228000022</updated>
+      <updated>1772116467909</updated>
     </task>
-    <task id="LOCAL-00011" summary="add dataSet save in db , and async configuration">
+    <task id="LOCAL-00011" summary="add id to login response">
       <option name="closed" value="true" />
-      <created>1772293431175</created>
+      <created>1772319651422</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1772293431175</updated>
+      <updated>1772319651422</updated>
     </task>
-    <task id="LOCAL-00012" summary="fixing delete user bug">
-      <option name="closed" value="true" />
-      <created>1772293762524</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1772293762524</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,10 +328,6 @@
     <MESSAGE value="i restrecture the dto package, and i create  add answer and delte answer" />
     <MESSAGE value="i add the elastic search in Qa to suggest the question based on the user major" />
     <MESSAGE value="add id to login response" />
-    <MESSAGE value="improving recomand service" />
-    <MESSAGE value="fixed some bugs , complete the service" />
-    <MESSAGE value="add dataSet save in db , and async configuration" />
-    <MESSAGE value="fixing delete user bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing delete user bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="add id to login response" />
   </component>
 </project>

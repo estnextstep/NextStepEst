@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -70,7 +69,9 @@ public class ExperienceService {
             throw new RuntimeException("User not found");
         }
 
-        return experienceClient.getExperience(user.getId());
+        ExperienceRequest exp = experienceClient.getExperience(user.getId());
+
+        return exp;
     }
 
     public AllExperiencesResponse getAll(int page, int size) {
