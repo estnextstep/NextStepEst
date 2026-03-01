@@ -52,7 +52,7 @@ public class ExperienceClient {
     public AllExperiencesRocom getRecommendedExperience(int page, int size, String major){
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
-                        .path("getexperience/exp/recommendation")
+                        .path("/getexperience/exp/recommendation")
                         .queryParam("page", page)
                         .queryParam("size", size)
                         .queryParam("major",major)
