@@ -37,22 +37,8 @@ public class QuestionService {
     }
 
     public AllQuestionResponse getAllQuestions(int page,int size){
-        AllQuestionResponse allQuestionResponse = qAclient.getAllQuestions(page,size);
 
-        List<QuestionDto> content = allQuestionResponse.getContent();
-
-        for (QuestionDto q : content){
-            Optional<User> user=userRepository.findById(q.getAuthor_id());
-            if (user.isEmpty()){
-                throw new UserNotFoundException("user not found");
-            }
-            User db_user=user.get();
-            q.setName(db_user.getFirstname());
-            q.setLastName(db_user.getLastname());
-            q.setUsername(db_user.getUsername());
-            q.setProfileUrl(db_user.getUrlImage());
-        }
-        return allQuestionResponse;
+        return qAclient.getAllQuestions(page,size);
 
     }
 
