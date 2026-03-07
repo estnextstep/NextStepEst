@@ -2,6 +2,7 @@ package ma.nextstepest.auth_service.service;
 
 import ma.nextstepest.auth_service.dto.*;
 import ma.nextstepest.auth_service.dto.Request.*;
+import ma.nextstepest.auth_service.dto.recomandation.TopFiliereResponse;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,15 @@ public class MessageProducer {
         rabbitTemplate.convertAndSend(
                 "email.exchange",
                 "email.user.created",
+                json
+        );
+    }
+
+    public void sendEmailRecommend(TopFiliereResponse topFiliereResponse){
+        String json = objectMapper.writeValueAsString(topFiliereResponse);
+        rabbitTemplate.convertAndSend(
+                "email.exchange",
+                "email.recommand",
                 json
         );
     }

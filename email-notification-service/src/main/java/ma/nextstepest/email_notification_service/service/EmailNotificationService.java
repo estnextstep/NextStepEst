@@ -2,6 +2,7 @@ package ma.nextstepest.email_notification_service.service;
 
 
 import ma.nextstepest.email_notification_service.dto.EmailDtoAuth;
+import ma.nextstepest.email_notification_service.dto.TopFiliereResponse;
 import ma.nextstepest.email_notification_service.entity.EmailNotification;
 import ma.nextstepest.email_notification_service.repository.EmailNotificationRepository;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -35,5 +36,10 @@ public class EmailNotificationService {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+    @RabbitListener(queues = "email.recommand.queue")
+    public void receiveMessageRecommend(String message){
+        TopFiliereResponse topFiliereResponse = new ObjectMapper().readValue(message, TopFiliereResponse.class);
+        emailSenderService.sendEmailRecommend(topFiliereResponse);
     }
 }

@@ -36,7 +36,7 @@ public class RecomandService {
                 No markdown.
                 No explanations.
                 JSON must follow exactly this structure:
-
+                and return exactly 10 filiere
                 {
                   "top_filiere": [
                     {
@@ -74,7 +74,7 @@ public class RecomandService {
         // Return only top 4
         return result.getTop_filiere()
                 .stream()
-                .limit(4)
+                .limit(10)
                 .toList();
     }
 }

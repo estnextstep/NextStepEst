@@ -3,8 +3,11 @@ package ma.nextstepest.email_notification_service.service;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import ma.nextstepest.email_notification_service.dto.EmailDtoAuth;
+import ma.nextstepest.email_notification_service.dto.FiliereDTO;
+import ma.nextstepest.email_notification_service.dto.TopFiliereResponse;
 import ma.nextstepest.email_notification_service.entity.EmailNotification;
 import ma.nextstepest.email_notification_service.repository.EmailNotificationRepository;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -52,8 +55,29 @@ public class EmailSenderService {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void sendEmailRecommend(TopFiliereResponse topFiliereResponse){
+        StringBuilder content = new StringBuilder();
+        content.append("Bonjour,\n\n");
+        content.append("Voici les filières recommandées pour vous :\n\n");
 
 
+
+        for (FiliereDTO f : topFiliereResponse.getTop_filiere()) {
+            content.append("Filière : ").append(f.getName()).append("\n");
+            content.append("Raison : ").append(f.getReason()).append("\n");
+            content.append("------------------------\n");
+        }
+
+        content.append("\nBonne chance pour votre orientation.");
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(topFiliereResponse.getTo_mail());
+        message.setSubject("Recommandation de Filières");
+        message.setText(content.toString());
+
+        javaMailSender.send(message);
     }
 
 }
