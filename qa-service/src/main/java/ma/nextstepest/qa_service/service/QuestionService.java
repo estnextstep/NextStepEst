@@ -86,6 +86,7 @@ public class QuestionService {
         Question question = change_question.get();
         QuestionInfoDto questionInfoDto = new QuestionInfoDto();
         questionInfoDto.setQuestion(QuestionDto.builder()
+                .author_id(question.getAuthorId())
                 .id(question.getId())
                 .title(question.getTitle())
                 .created_at(question.getCreated_at())

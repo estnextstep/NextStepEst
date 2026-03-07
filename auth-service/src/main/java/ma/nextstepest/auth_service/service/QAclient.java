@@ -19,7 +19,7 @@ public class QAclient {
 
     public QAclient(
 
-            @Qualifier("qaWebClient") WebClient webClient, UserRepository userRepository) {
+        @Qualifier("qaWebClient") WebClient webClient, UserRepository userRepository) {
         this.webClient = webClient;
         this.userRepository = userRepository;
     }

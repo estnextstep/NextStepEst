@@ -20,4 +20,10 @@ public class WebClientConfig {
                 .baseUrl("http://localhost:8084") // Question answer service
                 .build();
     }
+    @Bean (name = "recWebClient")
+    public WebClient webClientRec(){
+        return WebClient.builder()
+                .baseUrl("http://localhost:8085") // recommendation service
+                .build();
+    }
 }

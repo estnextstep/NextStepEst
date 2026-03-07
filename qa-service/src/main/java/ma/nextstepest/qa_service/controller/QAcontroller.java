@@ -40,6 +40,7 @@ public class QAcontroller {
         List<QuestionDto> content = questions.getContent()
                 .stream()
                 .map(q -> new QuestionDto(
+                        q.getAuthorId(),
                         q.getId(),
                         q.getTitle(),
                         q.getContent(),
