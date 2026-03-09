@@ -103,6 +103,7 @@ public class QuestionService {
                         q.getQuestionId()
                 ))
                 .toList();
+
         questionInfoDto.setAnswers(content);
         questionInfoDto.setTotalPages(answers.getTotalPages());
         questionInfoDto.setTotalElements(answers.getTotalElements());

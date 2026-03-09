@@ -2,6 +2,7 @@ package ma.nextstepest.auth_service.service;
 
 import ma.nextstepest.auth_service.dto.Request.QuestionRequest;
 import ma.nextstepest.auth_service.dto.Response.AllQuestionResponse;
+import ma.nextstepest.auth_service.dto.Response.AnswerResponse;
 import ma.nextstepest.auth_service.dto.Response.QuestionDto;
 import ma.nextstepest.auth_service.dto.Response.QuestionInfoDto;
 
@@ -12,7 +13,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionService {
@@ -43,16 +46,49 @@ public class QuestionService {
     }
 
     public QuestionInfoDto getQuestionInfo(int id, int page){
-        QuestionInfoDto questionInfoDto= qAclient.getQuestionInfo(id,page);
-        Optional<User> user=userRepository.findById(questionInfoDto.getQuestion().getAuthor_id());
+
+        QuestionInfoDto questionInfoDto = qAclient.getQuestionInfo(id,page);
+
+        // question author
+        Optional<User> user = userRepository.findById(questionInfoDto.getQuestion().getAuthor_id());
+
         if (user.isEmpty()){
             throw new UserNotFoundException("user not found");
         }
-        User db_user=user.get();
+
+        User db_user = user.get();
+
         questionInfoDto.getQuestion().setName(db_user.getFirstname());
         questionInfoDto.getQuestion().setLastName(db_user.getLastname());
         questionInfoDto.getQuestion().setUsername(db_user.getUsername());
         questionInfoDto.getQuestion().setProfileUrl(db_user.getUrlImage());
+
+        // answers
+        List<AnswerResponse> answers = questionInfoDto.getAnswers();
+
+        List<Integer> authorIds = answers.stream()
+                .map(AnswerResponse::getAuthorId)
+                .distinct()
+                .toList();
+
+        Map<Integer, User> usersMap = userRepository.findAllById(authorIds)
+                .stream()
+                .collect(Collectors.toMap(User::getId, u -> u));
+
+        answers.forEach(answer -> {
+
+            User u = usersMap.get(answer.getAuthorId());
+
+            if (u != null){
+                answer.setFirstName(u.getFirstname());
+                answer.setLastName(u.getLastname());
+                answer.setUsername(u.getUsername());
+                answer.setImgUrl(u.getUrlImage());
+                answer.setAlumniId(u.getId());
+            }
+
+        });
+
         return questionInfoDto;
     }
 }
