@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="fixing the bugs in question Dto response">
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/RecomandController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/recomandation/FiliereDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/recomandation/QuestionAnswer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/recomandation/TopFiliereResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/RecomandClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/RecomandService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/dto/FiliereDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/dto/TopFiliereResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/WebClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/WebClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/MessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/MessageResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/MessageProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/MessageProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QAclient.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QAclient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/config/RabbitConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/config/RabbitConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailNotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailNotificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailSenderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/service/EmailSenderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recomand-service/src/main/java/ma/nextstepest/recomand_service/services/RecomandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/recomand-service/src/main/java/ma/nextstepest/recomand_service/services/RecomandService.java" afterDir="false" />
-    </list>
+    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i added the relation between (authService and recommendService) and the email connexion as well" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,7 +115,6 @@
               <entry key="AuthServiceApplication" value="STOPPED" />
               <entry key="EmailNotificationServiceApplication" value="STOPPED" />
               <entry key="QaServiceApplication" value="STOPPED" />
-              <entry key="RecomandServiceApplication" value="STOPPED" />
             </map>
           </value>
         </entry>
@@ -192,10 +170,10 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.QaServiceApplication" />
       <item itemvalue="Spring Boot.AuthServiceApplication" />
       <item itemvalue="Spring Boot.EmailNotificationServiceApplication" />
       <item itemvalue="Spring Boot.ExperienceServiceApplication" />
+      <item itemvalue="Spring Boot.QaServiceApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -339,7 +317,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772885490223</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="i added the relation between (authService and recommendService) and the email connexion as well">
+      <option name="closed" value="true" />
+      <created>1772893992372</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1772893992372</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,6 +349,7 @@
     <MESSAGE value="i add the elastic search in Qa to suggest the question based on the user major" />
     <MESSAGE value="add id to login response" />
     <MESSAGE value="fixing the bugs in question Dto response" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing the bugs in question Dto response" />
+    <MESSAGE value="i added the relation between (authService and recommendService) and the email connexion as well" />
+    <option name="LAST_COMMIT_MESSAGE" value="i added the relation between (authService and recommendService) and the email connexion as well" />
   </component>
 </project>
