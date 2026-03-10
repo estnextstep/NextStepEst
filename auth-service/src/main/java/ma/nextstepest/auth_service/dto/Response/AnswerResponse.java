@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AnswerResponse {
 
+
     private Integer id;
 
     private String content;
@@ -16,4 +17,10 @@ public class AnswerResponse {
     private Integer authorId;
 
     private Integer questionId;
+    // user info
+    private Integer alumniId;
+    private String imgUrl;
+    private String firstName;
+    private String lastName;
+    private String username;
 }

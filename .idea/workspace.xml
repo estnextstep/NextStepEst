@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i added the relation between (authService and recommendService) and the email connexion as well" />
+    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="accept get all questions and experiences without jwt">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AnswerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AnswerResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/QuestionService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,8 +36,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst.git&quot;,
-    &quot;accountId&quot;: &quot;c68d574c-fc32-46ba-894c-4dcc6b6c974a&quot;
+    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst&quot;,
+    &quot;accountId&quot;: &quot;bcbf85af-b209-48d6-a3e6-be057a6b7298&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -72,10 +77,8 @@
     &quot;Spring Boot.EmailNotificationServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.ExperienceServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.QaServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.RecomandServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ACER ASPIRE V15/Desktop/Java_Projects/EstNextStep/email-notification-service/src/main/java/ma/nextstepest/email_notification_service/dto&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
@@ -86,10 +89,6 @@
   }
 }</component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ACER ASPIRE V15\Desktop\Java_Projects\EstNextStep\email-notification-service\src\main\java\ma\nextstepest\email_notification_service\dto" />
-      <recent name="C:\Users\ACER ASPIRE V15\Desktop\Java_Projects\EstNextStep\auth-service\src\main\java\ma\nextstepest\auth_service\dto\recomandation" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ma.nextstepest.experience_service.config" />
       <recent name="ma.nextstepest.auth_service.dto.Response" />
@@ -107,12 +106,24 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
+    <option name="hiddenConfigurations">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <set>
+              <option value="AuthServiceApplication" />
+              <option value="ExperienceServiceApplication" />
+              <option value="QaServiceApplication" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="configurationStatuses">
       <map>
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
-              <entry key="AuthServiceApplication" value="STOPPED" />
               <entry key="EmailNotificationServiceApplication" value="STOPPED" />
               <entry key="QaServiceApplication" value="STOPPED" />
             </map>
@@ -177,9 +188,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.EmailNotificationServiceApplication" />
         <item itemvalue="Spring Boot.AuthServiceApplication" />
         <item itemvalue="Spring Boot.ExperienceServiceApplication" />
+        <item itemvalue="Spring Boot.EmailNotificationServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -293,45 +304,36 @@
       <option name="project" value="LOCAL" />
       <updated>1772319651422</updated>
     </task>
-    <task id="LOCAL-00012" summary="fixing the bugs in question Dto response">
+    <task id="LOCAL-00012" summary="accept get all questions and experiences without jwt">
       <option name="closed" value="true" />
-      <created>1772409400785</created>
+      <created>1772894567764</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1772409400785</updated>
+      <updated>1772894567764</updated>
     </task>
-    <task id="LOCAL-00013" summary="fixing the bugs in question Dto response">
-      <option name="closed" value="true" />
-      <created>1772494019169</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1772494019169</updated>
-    </task>
-    <task id="LOCAL-00014" summary="fixing the bugs in question Dto response">
-      <option name="closed" value="true" />
-      <created>1772885490223</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1772885490223</updated>
-    </task>
-    <task id="LOCAL-00015" summary="i added the relation between (authService and recommendService) and the email connexion as well">
-      <option name="closed" value="true" />
-      <created>1772893992372</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1772893992372</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -348,8 +350,7 @@
     <MESSAGE value="i restrecture the dto package, and i create  add answer and delte answer" />
     <MESSAGE value="i add the elastic search in Qa to suggest the question based on the user major" />
     <MESSAGE value="add id to login response" />
-    <MESSAGE value="fixing the bugs in question Dto response" />
-    <MESSAGE value="i added the relation between (authService and recommendService) and the email connexion as well" />
-    <option name="LAST_COMMIT_MESSAGE" value="i added the relation between (authService and recommendService) and the email connexion as well" />
+    <MESSAGE value="accept get all questions and experiences without jwt" />
+    <option name="LAST_COMMIT_MESSAGE" value="accept get all questions and experiences without jwt" />
   </component>
 </project>
