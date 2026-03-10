@@ -20,33 +20,37 @@ public class RecommendationService {
     public AllExperienceRecommendation getRecommendedExperience(int page, int size, String major){
         NativeQuery query = NativeQuery.builder()
                 .withQuery(q -> q.bool(b -> b
-                                .minimumShouldMatch(String.valueOf(1))
-                                .should(m -> m.match(match -> match
-                                        .field("keywords")
-                                        .query(major)
-                                        .fuzziness("AUTO")
-                                        .boost(3F)
-                                ))
-                                .should(m->m.match(match2 ->match2
-                                        .field("title")
-                                        .query(major)
-                                        .boost(2F)
-                                        .fuzziness("AUTO"))
-                                )
-                                .should(s -> s.match(m -> m
-                                        .field("description")
-                                        .query(major)
-                                        .boost(1F)
-                                        .fuzziness("AUTO")
-                                ))
-                                .should(s -> s.match(m -> m
-                                        .field("domain")
-                                        .query(major)
-                                        .boost(1F)
-                                        .fuzziness("AUTO")
-                                ))
-                        )
-                )
+
+                        .must(m -> m.matchAll(ma -> ma))
+
+                        .should(m -> m.match(match -> match
+                                .field("keywords")
+                                .query(major)
+                                .fuzziness("AUTO")
+                                .boost(3F)
+                        ))
+
+                        .should(m -> m.match(match2 -> match2
+                                .field("title")
+                                .query(major)
+                                .boost(2F)
+                                .fuzziness("AUTO")
+                        ))
+
+                        .should(s -> s.match(m -> m
+                                .field("description")
+                                .query(major)
+                                .boost(1F)
+                                .fuzziness("AUTO")
+                        ))
+
+                        .should(s -> s.match(m -> m
+                                .field("domain")
+                                .query(major)
+                                .boost(1F)
+                                .fuzziness("AUTO")
+                        ))
+                ))
                 .withPageable(PageRequest.of(page, size))
                 .build();
         SearchHits<ExperienceDocument> searchHits=elasticsearchOperations.search(query, ExperienceDocument.class);

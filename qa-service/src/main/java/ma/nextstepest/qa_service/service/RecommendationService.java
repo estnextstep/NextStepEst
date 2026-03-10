@@ -23,28 +23,30 @@ public class RecommendationService {
     public AllrecQaResponse getRecommendedQuestions(int page, int size,String major){
         NativeQuery query = NativeQuery.builder()
                 .withQuery(q -> q.bool(b -> b
-                        .minimumShouldMatch(String.valueOf(1))
-                        .should(m -> m.match(match -> match
+
+                        .must(m -> m.matchAll(ma -> ma))
+
+                        .should(s -> s.match(m -> m
                                 .field("keywords")
                                 .query(major)
-                                .fuzziness("AUTO")
                                 .boost(3F)
+                                .fuzziness("AUTO")
                         ))
-                        .should(m->m.match(match2 ->match2
+
+                        .should(s -> s.match(m -> m
                                 .field("title")
                                 .query(major)
                                 .boost(2F)
-                                .fuzziness("AUTO"))
-                        )
-                                .should(s -> s.match(m -> m
-                                        .field("content")
-                                        .query(major)
-                                        .boost(1F)
-                                        .fuzziness("AUTO")
-                                ))
+                                .fuzziness("AUTO")
+                        ))
 
-                        )
-                )
+                        .should(s -> s.match(m -> m
+                                .field("content")
+                                .query(major)
+                                .boost(1F)
+                                .fuzziness("AUTO")
+                        ))
+                ))
                 .withPageable(PageRequest.of(page, size))
                 .build();
         SearchHits<QuestionDocument> searchHits=elasticsearchOperations.search(query, QuestionDocument.class);

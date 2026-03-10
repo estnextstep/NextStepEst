@@ -17,7 +17,7 @@ import java.util.List;
 public class QuestionDocument {
 
     @Id
-    private Integer id;
+    private String id;
     @Field(type = FieldType.Keyword)
     private List<String> keywords;
     @Field(type = FieldType.Text)

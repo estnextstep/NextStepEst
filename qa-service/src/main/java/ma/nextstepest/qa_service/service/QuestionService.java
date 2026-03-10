@@ -48,7 +48,7 @@ public class QuestionService {
 
         //elasticsearch
         QuestionDocument questionDocument=new QuestionDocument();
-        questionDocument.setId(savedQst.getId());
+        questionDocument.setId(String.valueOf(savedQst.getId()));
         questionDocument.setTitle(savedQst.getTitle());
         questionDocument.setContent(savedQst.getContent());
         questionDocument.setKeywords(
@@ -74,7 +74,11 @@ public class QuestionService {
             throw new UserNotAllowed("user not allowed to remove the question");
         }
         questionRepository.delete(question);
-
+        try {
+            elasticsearchOperations.delete(String.valueOf(id), QuestionDocument.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public Page<Question> getAllQuestions(int page, int size){
