@@ -78,4 +78,9 @@ public class QAcontroller {
     public MessageResponse deleteUserInfo(@RequestParam int id){
         return questionService.deleteUserInfo(id);
     }
+
+    @GetMapping("/user/questions")
+    public AllUserQuestionResponse getUserQuestions(@RequestParam int user_id,@RequestParam int page){
+        return questionService.getUserQuestions(user_id,page);
+    }
 }

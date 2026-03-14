@@ -127,4 +127,13 @@ public class QuestionService {
 
         return new MessageResponse();
     }
+
+    public AllUserQuestionResponse getUserQuestions(int userId,int page) {
+        AllUserQuestionResponse allQuestionResponse = new AllUserQuestionResponse();
+        Page<Question> questions = questionRepository.findByAuthorId(userId,PageRequest.of(page,10));
+        allQuestionResponse.setContent(questions.getContent());
+        allQuestionResponse.setTotalElements(questions.getTotalElements());
+        allQuestionResponse.setTotalPages(questions.getTotalPages());
+        return allQuestionResponse;
+    }
 }

@@ -1,10 +1,7 @@
 package ma.nextstepest.auth_service.service;
 
 import ma.nextstepest.auth_service.dto.Request.QuestionRequest;
-import ma.nextstepest.auth_service.dto.Response.AllQuestionResponse;
-import ma.nextstepest.auth_service.dto.Response.AnswerResponse;
-import ma.nextstepest.auth_service.dto.Response.QuestionDto;
-import ma.nextstepest.auth_service.dto.Response.QuestionInfoDto;
+import ma.nextstepest.auth_service.dto.Response.*;
 
 import ma.nextstepest.auth_service.entity.User;
 import ma.nextstepest.auth_service.exception.UserNotFoundException;
@@ -90,5 +87,13 @@ public class QuestionService {
         });
 
         return questionInfoDto;
+    }
+
+    public AllUserQuestionResponse getUserQuestions(int user_id, int page){
+        Optional<User> db_user = userRepository.findById(user_id);
+        if (db_user.isEmpty()){
+            throw new UserNotFoundException("user not found");
+        }
+        return qAclient.getUserQuestions(user_id,page);
     }
 }

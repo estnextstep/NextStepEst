@@ -1,10 +1,13 @@
 package ma.nextstepest.auth_service.controller;
 
 import ma.nextstepest.auth_service.dto.Request.ChangePasswordReq;
+import ma.nextstepest.auth_service.dto.Response.AllQuestionResponse;
+import ma.nextstepest.auth_service.dto.Response.AllUserQuestionResponse;
 import ma.nextstepest.auth_service.dto.Response.MessageResponse;
 import ma.nextstepest.auth_service.dto.Request.UpdateProfile;
 import ma.nextstepest.auth_service.dto.Response.UserInfoResponse;
 import ma.nextstepest.auth_service.service.AuthService;
+import ma.nextstepest.auth_service.service.QuestionService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,11 +21,13 @@ public class ProfileController {
 
 
     private final AuthService authservice;
+    private final QuestionService questionService;
 
 
-    public ProfileController(AuthService authservice) {
+    public ProfileController(AuthService authservice, QuestionService questionService) {
         this.authservice = authservice;
 
+        this.questionService = questionService;
     }
 
     @GetMapping("/me")
@@ -51,6 +56,11 @@ public class ProfileController {
     @DeleteMapping("/user/delete")
     public MessageResponse deleteUser(){
         return authservice.deleteUser();
+    }
+
+    @GetMapping("/user/questions")
+    public AllUserQuestionResponse getUserQuestion(@RequestParam int user_id,@RequestParam int page){
+        return questionService.getUserQuestions(user_id,page);
     }
 
 }
