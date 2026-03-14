@@ -64,7 +64,7 @@ public class QuestionService {
         }
     }
 
-
+    @Transactional
     public void deleteQuestion(Integer id, Integer user_id) {
 
         Question question = questionRepository.findById(id).orElseThrow(()->
@@ -73,6 +73,7 @@ public class QuestionService {
         if(!question.getAuthorId().equals(user_id)){
             throw new UserNotAllowed("user not allowed to remove the question");
         }
+        answerRepository.deleteByQuestionId(question.getId());
         questionRepository.delete(question);
         try {
             elasticsearchOperations.delete(String.valueOf(id), QuestionDocument.class);
