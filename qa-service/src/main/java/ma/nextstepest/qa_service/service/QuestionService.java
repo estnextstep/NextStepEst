@@ -64,7 +64,7 @@ public class QuestionService {
         }
     }
 
-
+    @Transactional
     public void deleteQuestion(Integer id, Integer user_id) {
 
         Question question = questionRepository.findById(id).orElseThrow(()->
@@ -73,6 +73,7 @@ public class QuestionService {
         if(!question.getAuthorId().equals(user_id)){
             throw new UserNotAllowed("user not allowed to remove the question");
         }
+        answerRepository.deleteByQuestionId(question.getId());
         questionRepository.delete(question);
         try {
             elasticsearchOperations.delete(String.valueOf(id), QuestionDocument.class);
@@ -125,5 +126,14 @@ public class QuestionService {
         questionRepository.deleteByAuthorId((long) id);
 
         return new MessageResponse();
+    }
+
+    public AllUserQuestionResponse getUserQuestions(int userId,int page) {
+        AllUserQuestionResponse allQuestionResponse = new AllUserQuestionResponse();
+        Page<Question> questions = questionRepository.findByAuthorId(userId,PageRequest.of(page,10));
+        allQuestionResponse.setContent(questions.getContent());
+        allQuestionResponse.setTotalElements(questions.getTotalElements());
+        allQuestionResponse.setTotalPages(questions.getTotalPages());
+        return allQuestionResponse;
     }
 }

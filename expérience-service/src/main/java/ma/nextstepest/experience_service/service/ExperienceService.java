@@ -48,7 +48,7 @@ public class ExperienceService {
 
         //elasticsearch
         ExperienceDocument experienceDocument = new ExperienceDocument();
-        experienceDocument.setId(savedExp.getId());
+        experienceDocument.setId(String.valueOf(savedExp.getId()));
         experienceDocument.setDomain(savedExp.getDomain());
         experienceDocument.setKeywords(
                 Arrays.stream(savedExp.getKeywords().split(","))
@@ -68,9 +68,14 @@ public class ExperienceService {
 
     public void deleteExperience(Integer user_Id){
         Experience experience =experienceRepository.findByAlumniId(String.valueOf(user_Id));
-    if(experience==null){
-        throw new ExperienceNotfoundException("error while removing experience");
-    }
+        if(experience==null){
+            throw new ExperienceNotfoundException("error while removing experience");
+        }
+        try {
+            elasticsearchOperations.delete(String.valueOf(experience.getId()), ExperienceDocument.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         experienceRepository.delete(experience);
     }
 
@@ -82,6 +87,24 @@ public class ExperienceService {
             experience.setDescription(experienceRequest.getDescription());
             experience.setKeywords(experienceRequest.getKeywords());
             experienceRepository.save(experience);
+
+        ExperienceDocument experienceDocument = new ExperienceDocument();
+        experienceDocument.setId(String.valueOf(experience.getId()));
+        experienceDocument.setDomain(experience.getDomain());
+        experienceDocument.setKeywords(
+                Arrays.stream(experience.getKeywords().split(","))
+                        .map(String::trim)
+                        .collect(Collectors.toList())
+        );
+        experienceDocument.setAlumniId(experience.getAlumniId());
+        experienceDocument.setDescription(experience.getDescription());
+        experienceDocument.setTitle(experience.getTitle());
+        experienceDocument.setCreated_at(experience.getCreated_at().toLocalDate());
+        try {
+            elasticsearchOperations.save(experienceDocument);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public ResponseEntity<ExperienceRequest> getUserExperience(Integer userId){
@@ -110,6 +133,11 @@ public class ExperienceService {
         Experience experience =experienceRepository.findByAlumniId(String.valueOf(id));
         if(experience==null){
             throw new ExperienceNotfoundException("error while removing experience");
+        }
+        try {
+            elasticsearchOperations.delete(String.valueOf(experience.getId()), ExperienceDocument.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         experienceRepository.delete(experience);
         return new MessageResponse();

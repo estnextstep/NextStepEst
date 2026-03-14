@@ -1,6 +1,7 @@
 package ma.nextstepest.auth_service.service;
 
 import ma.nextstepest.auth_service.dto.Response.AllQuestionResponse;
+import ma.nextstepest.auth_service.dto.Response.AllUserQuestionResponse;
 import ma.nextstepest.auth_service.dto.Response.MessageResponse;
 import ma.nextstepest.auth_service.dto.Response.QuestionInfoDto;
 import ma.nextstepest.auth_service.entity.User;
@@ -45,6 +46,7 @@ public class QAclient {
                     .body(ex.getResponseBodyAsString());
         }
     }
+
     public AllQuestionResponse getAllQuestions(int page,int size){
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
@@ -114,6 +116,18 @@ public class QAclient {
                 )
                 .retrieve()
                 .bodyToMono(MessageResponse.class)
+                .block();
+    }
+    public AllUserQuestionResponse getUserQuestions(int user_id,int page){
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/user/questions")
+                        .queryParam("user_id", user_id)
+                        .queryParam("page",page)
+                        .build()
+                )
+                .retrieve()
+                .bodyToMono(AllUserQuestionResponse.class)
                 .block();
     }
 }

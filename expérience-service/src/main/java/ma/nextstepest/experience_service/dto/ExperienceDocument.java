@@ -15,7 +15,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ExperienceDocument {
     @Id
-    private Integer id;
+    private String id;
 
     private int alumniId;
     @Field(type = FieldType.Keyword)
