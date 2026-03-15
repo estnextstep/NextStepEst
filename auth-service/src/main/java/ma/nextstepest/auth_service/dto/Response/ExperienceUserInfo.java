@@ -20,6 +20,5 @@ public class ExperienceUserInfo {
     private String username;
 
 
-    public ExperienceUserInfo(String title, String description, String domain, String firstname, String lastname, String username) {
-    }
+
 }
