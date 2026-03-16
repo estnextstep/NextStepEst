@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="accept get all questions and experiences without jwt">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/QaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/QaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AuthResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AuthResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/security/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/security/JwtFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QAclient.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QAclient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/RecommendationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/RecommendationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/controller/QAcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/controller/QAcontroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/QuestionService.java" afterDir="false" />
-    </list>
+    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i added get user questions" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,8 +31,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst&quot;,
-    &quot;accountId&quot;: &quot;bcbf85af-b209-48d6-a3e6-be057a6b7298&quot;
+    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst.git&quot;,
+    &quot;accountId&quot;: &quot;c68d574c-fc32-46ba-894c-4dcc6b6c974a&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -84,7 +72,6 @@
     &quot;Spring Boot.EmailNotificationServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.ExperienceServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.QaServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.RecomandServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -99,8 +86,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ma.nextstepest.experience_service.config" />
       <recent name="ma.nextstepest.auth_service.dto.Response" />
+      <recent name="ma.nextstepest.experience_service.config" />
       <recent name="ma.nextstepest.qa_service.config" />
       <recent name="ma.nextstepest.experience_service.dto" />
       <recent name="ma.nextstepest.qa_service.dto" />
@@ -135,14 +122,13 @@
             <map>
               <entry key="EmailNotificationServiceApplication" value="STOPPED" />
               <entry key="QaServiceApplication" value="STOPPED" />
-              <entry key="RecomandServiceApplication" value="STOPPED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ExperienceServiceApplication">
+  <component name="RunManager" selected="Spring Boot.QaServiceApplication">
     <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="auth-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ma.nextstepest.auth_service.AuthServiceApplication" />
@@ -190,32 +176,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RecomandServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
-      <module name="recomand-service" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="ma.nextstepest.recomand_service.RecomandServiceApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ma.nextstepest.recomand_service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Spring Boot.QaServiceApplication" />
-      <item itemvalue="Spring Boot.RecomandServiceApplication" />
       <item itemvalue="Spring Boot.AuthServiceApplication" />
       <item itemvalue="Spring Boot.EmailNotificationServiceApplication" />
       <item itemvalue="Spring Boot.ExperienceServiceApplication" />
+      <item itemvalue="Spring Boot.QaServiceApplication" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.AuthServiceApplication" />
         <item itemvalue="Spring Boot.ExperienceServiceApplication" />
-        <item itemvalue="Spring Boot.RecomandServiceApplication" />
         <item itemvalue="Spring Boot.EmailNotificationServiceApplication" />
       </list>
     </recent_temporary>
@@ -354,23 +324,39 @@
       <option name="project" value="LOCAL" />
       <updated>1773212720017</updated>
     </task>
-    <task id="LOCAL-00015" summary="accept get all questions and experiences without jwt">
+    <task id="LOCAL-00015" summary="i fixed recommendation with elasticSearch , and delete from the es document">
       <option name="closed" value="true" />
-      <created>1773414613872</created>
+      <created>1773509974804</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1773414613872</updated>
+      <updated>1773509974804</updated>
     </task>
-    <task id="LOCAL-00016" summary="accept get all questions and experiences without jwt">
+    <task id="LOCAL-00016" summary="i fixed recommendation with elasticSearch , and delete from the es document">
       <option name="closed" value="true" />
-      <created>1773528925560</created>
+      <created>1773509991546</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1773528925560</updated>
+      <updated>1773509991546</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="i fixed delete question and answer ans experience">
+      <option name="closed" value="true" />
+      <created>1773515800900</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1773515800900</updated>
+    </task>
+    <task id="LOCAL-00018" summary="i added get user questions">
+      <option name="closed" value="true" />
+      <created>1773528264264</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1773528264264</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,6 +395,9 @@
     <MESSAGE value="i add the elastic search in Qa to suggest the question based on the user major" />
     <MESSAGE value="add id to login response" />
     <MESSAGE value="accept get all questions and experiences without jwt" />
-    <option name="LAST_COMMIT_MESSAGE" value="accept get all questions and experiences without jwt" />
+    <MESSAGE value="i fixed recommendation with elasticSearch , and delete from the es document" />
+    <MESSAGE value="i fixed delete question and answer ans experience" />
+    <MESSAGE value="i added get user questions" />
+    <option name="LAST_COMMIT_MESSAGE" value="i added get user questions" />
   </component>
 </project>
