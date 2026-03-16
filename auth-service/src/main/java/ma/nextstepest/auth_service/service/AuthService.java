@@ -113,6 +113,7 @@ public class AuthService {
             authresponse.setRole(dbUser.getRole());
             authresponse.setExperation(jwtService.getExpiration(token));
             authresponse.setId(dbUser.getId());
+            authresponse.setUsername(dbUser.getUsername());
             return authresponse;
         }else {
             throw new DataInvalidException("Donneés invalid");

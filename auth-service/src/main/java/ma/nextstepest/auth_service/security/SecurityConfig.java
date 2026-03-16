@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/login", "/auth/register","/auth/reset-password","/auth/change-password","/auth/activate/**","/profile_pictures/**",
-                                "/question/all","/questionInfo/**","/experiences" ).permitAll()
+                                "/question/all","/questionInfo/**","/experiences","/questions/search" ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);

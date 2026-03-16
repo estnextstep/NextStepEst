@@ -78,7 +78,6 @@ public class ExperienceService {
 
         AllExperiencesResponse response = experienceClient.getAll(page, size);
         List<ExperienceUserInfo> experiences = response.getContent();
-
         List<Integer> alumniIds = experiences.stream()
                 .map(ExperienceUserInfo::getAlumniId)
                 .distinct()

@@ -83,4 +83,8 @@ public class QAcontroller {
     public AllUserQuestionResponse getUserQuestions(@RequestParam int user_id,@RequestParam int page){
         return questionService.getUserQuestions(user_id,page);
     }
+    @GetMapping("/questions/search")
+    public AllQuestionResponse searchQuestion(@RequestParam String query,@RequestParam int size, @RequestParam int page){
+        return questionService.searchQuestion(query,page,size);
+    }
 }

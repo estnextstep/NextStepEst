@@ -21,4 +21,7 @@ public class RecommendationService {
         String major=user.getMajor();
         return qAclient.getRecommendedQuestion(page,size,major);
     }
+    public AllQuestionResponse searchQuestion(String query,int page ,int size){
+        return qAclient.searchQuestion(page,size,query);
+    }
 }

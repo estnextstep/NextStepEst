@@ -1,5 +1,6 @@
 package ma.nextstepest.qa_service.service;
 
+import co.elastic.clients.elasticsearch._types.query_dsl.TextQueryType;
 import ma.nextstepest.qa_service.Exceptions.QANotFoundException;
 import ma.nextstepest.qa_service.Exceptions.UserNotAllowed;
 import ma.nextstepest.qa_service.dto.*;
@@ -11,7 +12,11 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.elasticsearch.client.elc.NativeQuery;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
+import org.springframework.data.elasticsearch.core.SearchHits;
+import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
 import org.springframework.transaction.annotation.Transactional;
@@ -135,5 +140,41 @@ public class QuestionService {
         allQuestionResponse.setTotalElements(questions.getTotalElements());
         allQuestionResponse.setTotalPages(questions.getTotalPages());
         return allQuestionResponse;
+    }
+    public AllQuestionResponse searchQuestion(String query, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        Query searchQuery = NativeQuery.builder()
+                .withQuery(q -> q
+                        .multiMatch(m -> m
+                                .fields("title^3", "content")
+                                .query(query)
+                                .fuzziness("AUTO")
+                                .type(TextQueryType.BestFields)
+                        )
+                )
+                .withPageable(pageable)
+                .build();
+
+        SearchHits<QuestionDocument> hits = elasticsearchOperations.search(searchQuery, QuestionDocument.class);
+
+        List<QuestionDto> questions = hits.getSearchHits().stream()
+                .map(hit -> {
+                    QuestionDocument doc = hit.getContent();
+                    return QuestionDto.builder()
+                            .id(Integer.parseInt(doc.getId()))
+                            .title(doc.getTitle())
+                            .content(doc.getContent())
+                            .keywords(doc.getKeywords())
+                            .created_at(doc.getCreated_at())
+                            .build();
+                }).toList();
+
+        AllQuestionResponse response = new AllQuestionResponse();
+        response.setContent(questions);
+        response.setTotalElements(hits.getTotalHits());
+        response.setTotalPages((int) Math.ceil((double) hits.getTotalHits() / size));
+
+        return response;
     }
 }

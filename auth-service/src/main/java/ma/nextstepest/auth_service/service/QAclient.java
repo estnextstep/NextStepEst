@@ -130,4 +130,17 @@ public class QAclient {
                 .bodyToMono(AllUserQuestionResponse.class)
                 .block();
     }
+    public AllQuestionResponse searchQuestion(int page,int size,String query){
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/questions/search")
+                        .queryParam("query",query)
+                        .queryParam("page",page)
+                        .queryParam("size",size)
+                        .build()
+                )
+                .retrieve()
+                .bodyToMono(AllQuestionResponse.class)
+                .block();
+    }
 }

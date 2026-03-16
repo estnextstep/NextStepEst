@@ -6,6 +6,8 @@ import ma.nextstepest.auth_service.dto.Response.AllUserQuestionResponse;
 import ma.nextstepest.auth_service.dto.Response.MessageResponse;
 import ma.nextstepest.auth_service.dto.Request.UpdateProfile;
 import ma.nextstepest.auth_service.dto.Response.UserInfoResponse;
+import ma.nextstepest.auth_service.entity.User;
+import ma.nextstepest.auth_service.repository.UserRepository;
 import ma.nextstepest.auth_service.service.AuthService;
 import ma.nextstepest.auth_service.service.QuestionService;
 import org.springframework.http.MediaType;
@@ -22,12 +24,13 @@ public class ProfileController {
 
     private final AuthService authservice;
     private final QuestionService questionService;
+    private final UserRepository userRepository;
 
-
-    public ProfileController(AuthService authservice, QuestionService questionService) {
+    public ProfileController(AuthService authservice, QuestionService questionService, UserRepository userRepository) {
         this.authservice = authservice;
 
         this.questionService = questionService;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/me")
