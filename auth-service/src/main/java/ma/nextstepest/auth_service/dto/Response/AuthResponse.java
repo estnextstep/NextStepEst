@@ -13,4 +13,5 @@ public class AuthResponse {
     public String role;
     private Date experation;
     private Integer id;
+    private String username;
 }

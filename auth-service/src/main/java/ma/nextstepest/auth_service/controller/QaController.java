@@ -57,4 +57,9 @@ public class QaController {
                                                        @RequestParam(defaultValue = "10") int size){
         return recommendationService.getRecommendedQuestions(page,size);
     }
+    @GetMapping("/questions/search")
+    public AllQuestionResponse searchQuestion(@RequestParam String query,@RequestParam(defaultValue = "0") int page,
+                                      @RequestParam(defaultValue = "10") int size){
+        return recommendationService.searchQuestion(query,page,size);
+    }
 }
