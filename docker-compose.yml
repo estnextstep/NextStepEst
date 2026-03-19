@@ -1,0 +1,172 @@
+version: '3.8'
+
+services:
+
+  # -------------------
+  # PostgreSQL Databases
+  # -------------------
+  postgres-auth:
+    image: postgres:15
+    container_name: postgres-auth
+    environment:
+      POSTGRES_DB: db_auth
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - auth-db-data:/var/lib/postgresql/data
+
+  postgres-mail:
+    image: postgres:15
+    container_name: postgres-mail
+    environment:
+      POSTGRES_DB: db_mail
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5433:5432"
+    volumes:
+      - mail-db-data:/var/lib/postgresql/data
+
+  postgres-experience:
+    image: postgres:15
+    container_name: postgres-experience
+    environment:
+      POSTGRES_DB: db_experience
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5434:5432"
+    volumes:
+      - experience-db-data:/var/lib/postgresql/data
+
+  # -------------------
+  # RabbitMQ
+  # -------------------
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  # -------------------
+  # Elasticsearch
+  # -------------------
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.3.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  # -------------------
+  # Auth Service
+  # -------------------
+  auth-service:
+    build: ./auth-service
+    container_name: auth-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-auth
+      - rabbitmq
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-auth:5432/db_auth
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+
+  # -------------------
+  # Email Notification Service
+  # -------------------
+  email-service:
+    build: ./email-notification-service
+    container_name: email-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres-mail
+      - rabbitmq
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-mail:5432/db_mail
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_MAIL_HOST: smtp.gmail.com
+      SPRING_MAIL_PORT: 587
+      SPRING_MAIL_USERNAME: estnextstep@gmail.com
+      SPRING_MAIL_PASSWORD: Kxfwngndcrrbjmhb
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: "true"
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: "true"
+
+  # -------------------
+  # Experience Service
+  # -------------------
+  experience-service:
+    build: ./expérience-service
+    container_name: experience-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - postgres-experience
+      - rabbitmq
+      - elasticsearch
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-experience:5432/db_experience
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_ELASTICSEARCH_URIS: http://elasticsearch:9200
+  # -------------------
+  # QA Service
+  # -------------------
+  qa-service:
+    build: ./qa-service
+    container_name: qa-service
+    ports:
+      - "8084:8084"
+    depends_on:
+      - postgres-qa
+      - rabbitmq
+      - elasticsearch
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-qa:5432/db_qa
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_ELASTICSEARCH_URIS: http://elasticsearch:9200
+
+  # -------------------
+  # PostgreSQL for QA Service
+  # -------------------
+  postgres-qa:
+    image: postgres:15
+    container_name: postgres-qa
+    environment:
+      POSTGRES_DB: db_qa
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5435:5432"
+    volumes:
+      - qa-db-data:/var/lib/postgresql/data
+
+
+# -------------------
+# Volumes for persistent data
+# -------------------
+volumes:
+  auth-db-data:
+  mail-db-data:
+  experience-db-data:
+  qa-db-data:
