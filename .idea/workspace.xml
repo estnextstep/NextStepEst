@@ -6,16 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="accept get all questions and experiences without jwt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/QaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/controller/QaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AuthResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/dto/Response/AuthResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/security/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/security/JwtFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QAclient.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/QAclient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/RecommendationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/service/RecommendationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/controller/QAcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/controller/QAcontroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/service/QuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/QASection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/QASection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceSection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceTab.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceTab.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Experiences.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/Experiences.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/QA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/QA.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/QuestionPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/QuestionPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/entity/Experience.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/entity/Experience.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +93,12 @@
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;module&quot;,
+      &quot;repository&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -213,8 +217,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.AuthServiceApplication" />
         <item itemvalue="Spring Boot.ExperienceServiceApplication" />
+        <item itemvalue="Spring Boot.AuthServiceApplication" />
         <item itemvalue="Spring Boot.RecomandServiceApplication" />
         <item itemvalue="Spring Boot.EmailNotificationServiceApplication" />
       </list>
@@ -370,7 +374,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773528925560</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="accept get all questions and experiences without jwt">
+      <option name="closed" value="true" />
+      <created>1773623856002</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1773623856003</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

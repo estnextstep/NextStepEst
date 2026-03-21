@@ -1,15 +1,5 @@
 import { Navbar } from "@/components/Navbar";
 import { ExperienceCard } from "@/components/ExperienceCard";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Search, Filter } from "lucide-react";
 import { useRef, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useInfiniteQuery } from "@tanstack/react-query";
@@ -31,12 +21,8 @@ export default function Experiences() {
   } = useInfiniteQuery({
     queryKey: ["experiences", user?.id],
     queryFn: async ({ pageParam = 0 }) => {
-      const route = user
-        ? "/experiences/recomandation"
-        : "/experiences";
-
+      const route = user ? "/experiences/recomandation" : "/experiences";
       const res = await api.get(`${route}?page=${pageParam}&size=${PAGE_SIZE}`);
-      
       return res.data;
     },
     getNextPageParam: (lastPage, allPages) => {
@@ -44,6 +30,7 @@ export default function Experiences() {
       return nextPage < lastPage.totalPages ? nextPage : undefined;
     },
   });
+
   const experiences =
     data?.pages.flatMap((p) =>
       p.content.map((exp) => ({
@@ -51,9 +38,7 @@ export default function Experiences() {
         name: `${exp.firstName} ${exp.lastName}`,
         role: exp.title || "No role",
         username: exp.username || "unknown",
-        image: 
-           `http://localhost:8080${exp.imgUrl}`,
-         
+        image: `http://localhost:8080${exp.imgUrl}`,
         quote: exp.description || "No description",
         tags: Array.isArray(exp.keywords)
           ? exp.keywords
@@ -66,18 +51,13 @@ export default function Experiences() {
 
   useEffect(() => {
     if (!experienceloader.current) return;
-
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && hasNextPage) {
-          fetchNextPage();
-        }
+        if (entries[0].isIntersecting && hasNextPage) fetchNextPage();
       },
       { threshold: 0.5 }
     );
-
     observer.observe(experienceloader.current);
-
     return () => observer.disconnect();
   }, [fetchNextPage, hasNextPage]);
 
@@ -85,20 +65,16 @@ export default function Experiences() {
     <div className="min-h-screen bg-background font-sans">
       <Navbar />
 
-      {/* Loading */}
       {isLoading ? (
         <div className="min-h-screen flex items-center justify-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
         </div>
       ) : isError ? (
-        /* Error */
         <div className="min-h-screen flex items-center justify-center text-red-500 text-lg">
           Something went wrong while loading experiences.
         </div>
       ) : (
-        /* Content */
         <>
-          {/* Header */}
           <div className="bg-card border-b border-border py-12 mt-4">
             <div className="container mx-auto px-4">
               <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -111,70 +87,21 @@ export default function Experiences() {
           </div>
 
           <div className="container mx-auto px-4 py-8">
-            {/* Filters */}
-            <div className="flex flex-col md:flex-row gap-4 mb-8 items-center bg-card p-4 rounded-xl border border-border shadow-sm">
-              <div className="relative flex-1 w-full">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Search by name, company, or role..."
-                  className="pl-9 bg-background"
-                />
-              </div>
-
-              <div className="flex gap-4 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
-                <Select>
-                  <SelectTrigger className="w-40 bg-background">
-                    <SelectValue placeholder="Industry" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="tech">Technology</SelectItem>
-                    <SelectItem value="finance">Finance</SelectItem>
-                    <SelectItem value="consulting">Consulting</SelectItem>
-                    <SelectItem value="healthcare">Healthcare</SelectItem>
-                  </SelectContent>
-                </Select>
-
-                <Select>
-                  <SelectTrigger className="w-40 bg-background">
-                    <SelectValue placeholder="Major" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="cs">Computer Science</SelectItem>
-                    <SelectItem value="business">Business</SelectItem>
-                    <SelectItem value="engineering">Engineering</SelectItem>
-                    <SelectItem value="arts">Liberal Arts</SelectItem>
-                  </SelectContent>
-                </Select>
-
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="shrink-0 text-muted-foreground hover:text-primary"
-                >
-                  <Filter className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-
-            {/* Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {experiences.map((exp, index) => (
                 <ExperienceCard key={exp.id || index} {...exp} />
               ))}
             </div>
 
-            {/* Infinite scroll */}
             {hasNextPage && (
               <div
                 ref={experienceloader}
                 className="h-16 flex items-center justify-center mt-10"
               >
                 {isFetchingNextPage ? (
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary"></div>
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary" />
                 ) : (
-                  <span className="text-muted-foreground">
-                    Scroll to load more
-                  </span>
+                  <span className="text-muted-foreground">Scroll to load more</span>
                 )}
               </div>
             )}

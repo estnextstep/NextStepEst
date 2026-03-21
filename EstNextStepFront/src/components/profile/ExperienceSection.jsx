@@ -31,20 +31,20 @@ export const ExperienceSection = ({ experienceRequest, onEdit, isReadOnly = fals
     </div>
 
     {experienceRequest ? (
-      <Card className="border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+      <Card className="border-slate-200 dark:border-slate-800 shadow-sm">
         <CardContent className="p-6">
-          <div className="flex justify-between items-start mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-[#2A3B5F] dark:text-slate-100">
+          <div className="flex justify-between items-start gap-3 mb-4">
+            <div className="min-w-0 flex-1">
+              <h3 className="text-xl font-bold text-[#2A3B5F] dark:text-slate-100 break-all">
                 {experienceRequest.title}
               </h3>
               <p className="text-sm text-slate-500 font-medium">{experienceRequest.date}</p>
             </div>
-            <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 border-none">
+            <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 border-none shrink-0">
               {experienceRequest.domain}
             </Badge>
           </div>
-          <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4 break-all">
             {experienceRequest.description}
           </p>
           <div className="flex gap-2 flex-wrap">

@@ -150,11 +150,7 @@ const {
               </div>
             </div>
 
-            <div className="grid ">
-              <Button variant="outline" className="bg-background border-border hover:bg-blue-300 hover:text-foreground">
-                <Mail className="mr-2 h-4 w-4" /> Google
-              </Button>
-            </div>
+           
           </div>
 
           <p className="text-center text-sm text-muted-foreground">
