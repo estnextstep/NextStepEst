@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i added get user questions">
-      <change afterPath="$PROJECT_DIR$/auth-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application-test.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/email-notification-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/email-notification-service/src/main/resources/application-test.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expérience-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/resources/application-test.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qa-service/src/main/resources/application-docker.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/WebClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/WebClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/test/java/ma/nextstepest/auth_service/AuthServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/test/java/ma/nextstepest/auth_service/AuthServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/test/java/ma/nextstepest/email_notification_service/EmailNotificationServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/test/java/ma/nextstepest/email_notification_service/EmailNotificationServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/config/ElasticsearchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/config/ElasticsearchConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/test/java/ma/nextstepest/experience_service/ExperienceServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/test/java/ma/nextstepest/experience_service/ExperienceServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/config/ElasticsearchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/config/ElasticsearchConfig.java" afterDir="false" />
-    </list>
+    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i made almost the whole docker config , and docker file" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +22,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -81,43 +64,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.auth-service [clean].executor": "Run",
-    "Maven.auth-service [install:install].executor": "Run",
-    "Maven.auth-service [install].executor": "Run",
-    "Maven.email-notification-service [clean].executor": "Run",
-    "Maven.email-notification-service [install].executor": "Run",
-    "Maven.experience-service [clean].executor": "Run",
-    "Maven.experience-service [install].executor": "Run",
-    "Maven.qa-service [clean].executor": "Run",
-    "Maven.qa-service [install].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.AuthServiceApplication.executor": "Run",
-    "Spring Boot.EmailNotificationServiceApplication.executor": "Run",
-    "Spring Boot.ExperienceServiceApplication.executor": "Run",
-    "Spring Boot.QaServiceApplication.executor": "Run",
-    "Spring Boot.RecomandServiceApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.auth-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.auth-service [install:install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.auth-service [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.email-notification-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.email-notification-service [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.experience-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.experience-service [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.qa-service [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.qa-service [install].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EmailNotificationServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ExperienceServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.QaServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.RecomandServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;docker&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ma.nextstepest.auth_service.dto.Response" />
@@ -439,7 +422,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773869557789</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="i made almost the whole docker config , and docker file">
+      <option name="closed" value="true" />
+      <created>1773954724562</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1773954724562</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,6 +472,7 @@
     <MESSAGE value="i fixed recommendation with elasticSearch , and delete from the es document" />
     <MESSAGE value="i fixed delete question and answer ans experience" />
     <MESSAGE value="i added get user questions" />
-    <option name="LAST_COMMIT_MESSAGE" value="i added get user questions" />
+    <MESSAGE value="i made almost the whole docker config , and docker file" />
+    <option name="LAST_COMMIT_MESSAGE" value="i made almost the whole docker config , and docker file" />
   </component>
 </project>
