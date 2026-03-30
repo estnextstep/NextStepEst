@@ -1,8 +1,7 @@
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MessageCircle, ThumbsUp, ArrowRight } from "lucide-react";
-
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -10,212 +9,277 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { useState } from "react";
+import { ArrowLeft, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Share2 } from "lucide-react";
 import { useLocation } from "wouter";
-import { useEffect,useRef } from "react";
+import { useQuery, useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { api } from "../api/api";
 import { AnswersList } from "../pages/AnswersList";
-const questions = [
-  {
-    id: 1,
-    title:
-      "What's the best way to approach professors for research opportunities?",
-    author: "Alex Johnson",
-    username: "alex_johnson",
-    role: "CS Student",
-    time: "2 hours ago",
-    answersCount: 2,
-    likes: 45,
-    views: 120,
-    tags: ["Research", "Academic Advice"],
-    content:
-      "I'm a sophomore interested in AI research, but I don't have much experience yet. Should I just email professors directly or go to office hours? I'm worried about sounding unprepared.",
-    answers: [
-      {
-        id: 101,
-        author: "Dr. Sarah Chen",
-        username: "sarah_chen",
-        role: "Professor of AI",
-        time: "1 hour ago",
-        content:
-          "Office hours are definitely better! It shows initiative and allows for a more natural conversation. Bring a copy of your transcript and mention specific projects of theirs that interest you.",
-        likes: 15,
-      },
-      {
-        id: 102,
-        author: "Mark Miller",
-        username: "mark_miller",
-        role: "Grad Student",
-        time: "30 mins ago",
-        content:
-          "Start by reading their recent publications. If you can ask a question about their work, it shows you've done your homework.",
-        likes: 8,
-      },
-    ],
-  },
-  {
-    id: 2,
-    title: "Is it worth taking a gap year before starting a master's degree?",
-    author: "Final Year Student",
-    answersCount: 28,
-    likes: 89,
-    tags: ["Career Path", "Post-grad"],
-    content:
-      "I'm graduating soon and considering a master's in data science. Some of my friends are taking a gap year to work or intern first. Do you think that's a good idea, or should I just go straight into grad school?",
-    answers: [
-      {
-        id: 201,
-        author: "Dr. Michael Rodriguez",
-        username: "michael_rodriguez",
-        role: "Professor of Data Science",
-        time: "1 day ago",
-        content:
-          "I'd recommend a gap year if you're not sure about your career path. It gives you time to gain real-world experience and clarify your goals.",
-        likes: 25,
-      },
-      {
-        id: 202,
-        author: "Jessica Kim",
-        username: "jessica_kim",
-        role: "Graduate Student",
-        time: "2 days ago",
-        content:
-          "I took a gap year and it was one of the best decisions I made. I worked at a startup and realized I wanted to go back to school for more specialized training.",
-        likes: 18,
-      },
-    ],
-  },
-  {
-    id: 3,
-    title: "Tips for balancing part-time work with engineering coursework?",
-    author: "Engineering Freshman",
-    answersCount: 8,
-    likes: 32,
-    tags: ["Time Management", "Student Life"],
-    content:
-      "I'm graduating soon and considering a master's in data science. Some of my friends are taking a gap year to work or intern first. Do you think that's a good idea, or should I just go straight into grad school?",
-    answers: [
-      {
-        id: 201,
-        author: "Dr. Michael Rodriguez",
-        username: "michael_rodriguez",
-        role: "Professor of Data Science",
-        time: "1 day ago",
-        content:
-          "I'd recommend a gap year if you're not sure about your career path. It gives you time to gain real-world experience and clarify your goals.",
-        likes: 25,
-      },
-      {
-        id: 202,
-        author: "Jessica Kim",
-        username: "jessica_kim",
-        role: "Graduate Student",
-        time: "2 days ago",
-        content:
-          "I took a gap year and it was one of the best decisions I made. I worked at a startup and realized I wanted to go back to school for more specialized training.",
-        likes: 18,
-      },
-    ],
-  },
-  {
-    id: 4,
-    title: "How to prepare for coding interviews at FAANG companies?",
-    author: "Software Intern",
-    answersCount: 45,
-    likes: 120,
-    tags: ["Interviews", "Coding"],
-    content:
-      "I'm graduating soon and considering a master's in data science. Some of my friends are taking a gap year to work or intern first. Do you think that's a good idea, or should I just go straight into grad school?",
-    answers: [
-      {
-        id: 201,
-        author: "Dr. Michael Rodriguez",
-        username: "michael_rodriguez",
-        role: "Professor of Data Science",
-        time: "1 day ago",
-        content:
-          "I'd recommend a gap year if you're not sure about your career path. It gives you time to gain real-world experience and clarify your goals.",
-        likes: 25,
-      },
-      {
-        id: 202,
-        author: "Jessica Kim",
-        username: "jessica_kim",
-        role: "Graduate Student",
-        time: "2 days ago",
-        content:
-          "I took a gap year and it was one of the best decisions I made. I worked at a startup and realized I wanted to go back to school for more specialized training.",
-        likes: 18,
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "How to build a strong portfolio for software engineering roles?",
-    author: "Software Intern",
-    answersCount: 45,
-    likes: 120,
-    tags: ["Portfolio", "Career Advice"],
-    content:
-      "I'm graduating soon and considering a master's in data science. Some of my friends are taking a gap year to work or intern first. Do you think that's a good idea, or should I just go straight into grad school?",
-    answers: [
-      {
-        id: 201,
-        author: "Dr. Michael Rodriguez",
-        username: "michael_rodriguez",
-        role: "Professor of Data Science",
-        time: "1 day ago",
-        content:
-          "I'd recommend a gap year if you're not sure about your career path. It gives you time to gain real-world experience and clarify your goals.",
-        likes: 25,
-      },
-      {
-        id: 202,
-        author: "Jessica Kim",
-        username: "jessica_kim",
-        role: "Graduate Student",
-        time: "2 days ago",
-        content:
-          "I took a gap year and it was one of the best decisions I made. I worked at a startup and realized I wanted to go back to school for more specialized training.",
-        likes: 18,
-      },
-    ],
-  },
-];
+import { AnswerCard } from "./ui/answerCard";
+import { useAuth } from "../context/AuthContext";
+import { useToast } from "@/hooks/use-toast";
+
+const PAGE_SIZE = 10;
 
 export function QASection() {
   const [, setLocation] = useLocation();
+  const { user } = useAuth();
+  const { toast } = useToast();
+  const queryClient = useQueryClient();
 
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [answerContent, setAnswerContent] = useState("");
+
+  // ── Carousel questions ──────────────────────────────────────────────────────
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["questions-home"],
+    queryFn: async () => {
+      const res = await api.get(`/question/all?page=0&size=${PAGE_SIZE}`);
+      return res.data;
+    },
+  });
+
+  const questions = data?.content ?? [];
+
+  // ── Question detail + answers (paginated) ───────────────────────────────────
+  const {
+    data: answersData,
+    isLoading: isLoadingAnswers,
+    fetchNextPage: fetchMoreAnswers,
+    hasNextPage: hasMoreAnswers,
+    isFetchingNextPage: isFetchingMoreAnswers,
+  } = useInfiniteQuery({
+    queryKey: ["question-answers", selectedQuestion?.id],
+    queryFn: async ({ pageParam = 0, queryKey }) => {
+      const questionId = queryKey[1];
+      const res = await api.get("/questionInfo", {
+        params: { id: questionId, page: pageParam },
+      });
+      return res.data;
+    },
+    getNextPageParam: (lastPage, allPages) => {
+      const nextPage = allPages.length;
+      return nextPage < lastPage.totalPages ? nextPage : undefined;
+    },
+    enabled: !!selectedQuestion,
+  });
+
+  const questionInfo = answersData?.pages[0]?.question;
+  const allAnswers = answersData?.pages.flatMap((p) => p.answers) ?? [];
+  const totalAnswers = answersData?.pages[0]?.totalElements ?? 0;
+
+  // ── Add answer ──────────────────────────────────────────────────────────────
+  const addAnswerMutation = useMutation({
+    mutationFn: async ({ content, questionId }) => {
+      const res = await api.post(`/answer/${questionId}`, {
+        content,
+        authorId: user.id,
+      });
+      return res.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["question-answers", selectedQuestion.id]);
+      setAnswerContent("");
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to post answer",
+        variant: "destructive",
+      });
+    },
+  });
+
+  // ── Delete answer ───────────────────────────────────────────────────────────
+  const deleteAnswerMutation = useMutation({
+    mutationFn: async (answerId) => {
+      await api.delete(`/answer/${answerId}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["question-answers", selectedQuestion.id]);
+      toast({ title: "Answer deleted", description: "Your answer was deleted successfully" });
+    },
+    onError: () => {
+      toast({ title: "Error", description: "Failed to delete answer", variant: "destructive" });
+    },
+  });
+
+  const handleAddAnswer = () => {
+    if (!user) return setLocation("/login");
+    if (!answerContent.trim())
+      return toast({ title: "Error", description: "Answer cannot be empty", variant: "destructive" });
+    addAnswerMutation.mutate({ content: answerContent, questionId: selectedQuestion.id });
+  };
+
+  const handleUserClick = (username, authorId) => {
+    if (!user) {
+      toast({
+        title: "Login required",
+        description: "You must login to view user profiles",
+        variant: "destructive",
+      });
+      return;
+    }
+    authorId && authorId === user.id
+      ? setLocation("/profile")
+      : setLocation(`/profile/${username}`);
+  };
+
+  // ── Render ──────────────────────────────────────────────────────────────────
   return (
     <section className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-4">Student Q&A</h2>
+        <AnimatePresence mode="wait">
 
-        <div className="relative px-2">
-          <Carousel opts={{ align: "start", loop: true }}>
-            <CarouselContent className="-ml-4">
-              {questions.map((q) => (
-                <CarouselItem key={q.id} className="pl-4 md:basis-1/3">
-                  <Card className="cursor-pointer hover:shadow-md transition" onClick={() => setLocation(`/question/${q.id}`)}>
-                    <CardContent className="p-6 flex flex-col h-full">
-                      <div className="flex gap-2 mb-4">
-                        {q.tags.map((tag) => (
-                          <Badge key={tag} variant="outline">{tag}</Badge>
-                        ))}
-                      </div>
+          {/* ── Carousel view ── */}
+          {!selectedQuestion ? (
+            <motion.div
+              key="carousel"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <h2 className="text-3xl font-bold mb-8">Student Q&A</h2>
 
-                      <h3 className="text-lg font-semibold mb-3">{q.title}</h3>
-                      <span className="mt-auto text-sm text-muted-foreground">{q.answers.length} Answers</span>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        </div>
+              {isLoading ? (
+                <p>Loading questions...</p>
+              ) : error ? (
+                <p>Error loading questions</p>
+              ) : (
+                <div className="relative px-2">
+                  <Carousel opts={{ align: "start", loop: true }}>
+                    <CarouselContent className="-ml-4">
+                      {questions.map((q) => (
+                        <CarouselItem key={q.id} className="pl-4 md:basis-1/3">
+                          <Card
+                            className="cursor-pointer hover:shadow-md transition"
+                            onClick={() => setSelectedQuestion(q)}
+                          >
+                            <CardContent className="p-6 flex flex-col h-full">
+                              <div className="flex gap-2 flex-wrap mb-4">
+                                {(q.keywords || []).map((tag) => (
+                                  <Badge key={tag} variant="outline">{tag}</Badge>
+                                ))}
+                              </div>
+                              <h3 className="text-lg font-semibold mb-3">{q.title}</h3>
+                              </CardContent>
+                          </Card>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                  </Carousel>
+                </div>
+              )}
+            </motion.div>
+
+          ) : (
+
+            /* ── Detail view ── */
+            <motion.div
+              key="detail"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="max-w-4xl mx-auto"
+            >
+              <Button
+                variant="ghost"
+                onClick={() => { setSelectedQuestion(null); setAnswerContent(""); }}
+                className="mb-6"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" /> Back
+              </Button>
+
+              <div className="space-y-6">
+                {/* Question card */}
+                {isLoadingAnswers ? (
+                  <p>Loading...</p>
+                ) : questionInfo && (
+                  <AnswerCard
+                    answer={{ content: questionInfo.content }}
+                    question={questionInfo}
+                    isQuestion={true}
+                    onUserClick={handleUserClick}
+                    onDelete={async () => {
+                      if (!user) return;
+                      try {
+                        await api.delete(`/question/${questionInfo.id}`);
+                        toast({ title: "Question deleted", description: "The question has been removed successfully" });
+                        queryClient.invalidateQueries(["questions-home"]);
+                        setSelectedQuestion(null);
+                      } catch (err) {
+                        toast({
+                          title: "Error",
+                          description: err.response?.data?.message || "Failed to delete question",
+                          variant: "destructive",
+                        });
+                      }
+                    }}
+                    currentUserId={user?.id}
+                  />
+                )}
+
+                {/* Answers */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold flex items-center gap-2">
+                    <MessageSquare className="w-5 h-5" /> {totalAnswers} Answers
+                  </h3>
+
+                  {isLoadingAnswers ? (
+                    <p>Loading answers...</p>
+                  ) : (
+                    <>
+                      <AnswersList
+                        currentUserId={user?.id}
+                        answers={allAnswers}
+                        question={questionInfo}
+                        onDelete={(answerId) => deleteAnswerMutation.mutate(answerId)}
+                        onUserClick={handleUserClick}
+                      />
+
+                      {/* Answer input */}
+                      {user ? (
+                        <div className="flex items-center gap-2 mt-4 border-t pt-2">
+                          <input
+                            type="text"
+                            placeholder="Write an answer..."
+                            className="flex-1 rounded-full border px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            value={answerContent}
+                            onChange={(e) => setAnswerContent(e.target.value)}
+                          />
+                          <Button
+                            onClick={handleAddAnswer}
+                            disabled={!answerContent.trim() || addAnswerMutation.isPending}
+                            size="sm"
+                          >
+                            {addAnswerMutation.isPending ? "Posting..." : "Post"}
+                          </Button>
+                        </div>
+                      ) : (
+                        <p className="mt-4 text-sm text-slate-500">
+                          You must{" "}
+                          <span className="text-blue-500 cursor-pointer" onClick={() => setLocation("/login")}>
+                            login
+                          </span>{" "}
+                          to write an answer.
+                        </p>
+                      )}
+                    </>
+                  )}
+
+                  {hasMoreAnswers && (
+                    <Button onClick={() => fetchMoreAnswers()} disabled={isFetchingMoreAnswers}>
+                      {isFetchingMoreAnswers ? "Loading..." : "Load more answers"}
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+        </AnimatePresence>
       </div>
     </section>
   );

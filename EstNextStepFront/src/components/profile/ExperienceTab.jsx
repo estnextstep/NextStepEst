@@ -9,18 +9,18 @@ export const ExperienceTab = ({ experienceRequest, onEdit, onDelete }) => (
 
     {experienceRequest ? (
       <div className="p-6 border border-slate-200 dark:border-slate-800 rounded-2xl bg-slate-50 dark:bg-slate-900/50 space-y-4">
-        <div className="flex justify-between items-start">
-          <div>
-            <p className="font-bold text-[#2A3B5F] dark:text-white">
+        <div className="flex justify-between items-start gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="font-bold text-[#2A3B5F] dark:text-white break-all">
               {experienceRequest.title}
             </p>
             <p className="text-sm text-slate-500">{experienceRequest.date}</p>
           </div>
-          <Button variant="ghost" size="sm" onClick={onEdit} className="text-[#C5A059]">
+          <Button variant="ghost" size="sm" onClick={onEdit} className="text-[#C5A059] shrink-0">
             <Edit2 className="w-4 h-4" />
           </Button>
         </div>
-        <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3">
+        <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 break-all">
           {experienceRequest.description}
         </p>
         <div className="pt-4 border-t border-slate-200 dark:border-slate-800">

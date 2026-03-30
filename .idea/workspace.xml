@@ -4,7 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i made almost the whole docker config , and docker file" />
+    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i added get user questions">
+      <change afterPath="$PROJECT_DIR$/auth-service/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application-test.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/email-notification-service/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/email-notification-service/src/main/resources/application-test.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expérience-service/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expérience-service/src/main/resources/application-test.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-service/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/qa-service/src/main/resources/application-docker.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/WebClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/WebClientConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/test/java/ma/nextstepest/auth_service/AuthServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/test/java/ma/nextstepest/auth_service/AuthServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-notification-service/src/test/java/ma/nextstepest/email_notification_service/EmailNotificationServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/test/java/ma/nextstepest/email_notification_service/EmailNotificationServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/config/ElasticsearchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/config/ElasticsearchConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/test/java/ma/nextstepest/experience_service/ExperienceServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/test/java/ma/nextstepest/experience_service/ExperienceServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/config/ElasticsearchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/java/ma/nextstepest/qa_service/config/ElasticsearchConfig.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,11 +44,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -89,7 +106,7 @@
     &quot;Spring Boot.ExperienceServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.QaServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.RecomandServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;docker&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
@@ -422,15 +439,7 @@
       <option name="project" value="LOCAL" />
       <updated>1773869557789</updated>
     </task>
-    <task id="LOCAL-00022" summary="i made almost the whole docker config , and docker file">
-      <option name="closed" value="true" />
-      <created>1773954724562</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1773954724562</updated>
-    </task>
-    <option name="localTasksCounter" value="23" />
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -472,7 +481,6 @@
     <MESSAGE value="i fixed recommendation with elasticSearch , and delete from the es document" />
     <MESSAGE value="i fixed delete question and answer ans experience" />
     <MESSAGE value="i added get user questions" />
-    <MESSAGE value="i made almost the whole docker config , and docker file" />
-    <option name="LAST_COMMIT_MESSAGE" value="i made almost the whole docker config , and docker file" />
+    <option name="LAST_COMMIT_MESSAGE" value="i added get user questions" />
   </component>
 </project>
