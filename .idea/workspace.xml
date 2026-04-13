@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i made almost the whole docker config , and docker file">
+    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="accept get all questions and experiences without jwt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/QASection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/QASection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceSection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceTab.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceTab.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Experiences.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/Experiences.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/QA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/QA.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/QuestionPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/QuestionPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/entity/Experience.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/entity/Experience.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +27,6 @@
         <option value="Record" />
         <option value="Exception" />
         <option value="Class" />
-        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -34,8 +41,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst.git&quot;,
-    &quot;accountId&quot;: &quot;c68d574c-fc32-46ba-894c-4dcc6b6c974a&quot;
+    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst&quot;,
+    &quot;accountId&quot;: &quot;bcbf85af-b209-48d6-a3e6-be057a6b7298&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -63,22 +70,12 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Maven.auth-service [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.auth-service [install:install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.auth-service [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.email-notification-service [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.email-notification-service [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.experience-service [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.experience-service [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.qa-service [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.qa-service [install].executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
@@ -86,7 +83,7 @@
     &quot;Spring Boot.ExperienceServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.QaServiceApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.RecomandServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;docker&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
@@ -96,23 +93,22 @@
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;module&quot;,
+      &quot;repository&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ma.nextstepest.auth_service.dto.Response" />
       <recent name="ma.nextstepest.experience_service.config" />
+      <recent name="ma.nextstepest.auth_service.dto.Response" />
       <recent name="ma.nextstepest.qa_service.config" />
       <recent name="ma.nextstepest.experience_service.dto" />
       <recent name="ma.nextstepest.qa_service.dto" />
     </key>
-  </component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="mvn install" />
-      <command value="mvn clean" />
-      <command value="mvn install:install" />
-    </option>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -123,14 +119,25 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
+    <option name="hiddenConfigurations">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <set>
+              <option value="AuthServiceApplication" />
+              <option value="ExperienceServiceApplication" />
+              <option value="QaServiceApplication" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="configurationStatuses">
       <map>
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
-              <entry key="AuthServiceApplication" value="FAILED" />
-              <entry key="EmailNotificationServiceApplication" value="FAILED" />
-              <entry key="ExperienceServiceApplication" value="FAILED" />
+              <entry key="EmailNotificationServiceApplication" value="STOPPED" />
               <entry key="QaServiceApplication" value="STOPPED" />
               <entry key="RecomandServiceApplication" value="STOPPED" />
             </map>
@@ -139,7 +146,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AuthServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ExperienceServiceApplication">
     <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="auth-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ma.nextstepest.auth_service.AuthServiceApplication" />
@@ -210,10 +217,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.AuthServiceApplication" />
         <item itemvalue="Spring Boot.ExperienceServiceApplication" />
-        <item itemvalue="Spring Boot.EmailNotificationServiceApplication" />
+        <item itemvalue="Spring Boot.AuthServiceApplication" />
         <item itemvalue="Spring Boot.RecomandServiceApplication" />
+        <item itemvalue="Spring Boot.EmailNotificationServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -351,63 +358,31 @@
       <option name="project" value="LOCAL" />
       <updated>1773212720017</updated>
     </task>
-    <task id="LOCAL-00015" summary="i fixed recommendation with elasticSearch , and delete from the es document">
+    <task id="LOCAL-00015" summary="accept get all questions and experiences without jwt">
       <option name="closed" value="true" />
-      <created>1773509974804</created>
+      <created>1773414613872</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1773509974804</updated>
+      <updated>1773414613872</updated>
     </task>
-    <task id="LOCAL-00016" summary="i fixed recommendation with elasticSearch , and delete from the es document">
+    <task id="LOCAL-00016" summary="accept get all questions and experiences without jwt">
       <option name="closed" value="true" />
-      <created>1773509991546</created>
+      <created>1773528925560</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1773509991546</updated>
+      <updated>1773528925560</updated>
     </task>
-    <task id="LOCAL-00017" summary="i fixed delete question and answer ans experience">
+    <task id="LOCAL-00017" summary="accept get all questions and experiences without jwt">
       <option name="closed" value="true" />
-      <created>1773515800900</created>
+      <created>1773623856002</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1773515800900</updated>
+      <updated>1773623856003</updated>
     </task>
-    <task id="LOCAL-00018" summary="i added get user questions">
-      <option name="closed" value="true" />
-      <created>1773528264264</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1773528264264</updated>
-    </task>
-    <task id="LOCAL-00019" summary="i added get user questions">
-      <option name="closed" value="true" />
-      <created>1773624914851</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1773624914851</updated>
-    </task>
-    <task id="LOCAL-00020" summary="i added get user questions">
-      <option name="closed" value="true" />
-      <created>1773624964007</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1773624964007</updated>
-    </task>
-    <task id="LOCAL-00021" summary="i added get user questions">
-      <option name="closed" value="true" />
-      <created>1773869557788</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1773869557789</updated>
-    </task>
-    <option name="localTasksCounter" value="22" />
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,9 +421,6 @@
     <MESSAGE value="i add the elastic search in Qa to suggest the question based on the user major" />
     <MESSAGE value="add id to login response" />
     <MESSAGE value="accept get all questions and experiences without jwt" />
-    <MESSAGE value="i fixed recommendation with elasticSearch , and delete from the es document" />
-    <MESSAGE value="i fixed delete question and answer ans experience" />
-    <MESSAGE value="i added get user questions" />
-    <option name="LAST_COMMIT_MESSAGE" value="i added get user questions" />
+    <option name="LAST_COMMIT_MESSAGE" value="accept get all questions and experiences without jwt" />
   </component>
 </project>
