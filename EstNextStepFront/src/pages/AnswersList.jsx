@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { AnswerCard } from "../components/ui/answerCard";
+import { AnswerCard } from "../components/ui/AnswerCard";
 
 const ANSWERS_PAGE_SIZE = 2;
 

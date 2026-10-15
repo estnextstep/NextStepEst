@@ -19,7 +19,7 @@ export function AnswerCard({ answer, question, isQuestion, onUserClick, onDelete
     >
       <div className="flex items-start gap-3">
         <img
-          src={`http://localhost:8080${avatar}`}
+          src={`http://auth-service:8080${avatar}`}
           className="w-8 h-8 rounded-full object-cover cursor-pointer"
           onClick={() => onUserClick?.(username,authorId)}
         />

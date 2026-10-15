@@ -13,7 +13,7 @@ import { AnswersList } from "./AnswersList";
 import { useAuth } from "../context/AuthContext";
 import { useMutation, useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../api/api";
-import { AnswerCard } from "../components/ui/answerCard";
+import { AnswerCard } from "../components/ui/AnswerCard";
 
 const PAGE_SIZE = 5;
 

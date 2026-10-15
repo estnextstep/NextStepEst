@@ -13,7 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SignupSchema } from "../schemas/Signupschema";
 // rest connection
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Createuser } from "../api/Createuser";
+import { Createuser } from "../api/createuser";
 // logo
 import logo from "../logo.jpeg";
 
@@ -104,7 +104,7 @@ export default function Signup() {
                 Access exclusive career resources
               </li>
               <li className="flex items-center gap-3">
-                <div className="h-6 w-6 rounded-full bg-primary/30 flex items-center justify-center">
+                <div className="h-6 aw-6 rounded-full bg-primary/30 flex items-center justify-center">
                   ✓
                 </div>
                 Join discussion groups and forums

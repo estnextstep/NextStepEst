@@ -38,7 +38,7 @@ export default function Experiences() {
         name: `${exp.firstName} ${exp.lastName}`,
         role: exp.title || "No role",
         username: exp.username || "unknown",
-        image: `http://localhost:8080${exp.imgUrl}`,
+        image: `http://auth-service:8080${exp.imgUrl}`,
         quote: exp.description || "No description",
         tags: Array.isArray(exp.keywords)
           ? exp.keywords

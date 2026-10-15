@@ -15,7 +15,7 @@ import { useLocation } from "wouter";
 import { useQuery, useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "../api/api";
 import { AnswersList } from "../pages/AnswersList";
-import { AnswerCard } from "./ui/answerCard";
+import { AnswerCard } from "./ui/AnswerCard";
 import { useAuth } from "../context/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 
@@ -50,7 +50,8 @@ export function QASection() {
     isFetchingNextPage: isFetchingMoreAnswers,
   } = useInfiniteQuery({
     queryKey: ["question-answers", selectedQuestion?.id],
-    queryFn: async ({ pageParam = 0, queryKey }) => {
+    initialPageParam: 0,
+    queryFn: async ({ pageParam, queryKey }) => {
       const questionId = queryKey[1];
       const res = await api.get("/questionInfo", {
         params: { id: questionId, page: pageParam },
@@ -59,14 +60,14 @@ export function QASection() {
     },
     getNextPageParam: (lastPage, allPages) => {
       const nextPage = allPages.length;
-      return nextPage < lastPage.totalPages ? nextPage : undefined;
+      return nextPage < (lastPage?.totalPages ?? 0) ? nextPage : undefined;
     },
     enabled: !!selectedQuestion,
   });
 
-  const questionInfo = answersData?.pages[0]?.question;
-  const allAnswers = answersData?.pages.flatMap((p) => p.answers) ?? [];
-  const totalAnswers = answersData?.pages[0]?.totalElements ?? 0;
+  const questionInfo = answersData?.pages?.[0]?.question;
+  const allAnswers = answersData?.pages?.flatMap((p) => p?.answers ?? []) ?? [];
+  const totalAnswers = answersData?.pages?.[0]?.totalElements ?? 0;
 
   // ── Add answer ──────────────────────────────────────────────────────────────
   const addAnswerMutation = useMutation({
@@ -77,8 +78,10 @@ export function QASection() {
       });
       return res.data;
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries(["question-answers", selectedQuestion.id]);
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: ["question-answers", variables.questionId],
+      });
       setAnswerContent("");
     },
     onError: () => {
@@ -96,7 +99,7 @@ export function QASection() {
       await api.delete(`/answer/${answerId}`);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["question-answers", selectedQuestion.id]);
+      queryClient.invalidateQueries({ queryKey: ["question-answers"] });
       toast({ title: "Answer deleted", description: "Your answer was deleted successfully" });
     },
     onError: () => {
@@ -162,7 +165,7 @@ export function QASection() {
                                 ))}
                               </div>
                               <h3 className="text-lg font-semibold mb-3">{q.title}</h3>
-                              </CardContent>
+                            </CardContent>
                           </Card>
                         </CarouselItem>
                       ))}
@@ -207,7 +210,7 @@ export function QASection() {
                       try {
                         await api.delete(`/question/${questionInfo.id}`);
                         toast({ title: "Question deleted", description: "The question has been removed successfully" });
-                        queryClient.invalidateQueries(["questions-home"]);
+                        queryClient.invalidateQueries({ queryKey: ["questions-home"] });
                         setSelectedQuestion(null);
                       } catch (err) {
                         toast({

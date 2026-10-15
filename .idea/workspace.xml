@@ -5,15 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="accept get all questions and experiences without jwt">
+      <change afterPath="$PROJECT_DIR$/EstNextStepFront/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EstNextStepFront/nginx.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/api/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/QASection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/QASection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceTab.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceTab.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ProfileHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ProfileHeader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/AnswerCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/AnswerCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/AnswersList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/AnswersList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Experiences.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/Experiences.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/Login.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/QA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/QA.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/QuestionPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/QuestionPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/entity/Experience.java" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/entity/Experience.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/Signup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/resources/application-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/resources/application-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qa-service/src/main/resources/application-docker.properties" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/resources/application-docker.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qa-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +53,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst&quot;,
-    &quot;accountId&quot;: &quot;bcbf85af-b209-48d6-a3e6-be057a6b7298&quot;
+    &quot;url&quot;: &quot;https://github.com/AdamSgh25/NextStepEst.git&quot;,
+    &quot;accountId&quot;: &quot;c68d574c-fc32-46ba-894c-4dcc6b6c974a&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -68,39 +80,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EmailNotificationServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ExperienceServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.QaServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.RecomandServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.auth-service [clean].executor": "Run",
+    "Maven.auth-service [install].executor": "Run",
+    "Maven.email-notification-service [clean].executor": "Run",
+    "Maven.email-notification-service [install].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.AuthServiceApplication.executor": "Run",
+    "Spring Boot.EmailNotificationServiceApplication.executor": "Run",
+    "Spring Boot.ExperienceServiceApplication.executor": "Run",
+    "Spring Boot.QaServiceApplication.executor": "Run",
+    "Spring Boot.RecomandServiceApplication.executor": "Run",
+    "git-widget-placeholder": "docker",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ACER ASPIRE V15/Desktop/Java_Projects/EstNextStep",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;module&quot;,
-      &quot;repository&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "module",
+      "repository"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ma.nextstepest.experience_service.config" />
@@ -119,26 +137,12 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
-    <option name="hiddenConfigurations">
-      <map>
-        <entry key="SpringBootApplicationConfigurationType">
-          <value>
-            <set>
-              <option value="AuthServiceApplication" />
-              <option value="ExperienceServiceApplication" />
-              <option value="QaServiceApplication" />
-            </set>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="configurationStatuses">
       <map>
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
-              <entry key="EmailNotificationServiceApplication" value="STOPPED" />
-              <entry key="QaServiceApplication" value="STOPPED" />
+              <entry key="ExperienceServiceApplication" value="STOPPED" />
               <entry key="RecomandServiceApplication" value="STOPPED" />
             </map>
           </value>
@@ -146,7 +150,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ExperienceServiceApplication">
+  <component name="RunManager" selected="Spring Boot.QaServiceApplication">
     <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="auth-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ma.nextstepest.auth_service.AuthServiceApplication" />
@@ -210,10 +214,10 @@
     </configuration>
     <list>
       <item itemvalue="Spring Boot.QaServiceApplication" />
-      <item itemvalue="Spring Boot.RecomandServiceApplication" />
       <item itemvalue="Spring Boot.AuthServiceApplication" />
       <item itemvalue="Spring Boot.EmailNotificationServiceApplication" />
       <item itemvalue="Spring Boot.ExperienceServiceApplication" />
+      <item itemvalue="Spring Boot.RecomandServiceApplication" />
     </list>
     <recent_temporary>
       <list>
