@@ -73,7 +73,7 @@ services:
     volumes: [auth-uploads:/app/uploads]
 
   email-service:
-    build: ./email-notification-service
+    build: ./email-service
     container_name: email-service
     restart: on-failure
     ports: ["8081:8081"]

@@ -3,7 +3,7 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Annotation profile for auth-service" enabled="true">
+      <profile name="Annotation profile for qa-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -11,10 +11,13 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
         </processorPath>
         <module name="qa-service" />
-        <module name="recomand-service" />
-        <module name="experience-service" />
         <module name="auth-service" />
-        <module name="email-notification-service" />
+      </profile>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="recomand-service" />
       </profile>
     </annotationProcessing>
   </component>
@@ -24,7 +27,7 @@
       <module name="email-notification-service" options="-parameters" />
       <module name="experience-service" options="-parameters" />
       <module name="qa-service" options="-parameters" />
-      <module name="recomand-service" options="-parameters" />
+      <module name="recomand-service" options="" />
     </option>
   </component>
 </project>
