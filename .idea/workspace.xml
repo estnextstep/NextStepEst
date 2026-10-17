@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="changed the images name">
-      <change afterPath="$PROJECT_DIR$/infra/hetzner.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infra/journal.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infra/restauration-serveur.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infra/sauvegarde-serveur.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mongo-init/01-utilisateur.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +89,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ACER ASPIRE V15/Desktop/Project/Java_Projects/EstNextStep/infra",
+    "last_opened_file_path": "C:/Users/ACER ASPIRE V15/Desktop/Project/Java_Projects/EstNextStep",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
@@ -111,6 +108,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ACER ASPIRE V15\Desktop\Project\Java_Projects\EstNextStep" />
+      <recent name="C:\Users\ACER ASPIRE V15\Desktop\Project\Java_Projects\EstNextStep\infra" />
       <recent name="C:\Users\ACER ASPIRE V15\Desktop\Project\Java_Projects\EstNextStep\infra\cles-ssh" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -427,7 +425,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792246246747</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="changed the images name">
+      <option name="closed" value="true" />
+      <created>1792275307396</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1792275307396</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
