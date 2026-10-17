@@ -4,126 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i fixed docker and all the bugs to deploy it">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="changed the images name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/attached_assets/generated_images/abstract_geometric_background_representing_career_paths_and_connections.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/attached_assets/generated_images/abstract_geometric_background_representing_career_paths_and_connections.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/attached_assets/generated_images/imageee.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/attached_assets/generated_images/imageee.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/attached_assets/generated_images/professional_headshot_of_male_marketing_manager.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/attached_assets/generated_images/professional_headshot_of_male_marketing_manager.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/attached_assets/generated_images/professional_headshot_of_young_female_software_engineer.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/attached_assets/generated_images/professional_headshot_of_young_female_software_engineer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/attached_assets/generated_images/professional_headshot_of_young_male_data_scientist.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/attached_assets/generated_images/professional_headshot_of_young_male_data_scientist.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/attached_assets/generated_images/students_collaborating_in_a_modern_library_setting.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/attached_assets/generated_images/students_collaborating_in_a_modern_library_setting.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/attached_assets/generated_images/university_students_and_alumni_networking_in_a_bright_modern_campus_setting.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/attached_assets/generated_images/university_students_and_alumni_networking_in_a_bright_modern_campus_setting.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/components.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/eslint.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/public/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/favicon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/public/opengraph.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/opengraph.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/api/createuser.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/createuser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/api/getUserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/getUserInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/api/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/CTASection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CTASection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/CommentsCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CommentsCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ExperienceCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ExperienceCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/Hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Hero.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/QASection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/QASection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/mode-toggle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/mode-toggle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/AppearanceTab.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/AppearanceTab.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/CommunityActivity.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/CommunityActivity.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/CustomToggle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/CustomToggle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/DangerTab.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/DangerTab.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/EditExperienceModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/EditExperienceModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/EditProfileTab.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/EditProfileTab.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/ExperienceSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ExperienceTab.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/ExperienceTab.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/MemberSinceCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/MemberSinceCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ProfileHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/ProfileHeader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/QuestionModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/QuestionModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/SecurityTab.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/SecurityTab.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/SettingsModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/profile/SettingsModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/theme-provider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/theme-provider.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/AnswerCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/AnswerCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/badge.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/badge.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/button.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/card.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/card.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/carousel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/carousel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/checkbox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/checkbox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/dropdown-menu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/dropdown-menu.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/input-otp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/input-otp.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/input.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/label.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/label.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/navigation-menu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/navigation-menu.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/progress.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/progress.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/radio-group.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/radio-group.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/select.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/select.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/tabs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/tabs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/toast.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/toast.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/toaster.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/toaster.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/tooltip.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/tooltip.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/context/AuthContext.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/AuthContext.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/hooks/use-toast.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/use-toast.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/lib/queryClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/lib/queryClient.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/lib/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/lib/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/logo.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/logo.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/AnswersList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/AnswersList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Changepassword.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Changepassword.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/CommentsSection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/CommentsSection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Createexperience.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Createexperience.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Experiences.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Experiences.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Orientation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Orientation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/QA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/QA.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/QuestionPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/QuestionPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/ResetPassword.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ResetPassword.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Signup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/UserProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/UserProfile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/not-found.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/not-found.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/schemas/ChangePasswordschema.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/schemas/ChangePasswordschema.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/schemas/LoginSchema.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/schemas/LoginSchema.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/schemas/Signupschema.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/schemas/Signupschema.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vite.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/Excpetions/ExperienceNotfoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/Excpetions/ExperienceNotfoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/Excpetions/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/Excpetions/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/ExperienceServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/ExperienceServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/config/ElasticsearchConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/config/ElasticsearchConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/config/RabbitConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/config/RabbitConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/controller/ExperienceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/controller/ExperienceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/AllExperienceRecommendation.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/dto/AllExperienceRecommendation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/AllExperiencesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/dto/AllExperiencesResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/Errorsdto.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/dto/Errorsdto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/ExperienceDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/dto/ExperienceDocument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/ExperienceRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/dto/ExperienceRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/dto/MessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/dto/MessageResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/entity/Experience.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/entity/Experience.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/repository/ExperienceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/repository/ExperienceRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/service/ExperienceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/service/ExperienceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/java/ma/nextstepest/experience_service/service/RecommendationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/java/ma/nextstepest/experience_service/service/RecommendationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/resources/application-test.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/test/java/ma/nextstepest/experience_service/ExperienceServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/experience-service/src/test/java/ma/nextstepest/experience_service/ExperienceServiceApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -501,7 +383,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792026859455</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="changed the images name">
+      <option name="closed" value="true" />
+      <created>1792241496747</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1792241496747</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,6 +431,7 @@
     <MESSAGE value="add id to login response" />
     <MESSAGE value="accept get all questions and experiences without jwt" />
     <MESSAGE value="i fixed docker and all the bugs to deploy it" />
-    <option name="LAST_COMMIT_MESSAGE" value="i fixed docker and all the bugs to deploy it" />
+    <MESSAGE value="changed the images name" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed the images name" />
   </component>
 </project>
