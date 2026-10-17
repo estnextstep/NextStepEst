@@ -104,7 +104,7 @@ jobs:
             echo "GHCR_OWNER=${GITHUB_REPOSITORY_OWNER,,}"
             echo "DOMAINE=${IP//./-}.sslip.io"
           } > .env
-          scp -r docker-compose.yml Caddyfile .env mongo-init deploy@"$IP":/opt/projet1/
+          scp -r docker-compose.yml Caddyfile .env deploy@"$IP":/opt/projet1/
           echo "${{ secrets.GITHUB_TOKEN }}" \
             | ssh deploy@"$IP" docker login ghcr.io -u "${{ github.actor }}" --password-stdin
           ssh deploy@"$IP" 'cd /opt/projet1 && chmod 600 .env \
