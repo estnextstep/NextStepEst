@@ -8,6 +8,6 @@
         reverse_proxy auth-service:8080
     }
     handle {
-        reverse_proxy front:80
+        reverse_proxy frontend:80
     }
 }
