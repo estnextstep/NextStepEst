@@ -7,8 +7,6 @@ etat-budget.json
 rapport.md
 
 # Compilation et IDE
-target/
-build/
 .idea/
 *.iml
 .vscode/
