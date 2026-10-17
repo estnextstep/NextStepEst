@@ -1,0 +1,93 @@
+# Sauvegarde les bases puis supprime le serveur (la facturation s'arrête).
+# À la main : Actions → « Serveur : supprimer » → Run workflow, en tapant SUPPRIMER.
+# Appelé aussi automatiquement par le garde-budget quand le plafond est atteint.
+name: "Serveur : supprimer"
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: "Tapez SUPPRIMER pour confirmer (une sauvegarde est faite avant)"
+        required: true
+      fin_de_projet:
+        description: "Fin du projet : libérer aussi l'adresse IP conservée (sinon : simple pause)"
+        type: boolean
+        default: false
+  workflow_call:
+    inputs:
+      raison:
+        type: string
+        default: "Plafond de budget atteint"
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
+  SERVEUR_NOM: ${{ vars.SERVEUR_NOM || 'projet1' }}
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
+  JOURNAL_ISSUE: ${{ vars.JOURNAL_ISSUE }}
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vérifier la confirmation
+        if: github.event_name == 'workflow_dispatch' && inputs.confirmation != 'SUPPRIMER'
+        run: |
+          echo "::error::Confirmation incorrecte : tapez exactement SUPPRIMER."
+          exit 1
+
+  sauvegarde:
+    needs: verifier
+    uses: ./.github/workflows/sauvegarde.yml
+    with:
+      motif: avant suppression du serveur
+    secrets: inherit
+
+  supprimer:
+    needs: [verifier, sauvegarde]
+    # Suppression manuelle : seulement si la sauvegarde a réussi.
+    # Plafond de budget (raison renseignée) : suppression même si la sauvegarde a échoué.
+    if: >-
+      always() && needs.verifier.result == 'success' &&
+      (needs.sauvegarde.result == 'success' || inputs.raison != '')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Supprimer
+        id: suppression
+        run: |
+          if [ -n "${{ inputs.raison }}" ]; then
+            python3 infra/hetzner.py supprimer --tous
+          elif [ "${{ inputs.fin_de_projet }}" = "true" ]; then
+            python3 infra/hetzner.py supprimer --liberer-ip
+          else
+            python3 infra/hetzner.py supprimer
+          fi
+
+      - name: Annonce dans le journal
+        env:
+          SUPPRIMES: ${{ steps.suppression.outputs.supprimes }}
+          IP_LIBEREE: ${{ steps.suppression.outputs.ip_liberee }}
+          RAISON: ${{ inputs.raison || (inputs.fin_de_projet && 'fin du projet' || 'pause') }}
+          SAUVEGARDE: ${{ needs.sauvegarde.result }}
+        run: |
+          {
+            if [ -n "$SUPPRIMES" ]; then
+              echo "🔴 **Serveur supprimé** : $SUPPRIMES — $RAISON. La facturation du serveur est arrêtée."
+            else
+              echo "ℹ️ Aucun serveur à supprimer ($RAISON)."
+            fi
+            if [ -n "$IP_LIBEREE" ]; then
+              echo "Adresse IPv4 libérée : $IP_LIBEREE. Plus rien n'est facturé."
+            else
+              echo "Adresse IPv4 conservée pour la prochaine création (même adresse de site)."
+            fi
+            [ "$SAUVEGARDE" = "success" ] && echo "Sauvegarde préalable : réussie." \
+              || echo "⚠️ Sauvegarde préalable : **échouée** (suppression imposée par le budget)."
+          } > message.md
+          bash infra/journal.sh message.md

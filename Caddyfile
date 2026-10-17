@@ -1,0 +1,13 @@
+# Caddy obtient et renouvelle seul le certificat HTTPS pour {$DOMAINE}.
+# Choisissez UN des deux cas et supprimez l'autre.
+
+{$DOMAINE} {
+    encode gzip
+
+    handle /api/* {
+        reverse_proxy auth-service:8080
+    }
+    handle {
+        reverse_proxy front:80
+    }
+}

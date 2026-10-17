@@ -1,0 +1,99 @@
+# Exporte toutes les bases du serveur, chiffre l'archive et la conserve 90 jours
+# dans les « Artifacts » de l'exécution. Chaque dimanche à 20 h UTC, à la demande,
+# et automatiquement avant toute suppression du serveur.
+name: Sauvegarde des bases
+
+on:
+  schedule:
+    - cron: "0 20 * * 0"
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      motif:
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
+  SERVEUR_NOM: ${{ vars.SERVEUR_NOM || 'projet1' }}
+  SERVEUR_IP: ${{ vars.SERVEUR_IP }}
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
+  JOURNAL_ISSUE: ${{ vars.JOURNAL_ISSUE }}
+
+jobs:
+  sauvegarde:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Adresse du serveur
+        id: srv
+        run: |
+          if ip="$(python3 infra/hetzner.py ip)"; then
+            echo "ip=$ip" >> "$GITHUB_OUTPUT"
+            echo "nom=sauvegarde-projet1-$(date -u +%Y-%m-%d_%H%M)" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::Aucun serveur : rien à sauvegarder."
+          fi
+
+      - name: Clé SSH de déploiement
+        if: steps.srv.outputs.ip
+        env:
+          CLE: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$CLE" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf 'Host *\n  StrictHostKeyChecking accept-new\n  ConnectTimeout 10\n' > ~/.ssh/config
+
+      - name: Exporter les bases
+        if: steps.srv.outputs.ip
+        env:
+          IP: ${{ steps.srv.outputs.ip }}
+        run: |
+          ssh deploy@"$IP" 'bash -s' < infra/sauvegarde-serveur.sh > sauvegarde.tar.gz
+          tar -tzvf sauvegarde.tar.gz | awk '$NF != "./" {print $NF " (" $3 " octets)"}' | tee contenu.txt
+          test -s contenu.txt || { echo "::error::Aucune base trouvée sur le serveur"; exit 1; }
+
+      - name: Chiffrer l'archive
+        if: steps.srv.outputs.ip
+        env:
+          PHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+          NOM: ${{ steps.srv.outputs.nom }}
+        run: |
+          test -n "$PHRASE" || { echo "::error::Secret BACKUP_PASSPHRASE manquant"; exit 1; }
+          gpg --batch --yes --pinentry-mode loopback --passphrase "$PHRASE" \
+            --symmetric --cipher-algo AES256 -o "$NOM.tar.gz.gpg" sauvegarde.tar.gz
+          rm sauvegarde.tar.gz
+
+      - uses: actions/upload-artifact@v4
+        if: steps.srv.outputs.ip
+        with:
+          name: ${{ steps.srv.outputs.nom }}
+          path: ${{ steps.srv.outputs.nom }}.tar.gz.gpg
+          retention-days: 90
+
+      - name: Annonce dans le journal
+        if: steps.srv.outputs.ip
+        env:
+          NOM: ${{ steps.srv.outputs.nom }}
+          MOTIF: ${{ inputs.motif }}
+        run: |
+          {
+            echo "💾 **Sauvegarde réussie**${MOTIF:+ ($MOTIF)} : \`$NOM.tar.gz.gpg\`"
+            echo "($(du -h "$NOM.tar.gz.gpg" | cut -f1), chiffrée, conservée 90 jours dans les *Artifacts*)"
+            echo ""
+            sed 's/^/- /' contenu.txt
+          } > message.md
+          bash infra/journal.sh message.md
+
+      - name: Signaler un échec dans le journal
+        if: failure()
+        run: |
+          echo "❌ **Échec de la sauvegarde** des bases. Voir les détails de l'exécution." > message.md
+          bash infra/journal.sh message.md

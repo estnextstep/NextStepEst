@@ -1,0 +1,128 @@
+# Crée le serveur Hetzner (pare-feu, clé SSH, comptes, Docker), met l'application en ligne,
+# puis restaure la dernière sauvegarde des bases (reprise après une pause).
+# À lancer à la main : onglet Actions → « Serveur : créer » → Run workflow.
+name: "Serveur : créer"
+
+on:
+  workflow_dispatch:
+    inputs:
+      restaurer:
+        description: "Restaurer la dernière sauvegarde des bases"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  packages: write
+  issues: write
+  actions: read
+
+env:
+  HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
+  SERVEUR_NOM: ${{ vars.SERVEUR_NOM || 'projet1' }}
+  SERVEUR_IP: ${{ vars.SERVEUR_IP }}
+  TYPE_SERVEUR: ${{ vars.TYPE_SERVEUR || 'cpx22' }}
+  EMPLACEMENT: ${{ vars.EMPLACEMENT || 'nbg1' }}
+  BUDGET: ${{ vars.BUDGET || '25' }}
+  ARRET: ${{ vars.ARRET || '0.95' }}
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
+  JOURNAL_ISSUE: ${{ vars.JOURNAL_ISSUE }}
+
+jobs:
+  creer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lire l'état du budget
+        run: |
+          if git fetch -q origin budget 2>/dev/null; then
+            git show FETCH_HEAD:etat-budget.json > etat-budget.json
+          else
+            echo '{}' > etat-budget.json
+          fi
+
+      - name: Créer le serveur
+        id: creation
+        run: python3 infra/hetzner.py creer --etat etat-budget.json
+
+      - name: Annonce dans le journal
+        env:
+          IP: ${{ steps.creation.outputs.ip }}
+          COMPTES: ${{ steps.creation.outputs.comptes }}
+        run: |
+          {
+            echo "🟢 **Serveur créé** : \`$SERVEUR_NOM\` ($TYPE_SERVEUR, $EMPLACEMENT), IP $IP"
+            echo ""
+            echo "Comptes SSH : $COMPTES. Installation de Docker puis mise en ligne en cours…"
+          } > message.md
+          bash infra/journal.sh message.md
+
+  mise-en-ligne:
+    needs: creer
+    uses: ./.github/workflows/deploiement.yml
+    secrets: inherit
+
+  restauration:
+    needs: mise-en-ligne
+    if: inputs.restaurer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Trouver la dernière sauvegarde
+        id: sauvegarde
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts?per_page=100" --jq '
+            [.artifacts[] | select(.name | startswith("sauvegarde-projet1-")) | select(.expired | not)]
+            | sort_by(.created_at) | last // empty | "id=\(.id)\nnom=\(.name)"' >> "$GITHUB_OUTPUT"
+
+      - name: Aucune sauvegarde
+        if: steps.sauvegarde.outputs.id == ''
+        run: |
+          echo "ℹ️ Aucune sauvegarde à restaurer : les bases démarrent vides." > message.md
+          bash infra/journal.sh message.md
+
+      - name: Télécharger et déchiffrer
+        if: steps.sauvegarde.outputs.id
+        env:
+          ID: ${{ steps.sauvegarde.outputs.id }}
+          PHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$ID/zip" > sauvegarde.zip
+          unzip -q sauvegarde.zip
+          gpg --batch --pinentry-mode loopback --passphrase "$PHRASE" \
+            -o sauvegarde.tar.gz -d ./*.tar.gz.gpg
+
+      - name: Restaurer sur le serveur
+        if: steps.sauvegarde.outputs.id
+        env:
+          CLE: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$CLE" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf 'Host *\n  StrictHostKeyChecking accept-new\n  ConnectTimeout 10\n' > ~/.ssh/config
+          IP="$(python3 infra/hetzner.py ip)"
+          scp sauvegarde.tar.gz deploy@"$IP":/tmp/sauvegarde.tar.gz
+          ssh deploy@"$IP" 'bash -s -- /tmp/sauvegarde.tar.gz' \
+            < infra/restauration-serveur.sh | tee resultat.txt
+
+      - name: Annonce dans le journal
+        if: steps.sauvegarde.outputs.id
+        env:
+          NOM: ${{ steps.sauvegarde.outputs.nom }}
+        run: |
+          {
+            echo "♻️ **Données restaurées** depuis \`$NOM\`"
+            echo ""
+            sed 's/^/- /' resultat.txt
+          } > message.md
+          bash infra/journal.sh message.md
+
+      - name: Signaler un échec dans le journal
+        if: failure()
+        run: |
+          echo "❌ **Échec de la restauration** : l'application tourne avec des bases vides." > message.md
+          bash infra/journal.sh message.md

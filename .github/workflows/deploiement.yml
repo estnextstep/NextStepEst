@@ -1,0 +1,131 @@
+# Construit les images des 4 microservices à chaque push sur main, puis les met en ligne
+# sur le serveur (s'il existe) et l'annonce dans le journal.
+name: Déploiement
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["**.md", "infra/cles-ssh/**"]
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+  packages: write
+  issues: write
+
+env:
+  HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
+  SERVEUR_NOM: ${{ vars.SERVEUR_NOM || 'projet1' }}
+  SERVEUR_IP: ${{ vars.SERVEUR_IP }}
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
+  JOURNAL_ISSUE: ${{ vars.JOURNAL_ISSUE }}
+
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Mêmes noms que les dossiers et que docker-compose.yml
+        service: [auth-service, email-service, experience-service, qa-service,frontend]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Nom de l'organisation en minuscules (exigé par ghcr.io)
+        run: echo "OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_ENV"
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./${{ matrix.service }}
+          push: true
+          tags: |
+            ghcr.io/${{ env.OWNER }}/projet1-${{ matrix.service }}:latest
+            ghcr.io/${{ env.OWNER }}/projet1-${{ matrix.service }}:${{ github.sha }}
+          cache-from: type=gha,scope=${{ matrix.service }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.service }}
+
+  mise-en-ligne:
+    needs: images
+    runs-on: ubuntu-latest
+    concurrency:
+      group: mise-en-ligne
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Adresse du serveur
+        id: srv
+        run: |
+          if ip="$(python3 infra/hetzner.py ip)"; then
+            echo "ip=$ip" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::Aucun serveur : images construites, mise en ligne ignorée."
+          fi
+
+      - name: Clé SSH de déploiement
+        if: steps.srv.outputs.ip
+        env:
+          CLE: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$CLE" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf 'Host *\n  StrictHostKeyChecking accept-new\n  ConnectTimeout 10\n' > ~/.ssh/config
+
+      - name: Attendre que le serveur soit prêt (première fois ≈ 5 min)
+        if: steps.srv.outputs.ip
+        env:
+          IP: ${{ steps.srv.outputs.ip }}
+        run: |
+          for i in $(seq 1 40); do
+            ssh deploy@"$IP" true 2>/dev/null && break
+            echo "Serveur pas encore joignable ($i/40)…"; sleep 15
+          done
+          ssh deploy@"$IP" 'cloud-init status --wait > /dev/null || true'
+          ssh deploy@"$IP" 'docker version --format "Docker {{.Server.Version}} prêt"'
+
+      - name: Mise en ligne
+        if: steps.srv.outputs.ip
+        env:
+          IP: ${{ steps.srv.outputs.ip }}
+          ENV_PRODUCTION: ${{ secrets.ENV_PRODUCTION }}
+        run: |
+          {
+            printf '%s\n' "$ENV_PRODUCTION"
+            echo "GHCR_OWNER=${GITHUB_REPOSITORY_OWNER,,}"
+            echo "DOMAINE=${IP//./-}.sslip.io"
+          } > .env
+          scp -r docker-compose.yml Caddyfile .env mongo-init deploy@"$IP":/opt/projet1/
+          echo "${{ secrets.GITHUB_TOKEN }}" \
+            | ssh deploy@"$IP" docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          ssh deploy@"$IP" 'cd /opt/projet1 && chmod 600 .env \
+            && docker compose pull -q && docker compose up -d --remove-orphans \
+            && docker image prune -f > /dev/null && docker compose ps'
+          rm -f .env
+
+      - name: Annonce dans le journal
+        if: steps.srv.outputs.ip
+        env:
+          IP: ${{ steps.srv.outputs.ip }}
+        run: |
+          {
+            echo "🚀 **Mise en ligne** : $(git log -1 --format='`%h` — « %s » (%an)')"
+            echo ""
+            echo "Site : https://${IP//./-}.sslip.io"
+          } > message.md
+          bash infra/journal.sh message.md
+
+      - name: Signaler un échec dans le journal
+        if: failure()
+        run: |
+          echo "❌ **Échec de la mise en ligne** : $(git log -1 --format='`%h` — « %s » (%an)')" > message.md
+          bash infra/journal.sh message.md

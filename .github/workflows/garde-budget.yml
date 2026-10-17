@@ -1,0 +1,77 @@
+# Garde-budget : toutes les heures, calcule la consommation Hetzner, signale dans le journal
+# tout changement (création, arrêt, démarrage, suppression, taille, snapshot…), publie un
+# rapport quotidien, alerte à 75 % du budget et, à 95 %, sauvegarde puis supprime le serveur.
+name: Garde-budget
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      rapport:
+        description: "Publier un rapport complet maintenant"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: garde-budget
+  cancel-in-progress: false
+
+env:
+  HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
+  BUDGET: ${{ vars.BUDGET || '25' }}
+  ALERTE: ${{ vars.ALERTE || '0.75' }}
+  ARRET: ${{ vars.ARRET || '0.95' }}
+  RAPPORT_HEURE: ${{ vars.RAPPORT_HEURE || '18' }}
+  RESPONSABLE: ${{ vars.RESPONSABLE }}
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
+  JOURNAL_ISSUE: ${{ vars.JOURNAL_ISSUE }}
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    outputs:
+      arret: ${{ steps.calcul.outputs.arret }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lire l'état précédent (branche budget)
+        run: |
+          if git fetch -q origin budget 2>/dev/null; then
+            git show FETCH_HEAD:etat-budget.json > "$RUNNER_TEMP/etat-budget.json"
+          else
+            echo '{}' > "$RUNNER_TEMP/etat-budget.json"
+          fi
+
+      - name: Calculer la consommation
+        id: calcul
+        run: |
+          python3 infra/hetzner.py budget --etat "$RUNNER_TEMP/etat-budget.json" \
+            --rapport "$RUNNER_TEMP/rapport.md" ${{ inputs.rapport && '--forcer-rapport' || '' }}
+
+      - name: Publier dans le journal
+        if: steps.calcul.outputs.commenter == 'true'
+        run: bash infra/journal.sh "$RUNNER_TEMP/rapport.md"
+
+      - name: Enregistrer l'état (branche budget)
+        run: |
+          cd "$(mktemp -d)"
+          git init -q -b budget
+          cp "$RUNNER_TEMP/etat-budget.json" .
+          git add etat-budget.json
+          git -c user.name="garde-budget" -c user.email="garde-budget@users.noreply.github.com" \
+            commit -q -m "État du budget : ${{ steps.calcul.outputs.total }} ${{ steps.calcul.outputs.devise }}"
+          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" budget
+
+  arret:
+    needs: verifier
+    if: needs.verifier.outputs.arret == 'true'
+    uses: ./.github/workflows/serveur-supprimer.yml
+    with:
+      raison: Plafond de budget atteint
+    secrets: inherit

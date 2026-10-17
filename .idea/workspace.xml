@@ -4,28 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="accept get all questions and experiences without jwt">
-      <change afterPath="$PROJECT_DIR$/EstNextStepFront/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EstNextStepFront/nginx.conf" afterDir="false" />
+    <list default="true" id="888165e6-e9a2-4c9d-ab11-6edc34e0343a" name="Changes" comment="i fixed docker and all the bugs to deploy it">
+      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/deploiement.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/garde-budget.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/sauvegarde.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/serveur-creer.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/serveur-supprimer.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Caddyfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infra/cles-ssh/adamsgh25.pub" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infra/cles-ssh/deploy.pub" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/QASection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/QASection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ProfileHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/profile/ProfileHeader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/AnswerCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/components/ui/AnswerCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/AnswersList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/AnswersList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Experiences.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/Experiences.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/QA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/QA.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EstNextStepFront/src/pages/Signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/EstNextStepFront/src/pages/Signup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/java/ma/nextstepest/auth_service/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application-test.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/resources/application-test.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/email-notification-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/resources/application-test.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expérience-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/expérience-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/resources/application-docker.properties" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/resources/application-docker.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qa-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/qa-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +34,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="docker" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -100,10 +96,10 @@
     "Spring Boot.ExperienceServiceApplication.executor": "Run",
     "Spring Boot.QaServiceApplication.executor": "Run",
     "Spring Boot.RecomandServiceApplication.executor": "Run",
-    "git-widget-placeholder": "docker",
+    "git-widget-placeholder": "finale",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ACER ASPIRE V15/Desktop/Java_Projects/EstNextStep",
+    "last_opened_file_path": "C:/Users/ACER ASPIRE V15/Desktop/Project/Java_Projects/EstNextStep",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
@@ -120,6 +116,10 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ACER ASPIRE V15\Desktop\Project\Java_Projects\EstNextStep" />
+      <recent name="C:\Users\ACER ASPIRE V15\Desktop\Project\Java_Projects\EstNextStep\infra\cles-ssh" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ma.nextstepest.experience_service.config" />
       <recent name="ma.nextstepest.auth_service.dto.Response" />
@@ -386,7 +386,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773623856003</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="i fixed docker and all the bugs to deploy it">
+      <option name="closed" value="true" />
+      <created>1792026859455</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1792026859455</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -425,6 +433,7 @@
     <MESSAGE value="i add the elastic search in Qa to suggest the question based on the user major" />
     <MESSAGE value="add id to login response" />
     <MESSAGE value="accept get all questions and experiences without jwt" />
-    <option name="LAST_COMMIT_MESSAGE" value="accept get all questions and experiences without jwt" />
+    <MESSAGE value="i fixed docker and all the bugs to deploy it" />
+    <option name="LAST_COMMIT_MESSAGE" value="i fixed docker and all the bugs to deploy it" />
   </component>
 </project>

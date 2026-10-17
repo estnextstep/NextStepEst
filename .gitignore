@@ -1,0 +1,15 @@
+# Secrets : ne jamais versionner
+.env
+*.gpg
+
+# Fichiers de travail du garde-budget
+etat-budget.json
+rapport.md
+
+# Compilation et IDE
+target/
+build/
+.idea/
+*.iml
+.vscode/
+.DS_Store
