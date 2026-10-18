@@ -203,10 +203,10 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Spring Boot.QaServiceApplication" />
       <item itemvalue="Spring Boot.AuthServiceApplication" />
       <item itemvalue="Spring Boot.EmailNotificationServiceApplication" />
       <item itemvalue="Spring Boot.ExperienceServiceApplication" />
-      <item itemvalue="Spring Boot.QaServiceApplication" />
       <item itemvalue="Spring Boot.RecomandServiceApplication" />
     </list>
     <recent_temporary>
@@ -456,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792277128160</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="changed the images name">
+      <option name="closed" value="true" />
+      <created>1792350257278</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1792350257278</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
