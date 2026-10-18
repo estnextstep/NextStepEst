@@ -91,7 +91,7 @@ public class AuthService {
         EmailDtoAuth emailDtoAuth = new EmailDtoAuth();
         emailDtoAuth.setSubject("email to activate your account");
         emailDtoAuth.setTo(user.getEmail());
-        emailDtoAuth.setContent("http://localhost:8080/auth/activate/"+user.getResetToken()+"/"+user.getId());
+        emailDtoAuth.setContent("https://167-233-244-97.sslip.io/auth/activate/"+user.getResetToken()+"/"+user.getId());
         emailDtoAuth.setIndex(1);
         producer.sendEmail(emailDtoAuth);
         message.setMessage("Registered");
