@@ -1,0 +1,31 @@
+{
+  "ressources": {
+    "serveur:171076961": {
+      "genre": "serveur",
+      "nom": "projet1",
+      "type": "cpx22",
+      "lieu": "nbg1",
+      "statut": "running",
+      "cree": "2026-10-18T19:41:40Z",
+      "ipv4": "167.233.244.97",
+      "taux": 0.0368,
+      "heures": 146,
+      "cout": 5.3728
+    },
+    "ip:156289596": {
+      "genre": "ip",
+      "nom": "167.233.244.97",
+      "statut": "attachée",
+      "conservee": true,
+      "cree": "2026-10-18T18:53:30Z",
+      "taux": 0.001,
+      "heures": 146,
+      "cout": 0.146
+    }
+  },
+  "devise": "USD",
+  "total": 5.5188,
+  "budget": 25.0,
+  "mis_a_jour": "2026-10-24T20:45:38.535021+00:00",
+  "dernier_rapport": "2026-10-24"
+}
