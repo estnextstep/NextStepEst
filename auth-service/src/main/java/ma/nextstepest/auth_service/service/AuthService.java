@@ -271,22 +271,21 @@ public class AuthService {
         }
 
 
-        if(image!=null&& !image.isEmpty()){
-            String uploadDir = "profile_pictures";
+        if (image != null && !image.isEmpty()) {
+            String uploadDir = "../frontend/dist/assets/profile_pictures";
+
             Path dirPath = Paths.get(uploadDir);
+            Files.createDirectories(dirPath);
 
-            if (!Files.exists(dirPath)) {
-                Files.createDirectories(dirPath);
-            }
+            String filename = System.currentTimeMillis()
+                    + "_" + Paths.get(image.getOriginalFilename())
+                    .getFileName().toString();
 
-            String filename = System.currentTimeMillis() + "_" + image.getOriginalFilename();
             Path filepath = dirPath.resolve(filename);
 
             Files.write(filepath, image.getBytes());
 
-            user.setUrlImage("/profile_pictures/" + filename);
-
-
+            user.setUrlImage("/assets/profile_pictures/" + filename);
         }
     userRepository.save(user);
     message.setMessage("profile updated with success ");

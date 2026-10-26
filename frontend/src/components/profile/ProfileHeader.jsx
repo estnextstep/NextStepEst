@@ -13,7 +13,7 @@ export const ProfileHeader = ({ data, onOpenSettings ,isReadOnly=false}) => (
       <div className="relative group">
         <div className="w-28 h-28 rounded-2xl bg-[#2A3B5F] flex items-center justify-center text-white text-4xl font-serif shadow-inner overflow-hidden border-4 border-white dark:border-slate-800">
           {data.ImageURL ? (
-            <img src={`http://auth-service:8080${data.ImageURL}`} alt="Profile" className="w-full h-full object-cover" />
+            <img src={"../../../dist/assets"} alt="Profile" className="w-full h-full object-cover" />
           ) : (
             data.firstName.charAt(0)
           )}
